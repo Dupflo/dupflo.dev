@@ -6,6 +6,10 @@ import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 
 import { SITE } from './src/consts.ts';
+import { postAlternates } from './src/lib/alternates.ts';
+
+// Built once at config load; the sitemap serializer reads from it per URL.
+const ALTERNATES = postAlternates(SITE.url);
 
 export default defineConfig({
   // `site` is required for sitemap, RSS and absolute canonical URLs.
@@ -13,7 +17,17 @@ export default defineConfig({
   // Every page is prerendered. The adapter exists for one route — the write
   // endpoint behind the reaction button — which opts out with `prerender`.
   adapter: vercel(),
-  integrations: [mdx(), sitemap({ i18n: { defaultLocale: 'en', locales: { en: 'en', fr: 'fr' } } })],
+  integrations: [
+    mdx(),
+    sitemap({
+      i18n: { defaultLocale: 'en', locales: { en: 'en', fr: 'fr' } },
+      // Translated slugs defeat the path-matching pairing; put them back.
+      serialize(item) {
+        const links = ALTERNATES.get(item.url);
+        return links ? { ...item, links } : item;
+      },
+    }),
+  ],
   i18n: {
     locales: ['en', 'fr'],
     defaultLocale: 'en',
