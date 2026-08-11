@@ -29,6 +29,10 @@ export const UI = {
       cv: 'Nine years of shipping, and where it happened.',
     },
     watchOn: 'Watch on',
+    reaction: {
+      prompt: 'I read this and I liked it',
+      done: 'Noted — thank you',
+    },
     experience: 'Experience',
     education: 'Education',
     ongoing: 'now',
@@ -65,6 +69,10 @@ export const UI = {
       cv: 'Neuf ans à livrer, et les endroits où ça s’est passé.',
     },
     watchOn: 'Voir sur',
+    reaction: {
+      prompt: 'J’ai lu et j’ai aimé',
+      done: 'C’est noté — merci',
+    },
     experience: 'Expérience',
     education: 'Formation',
     ongoing: 'auj.',

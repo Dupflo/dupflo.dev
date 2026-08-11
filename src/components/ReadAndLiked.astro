@@ -1,0 +1,67 @@
+---
+import { t, type Lang } from '../i18n/ui';
+import { reactionsEnabled } from '../lib/reactions';
+
+interface Props {
+  slug: string;
+  lang: Lang;
+}
+
+const { slug, lang } = Astro.props;
+const ui = t(lang).reaction;
+---
+
+{
+  /* No store wired, no button. Better nothing than a control that pretends to
+     record something and drops it. */
+  reactionsEnabled && (
+    <div class="border-t py-8">
+      <button
+        type="button"
+        data-reaction
+        data-slug={slug}
+        data-lang={lang}
+        class="w-full max-w-md border py-4 text-[13px] uppercase tracking-[0.1em] hover:border-accent hover:text-accent disabled:border-rule disabled:text-dim disabled:hover:text-dim"
+      >
+        <span data-label>{ui.prompt}</span>
+      </button>
+    </div>
+  )
+}
+
+{
+  /* Twelve lines of vanilla rather than a React island: this is one button with
+     one fetch, and hydrating a framework for it would cost more than the whole
+     page. `localStorage` only — no cookie, so nothing to consent to. */
+  reactionsEnabled && (
+    <script is:inline define:vars={{ done: ui.done }}>
+      document.querySelectorAll('[data-reaction]').forEach((button) => {
+        const { slug, lang } = button.dataset;
+        const key = `read-and-liked:${lang}:${slug}`;
+        const label = button.querySelector('[data-label]');
+
+        const settle = () => {
+          label.textContent = done;
+          button.disabled = true;
+        };
+
+        if (localStorage.getItem(key)) settle();
+
+        button.addEventListener('click', async () => {
+          settle();
+          localStorage.setItem(key, '1');
+          try {
+            await fetch('/api/reaction', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ slug, lang }),
+            });
+          } catch {
+            /* The thank-you already showed. A dropped signal is mine to lose,
+               not something to bother the reader with. */
+          }
+        });
+      });
+    </script>
+  )
+}

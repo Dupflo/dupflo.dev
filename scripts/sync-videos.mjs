@@ -22,7 +22,7 @@ const API = 'https://graph.facebook.com/v26.0';
 const CONTENT_DIR = 'src/content/videos';
 const THUMB_DIR = 'src/assets/videos';
 const FIELDS =
-  'id,caption,media_type,media_product_type,media_url,thumbnail_url,permalink,timestamp';
+  'id,caption,media_type,media_product_type,media_url,thumbnail_url,permalink,timestamp,like_count';
 
 const { IG_USER_ID, IG_ACCESS_TOKEN } = process.env;
 
@@ -52,6 +52,39 @@ async function fetchAllMedia() {
   return media;
 }
 
+/**
+ * Metrics live behind the insights edge, one call per media.
+ *
+ * `total_views` and `total_likes`, not `views` and `like_count`: a reel
+ * crossposted to the Facebook page earns most of its reach there, and the
+ * total is the figure Instagram itself displays. One reel here reads 1,004
+ * views on Instagram alone against 20,706 across Meta.
+ */
+async function fetchMetrics(id) {
+  const res = await fetch(
+    `${API}/${id}/insights?metric=total_views,total_likes&access_token=${IG_ACCESS_TOKEN}`,
+  );
+  if (!res.ok) return { views: null, likes: null };
+  const body = await res.json();
+  const byName = Object.fromEntries(
+    (body.data ?? []).map((m) => [m.name, m.values?.[0]?.value ?? null]),
+  );
+  return { views: byName.total_views ?? null, likes: byName.total_likes ?? null };
+}
+
+/** Rewrites just the metric lines, leaving every hand-edited field alone. */
+function patchMetrics(source, views, likes) {
+  let out = source;
+  for (const [key, value] of [['views', views], ['likes', likes]]) {
+    if (value === null || value === undefined) continue;
+    const line = `${key}: ${value}`;
+    out = new RegExp(`^${key}: .*$`, 'm').test(out)
+      ? out.replace(new RegExp(`^${key}: .*$`, 'm'), line)
+      : out.replace(/^(sourceId: .*)$/m, `${line}\n$1`);
+  }
+  return out;
+}
+
 const slugify = (text) =>
   text
     .normalize('NFD')
@@ -77,7 +110,7 @@ async function main() {
   await mkdir(THUMB_DIR, { recursive: true });
 
   // Anything already carrying a sourceId has been imported before.
-  const existing = new Set();
+  const existing = new Map();
   // Slugs already on disk, so a re-run never overwrites a neighbour.
   const taken = new Set();
   for (const file of await readdir(CONTENT_DIR)) {
@@ -86,7 +119,7 @@ async function main() {
     const found = (await readFile(join(CONTENT_DIR, file), 'utf8')).match(
       /^sourceId:\s*"?([^"\n]+)"?/m,
     );
-    if (found) existing.add(found[1]);
+    if (found) existing.set(found[1], file);
   }
 
   const media = await fetchAllMedia();
@@ -96,6 +129,21 @@ async function main() {
   console.log(`${media.length} items, ${reels.length} videos`);
 
   let added = 0;
+  let refreshed = 0;
+
+  // Metrics move, so they are refreshed on every run — unlike the rest of the
+  // frontmatter, which is written once and then belongs to you.
+  for (const [id, file] of existing) {
+    const { views, likes } = await fetchMetrics(id);
+    const path = join(CONTENT_DIR, file);
+    const before = await readFile(path, 'utf8');
+    const after = patchMetrics(before, views, likes);
+    if (after !== before) {
+      await writeFile(path, after);
+      refreshed++;
+    }
+  }
+
   for (const item of reels) {
     if (existing.has(item.id)) continue;
 
@@ -120,6 +168,8 @@ async function main() {
       }
     }
 
+    const { views, likes } = await fetchMetrics(item.id);
+
     const frontmatter = [
       '---',
       `title: ${yaml(title)}`,
@@ -127,6 +177,8 @@ async function main() {
       `url: ${item.permalink}`,
       `date: ${date}`,
       thumbnail ? `thumbnail: ${thumbnail}` : null,
+      views !== null ? `views: ${views}` : null,
+      likes !== null ? `likes: ${likes}` : null,
       `sourceId: ${yaml(item.id)}`,
       '---',
       '',
@@ -140,9 +192,8 @@ async function main() {
   }
 
   console.log(
-    added
-      ? `\n${added} new video(s). Review, then commit.`
-      : '\nNothing new.',
+    `\n${added} new, ${refreshed} metrics updated.` +
+      (added || refreshed ? ' Review, then commit.' : ''),
   );
 }
 

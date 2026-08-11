@@ -27,6 +27,13 @@ export const ROW_WIDE = 'md:grid-cols-[10rem_1fr]';
  */
 export const ROW_GROUP = 'border-b [&>a:first-child]:border-t-0';
 
+/** 360 stays 360; 12 400 becomes 12.4k. Room on a thumbnail is the constraint. */
+export const compact = (n: number): string => {
+  if (n < 1000) return String(n);
+  const k = n / 1000;
+  return `${k < 10 ? k.toFixed(1).replace(/\.0$/, '') : Math.round(k)}k`;
+};
+
 export const STATUS_GLYPH = {
   live: '●',
   wip: '◐',

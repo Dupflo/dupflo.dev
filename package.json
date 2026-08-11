@@ -14,11 +14,14 @@
     "@astrojs/mdx": "^7.0.5",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/vercel": "^11.0.5",
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.3.3",
+    "@upstash/redis": "^1.38.2",
     "astro": "^7.2.0",
     "satori": "^0.29.0",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "^4.3.3",
+    "vercel": "^58.9.2"
   },
   "allowScripts": {
     "esbuild@0.28.2": true,

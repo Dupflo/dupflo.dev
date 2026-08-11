@@ -4,5 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DYzJlhiIhg0/
 date: 2026-05-26
 thumbnail: ../../assets/videos/2026-05-26-le-pape-qui-s-attaque-a-l-intelligence-artificielle-on-ne-s-.jpg
+views: 889
+likes: 8
 sourceId: "17987768258812853"
 ---

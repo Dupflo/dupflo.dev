@@ -84,6 +84,9 @@ const videos = defineCollection({
       tiktokUrl: z.url().optional(),
       /** Instagram media id. Set by `npm run sync:videos`, its dedup key. */
       sourceId: z.string().optional(),
+      /** Refreshed on every sync — these move after publication. */
+      views: z.number().optional(),
+      likes: z.number().optional(),
       /** Local, committed still. Falls back to a typographic tile when absent. */
       thumbnail: image().optional(),
     }),

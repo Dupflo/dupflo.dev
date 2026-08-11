@@ -3,12 +3,16 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import vercel from '@astrojs/vercel';
 
 import { SITE } from './src/consts.ts';
 
 export default defineConfig({
   // `site` is required for sitemap, RSS and absolute canonical URLs.
   site: SITE.url,
+  // Every page is prerendered. The adapter exists for one route — the write
+  // endpoint behind the reaction button — which opts out with `prerender`.
+  adapter: vercel(),
   integrations: [mdx(), sitemap({ i18n: { defaultLocale: 'en', locales: { en: 'en', fr: 'fr' } } })],
   i18n: {
     locales: ['en', 'fr'],

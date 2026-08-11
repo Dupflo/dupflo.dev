@@ -1,14 +1,14 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
-import { iso } from '../lib/entry';
+import { iso, compact } from '../lib/entry';
 
 interface Props {
   video: CollectionEntry<'videos'>;
 }
 
 const { video } = Astro.props;
-const { title, platform, url, date, thumbnail, series } = video.data;
+const { title, platform, url, date, thumbnail, views, likes } = video.data;
 ---
 
 <a
@@ -42,10 +42,25 @@ const { title, platform, url, date, thumbnail, series } = video.data;
         </div>
       )
     }
+    <!-- Reach and reception, in place of a platform label that said nothing. -->
     <span
-      class="absolute inset-x-0 bottom-0 bg-bg/85 px-2 py-1 text-dim uppercase tracking-[0.1em]"
+      class="absolute inset-x-0 bottom-0 flex gap-3 bg-bg/85 px-2 py-1 tabular-nums text-dim"
     >
-      {series ?? platform}
+      {
+        views !== undefined && (
+          <span>
+            <span aria-hidden="true">👁</span> {compact(views)}
+          </span>
+        )
+      }
+      {
+        likes !== undefined && (
+          <span>
+            <span aria-hidden="true">❤️</span> {compact(likes)}
+          </span>
+        )
+      }
+      {views === undefined && likes === undefined && <span>{platform}</span>}
     </span>
   </div>
 
