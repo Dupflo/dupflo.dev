@@ -7,4 +7,4 @@ dist/
 .env.production
 .vercel
 .env*
-syndication/
+/syndication/
