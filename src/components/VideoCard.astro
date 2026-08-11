@@ -49,14 +49,33 @@ const { title, platform, url, date, thumbnail, views, likes } = video.data;
       {
         views !== undefined && (
           <span>
-            <span aria-hidden="true">👁</span> {compact(views)}
+            <svg
+              class="inline size-[1.05em] align-[-0.15em] text-accent"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>{' '}
+            {compact(views)}
           </span>
         )
       }
       {
         likes !== undefined && (
           <span>
-            <span aria-hidden="true">❤️</span> {compact(likes)}
+            <svg
+              class="inline size-[1.05em] align-[-0.15em] text-accent"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M12 21S3 14.6 3 8.9A5 5 0 0 1 12 6a5 5 0 0 1 9 2.9C21 14.6 12 21 12 21Z" />
+            </svg>{' '}
+            {compact(likes)}
           </span>
         )
       }

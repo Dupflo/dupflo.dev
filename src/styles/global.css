@@ -206,10 +206,11 @@
     font-style: italic;
   }
 
-  /* Images break the measure — they are the widest thing in an article. */
+  /* Images break the measure — they are the widest thing in an article. But
+     never upscaled: a source narrower than the column renders at its own size
+     rather than being stretched soft. */
   .prose img {
     max-width: min(100%, 46rem);
-    width: 100%;
     height: auto;
     border: 1px solid var(--color-rule);
     margin-top: 2em;

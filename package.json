@@ -6,8 +6,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "sync:videos": "node --env-file-if-exists=.env scripts/sync-videos.mjs",
-    "token:refresh": "node --env-file-if-exists=.env scripts/refresh-token.mjs"
+    "sync:videos": "node --env-file-if-exists=.env --env-file-if-exists=.env.local scripts/sync-videos.mjs",
+    "token:refresh": "node --env-file-if-exists=.env --env-file-if-exists=.env.local scripts/refresh-token.mjs"
   },
   "type": "module",
   "dependencies": {
