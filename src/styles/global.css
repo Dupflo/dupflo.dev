@@ -246,3 +246,18 @@
     margin: 2.6em 0;
   }
 }
+
+@layer components {
+  /* Timeline bullets. An em dash rather than a disc — the page is already
+     built from rules, and a round marker fights that. */
+  .points > li {
+    padding-left: 1.4em;
+    text-indent: -1.4em;
+  }
+
+  .points > li::before {
+    content: '—';
+    color: var(--color-accent);
+    margin-right: 0.6em;
+  }
+}

@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import { ROLES, STUDIES } from '../../data/career';
+import { ROW, ROW_WIDE, ROW_GROUP } from '../../lib/entry';
+import { t } from '../../i18n/ui';
+import { DESCRIPTION } from '../../consts';
+
+const lang = 'fr' as const;
+const ui = t(lang);
+
+const span = (start: string, end?: string) => `${start} — ${end ?? ui.ongoing}`;
+---
+
+<Base lang={lang} title={ui.nav.cv} description={DESCRIPTION[lang]} translationHref="/cv">
+  <PageHeader title={ui.nav.cv} intro={ui.pages.cv} />
+
+  <SectionHeader label={ui.experience} count={ROLES.length} />
+  <div class={ROW_GROUP}>
+    {
+      ROLES.map((role) => (
+        <a
+          href={role.url ?? '#'}
+          target={role.url ? '_blank' : undefined}
+          rel={role.url ? 'noopener' : undefined}
+          class:list={[ROW, ROW_WIDE, 'py-5']}
+        >
+          <div class="text-[13px] whitespace-nowrap tabular-nums text-dim">
+            {span(role.start, role.end)}
+          </div>
+
+          <div class="min-w-0">
+            <h3 class="text-[15px] font-semibold group-hover:text-accent">
+              {role.position[lang]}
+            </h3>
+            <p class="mt-0.5 text-[13px] text-dim">
+              {role.company} · {role.location}
+              {role.url && <span aria-hidden="true"> ↗</span>}
+            </p>
+
+            <ul class="points font-text mt-3 max-w-[70ch] text-[16px] leading-[1.5]">
+              {role.points[lang].map((point) => (
+                <li class="mt-1">{point}</li>
+              ))}
+            </ul>
+
+            <p class="mt-3 text-[13px] text-dim">{role.stack.join(' · ')}</p>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+
+  <SectionHeader label={ui.education} count={STUDIES.length} />
+  <div class="border-b">
+    {
+      STUDIES.map((study) => (
+        <div class:list={[ROW, ROW_WIDE, 'py-row hover:bg-transparent']}>
+          <div class="text-[13px] whitespace-nowrap tabular-nums text-dim">
+            {study.start} — {study.end}
+          </div>
+          <div class="flex min-w-0 flex-wrap items-baseline gap-x-3 text-[13px]">
+            <span class="font-semibold">{study.degree[lang]}</span>
+            <span class="text-dim">{study.school} · {study.location}</span>
+            {!study.obtained && (
+              <span class="text-dim">({ui.notCompleted})</span>
+            )}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Base>
