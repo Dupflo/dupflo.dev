@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { iso, readingMinutes, ROW, ROW_COLS, ROW_WIDE } from '../lib/entry';
+import { t, localePath, stripLang, type Lang } from '../i18n/ui';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+  lang: Lang;
+  /** The newest article gets the display serif and its description. */
+  featured?: boolean;
+}
+
+const { post, lang, featured = false } = Astro.props;
+const { title, description, date, tags } = post.data;
+const minutes = readingMinutes(post.body);
+// The URL follows the article's own language, not the page it is listed on.
+const href = localePath(post.data.lang, `/blog/${stripLang(post.id)}`);
+
+const meta = [tags.join(', '), `${minutes} ${t(lang).minutes}`]
+  .filter(Boolean)
+  .join(' · ');
+---
+
+<a
+  href={href}
+  class:list={[
+    ROW,
+    featured ? ROW_WIDE : ROW_COLS,
+    featured ? 'py-5' : 'py-row',
+  ]}
+>
+  <div
+    class="flex items-baseline gap-2 text-[13px] whitespace-nowrap tabular-nums text-dim"
+  >
+    <time datetime={iso(date)}>{iso(date)}</time>
+    <span class="text-accent">[{post.data.lang.toUpperCase()}]</span>
+  </div>
+
+  {
+    featured ? (
+      /* Tags drop below the summary so the summary keeps the whole column. */
+      <div class="min-w-0">
+        <h3 class="font-display text-4xl leading-[1.05] tracking-tight group-hover:text-accent">
+          {title}
+        </h3>
+        <p class="font-text mt-2 text-[17px] leading-[1.5] text-dim">
+          {description}
+        </p>
+        <p class="mt-3 text-[13px] text-dim">{meta}</p>
+      </div>
+    ) : (
+      <>
+        <div class="min-w-0">
+          <h3 class="truncate text-[13px] group-hover:text-accent">{title}</h3>
+        </div>
+        <div class="text-[13px] text-dim md:justify-self-end">{meta}</div>
+      </>
+    )
+  }
+</a>

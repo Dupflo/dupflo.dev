@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { STATUS_GLYPH, ROW, ROW_COLS } from '../lib/entry';
+import { t, localePath, type Lang } from '../i18n/ui';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  lang: Lang;
+}
+
+const { project, lang } = Astro.props;
+const { title, tagline, status, stack, url, repo } = project.data;
+/** Prefer the live product, fall back to the repo, then to the detail page. */
+const href = url ?? repo ?? localePath(lang, `/projects/${project.id}`);
+const external = href.startsWith('http');
+/** Four entries is what a row can show without starving the tagline. */
+const SHOWN = 4;
+const stackLabel =
+  stack.slice(0, SHOWN).join(' · ') +
+  (stack.length > SHOWN ? ` +${stack.length - SHOWN}` : '');
+---
+
+<a
+  href={href}
+  rel={external ? 'noopener' : undefined}
+  target={external ? '_blank' : undefined}
+  class:list={[ROW, ROW_COLS, 'py-row']}
+>
+  <div
+    class:list={['text-[13px]', status === 'live' ? 'text-accent' : 'text-dim']}
+  >
+    <span aria-hidden="true">{STATUS_GLYPH[status]}</span>
+    <span>{t(lang).status[status]}</span>
+  </div>
+
+  <div class="flex min-w-0 items-baseline gap-3 text-[13px]">
+    <h3 class="whitespace-nowrap font-semibold group-hover:text-accent">
+      {title}
+    </h3>
+    <p class="truncate text-dim">{tagline[lang]}</p>
+  </div>
+
+  <div class="text-[13px] text-dim md:justify-self-end">
+    {stackLabel}
+  </div>
+</a>

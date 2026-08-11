@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import ProjectRow from '../components/ProjectRow.astro';
+import { ROW_GROUP } from '../lib/entry';
+import { t } from '../i18n/ui';
+import { DESCRIPTION } from '../consts';
+
+const lang = 'en' as const;
+const ui = t(lang);
+
+const all = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const products = all.filter(({ data }) => data.kind === 'product');
+const oss = all.filter(({ data }) => data.kind === 'oss');
+---
+
+<Base lang={lang} title={ui.nav.projects} description={DESCRIPTION[lang]} translationHref="/fr/projects">
+  <PageHeader title={ui.nav.projects} intro={ui.pages.projects} count={all.length} />
+
+  <SectionHeader label={ui.sections.projects} count={products.length} />
+  <div class={ROW_GROUP}>
+    {products.map((project) => <ProjectRow project={project} lang={lang} />)}
+  </div>
+
+  <SectionHeader label={ui.sections.oss} count={oss.length} />
+  <div class={ROW_GROUP}>
+    {oss.map((project) => <ProjectRow project={project} lang={lang} />)}
+  </div>
+</Base>

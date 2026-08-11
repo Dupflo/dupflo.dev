@@ -1,0 +1,88 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import Base from './Base.astro';
+import { iso, readingMinutes } from '../lib/entry';
+import { t, localePath, stripLang } from '../i18n/ui';
+import { SITE } from '../consts';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+  /** Same article in the other language, when a translation exists. */
+  translationHref?: string;
+}
+
+const { post, translationHref } = Astro.props;
+const { title, description, date, tags, canonicalUrl, lang } = post.data;
+const ui = t(lang);
+const minutes = readingMinutes(post.body);
+const { Content } = await render(post);
+
+// This site is the canonical home unless the article says otherwise. Derived
+// from the served path, not rebuilt from the slug, so it matches og:url exactly
+// — a syndicated canonical has to be character-identical.
+const canonical = canonicalUrl ?? new URL(Astro.url.pathname, SITE.url).href;
+---
+
+<Base
+  lang={lang}
+  title={title}
+  description={description}
+  translationHref={translationHref}
+  ogType="article"
+  ogImage={`/og/blog/${lang}/${stripLang(post.id)}.png`}
+>
+  <Fragment slot="head">
+    <link rel="canonical" href={canonical} />
+    <!-- Both serifs are above the fold on an article, unlike anywhere else. -->
+    <link
+      rel="preload"
+      href="/fonts/instrument-serif-latin-400-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/source-serif-4-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </Fragment>
+
+  <article>
+    <header class="border-b py-8">
+      <div class="flex flex-wrap items-baseline gap-x-3 text-[13px] text-dim">
+        <time datetime={iso(date)} class="tabular-nums">{iso(date)}</time>
+        <span class="text-accent">[{lang.toUpperCase()}]</span>
+        <span class="tabular-nums">{minutes} {ui.minutes}</span>
+        {tags.length > 0 && <span>{tags.join(', ')}</span>}
+      </div>
+
+      <h1
+        class="font-display mt-3 max-w-[22ch] text-5xl leading-[1.02] tracking-tight sm:text-6xl"
+      >
+        {title}
+      </h1>
+
+      <p class="font-text mt-4 max-w-[62ch] text-[19px] leading-[1.5] text-dim">
+        {description}
+      </p>
+    </header>
+
+    <div class="prose py-10">
+      <Content />
+    </div>
+
+    <footer class="border-t pt-4 text-[13px] text-dim">
+      <a
+        href={localePath(lang, '/blog')}
+        class="uppercase tracking-[0.1em] hover:text-accent"
+      >
+        <span aria-hidden="true">←</span>
+        {ui.nav.blog}
+      </a>
+    </footer>
+  </article>
+</Base>

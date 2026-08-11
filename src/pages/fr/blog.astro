@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import PostRow from '../../components/PostRow.astro';
+import { ROW_GROUP } from '../../lib/entry';
+import { t } from '../../i18n/ui';
+import { DESCRIPTION } from '../../consts';
+
+const lang = 'fr' as const;
+const ui = t(lang);
+
+const posts = (
+  await getCollection('posts', ({ data }) => !data.draft && data.lang === lang)
+).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Base lang={lang} title={ui.sections.writing} description={DESCRIPTION[lang]} translationHref="/blog">
+  <PageHeader title={ui.sections.writing} intro={ui.pages.blog} count={posts.length} />
+  <div class={ROW_GROUP}>
+    {posts.map((post) => <PostRow post={post} lang={lang} />)}
+  </div>
+  {posts.length === 0 && <p class="py-8 text-[13px] text-dim">{ui.noPosts}</p>}
+</Base>

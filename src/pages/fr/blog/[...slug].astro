@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import Article from '../../../layouts/Article.astro';
+import { stripLang, localePath } from '../../../i18n/ui';
+
+export async function getStaticPaths() {
+  const posts = await getCollection(
+    'posts',
+    ({ data }) => !data.draft && data.lang === 'fr',
+  );
+  // A translation is another post sharing the translationKey.
+  const all = await getCollection('posts', ({ data }) => !data.draft);
+
+  return posts.map((post) => {
+    const twin = all.find(
+      (p) =>
+        p.data.translationKey === post.data.translationKey &&
+        p.data.lang !== post.data.lang,
+    );
+    return {
+      params: { slug: stripLang(post.id) },
+      props: {
+        post,
+        translationHref: twin
+          ? localePath(twin.data.lang, `/blog/${stripLang(twin.id)}`)
+          : undefined,
+      },
+    };
+  });
+}
+
+const { post, translationHref } = Astro.props;
+---
+
+<Article post={post} translationHref={translationHref} />

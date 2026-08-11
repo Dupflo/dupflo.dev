@@ -1,0 +1,142 @@
+---
+import '../styles/global.css';
+import { SITE, DESCRIPTION } from '../consts';
+import { t, localePath, otherLang, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+  /** Same page in the other language, when one exists. */
+  translationHref?: string;
+  /** Root-relative path to this page's Open Graph card. */
+  ogImage?: string;
+  /** Articles are `article`; everything else is a website. */
+  ogType?: 'website' | 'article';
+}
+
+const {
+  lang,
+  title,
+  description,
+  translationHref,
+  ogImage = '/og/default.png',
+  ogType = 'website',
+} = Astro.props;
+const ui = t(lang);
+const other = otherLang(lang);
+
+const pageTitle = title ? `${title} — ${SITE.title}` : SITE.title;
+const pageDescription = description ?? DESCRIPTION[lang];
+const path = Astro.url.pathname;
+
+/**
+ * Absolute URL, with the trailing slash Astro's directory build actually
+ * serves. Without it, hreflang and og:url point at a redirect — and a canonical
+ * that redirects is a canonical that gets ignored.
+ */
+const abs = (href: string) => {
+  const hasExtension = /\.[a-z0-9]+$/i.test(href);
+  const path = hasExtension || href.endsWith('/') ? href : `${href}/`;
+  return new URL(path, SITE.url).href;
+};
+
+const nav = [
+  { href: localePath(lang, '/blog'), label: ui.nav.blog },
+  { href: localePath(lang, '/projects'), label: ui.nav.projects },
+  { href: localePath(lang, '/videos'), label: ui.nav.videos },
+];
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={abs(path)} />
+    <meta property="og:image" content={abs(ogImage)} />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_GB'} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    {
+      /* Only declare alternates when the twin page actually exists — a wrong
+         hreflang is worse than none. */
+      translationHref && (
+        <>
+          <link rel="alternate" hreflang={lang} href={abs(path)} />
+          <link rel="alternate" hreflang={other} href={abs(translationHref)} />
+          <link
+            rel="alternate"
+            hreflang="x-default"
+            href={abs(lang === 'en' ? path : translationHref)}
+          />
+        </>
+      )
+    }
+
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={`${SITE.title} — ${lang.toUpperCase()}`}
+      href={localePath(lang, '/rss.xml')}
+    />
+    <!-- Mono carries every page; the serifs are preloaded per-route instead. -->
+    <link
+      rel="preload"
+      href="/fonts/ibm-plex-mono-latin-400-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <slot name="head" />
+  </head>
+
+  <body class="mx-auto max-w-5xl px-5 pb-24">
+    <header
+      class="flex items-baseline justify-between gap-6 border-b py-4 text-[13px]"
+    >
+      <a href={localePath(lang, '/')} class="font-semibold tracking-tight">
+        dupflo.dev
+      </a>
+
+      <nav class="flex gap-5 uppercase tracking-[0.08em] text-dim">
+        {
+          nav.map(({ href, label }) => (
+            <a
+              href={href}
+              aria-current={path.startsWith(href) ? 'page' : undefined}
+              class="hover:text-accent aria-[current=page]:text-ink"
+            >
+              {label}
+            </a>
+          ))
+        }
+        <!-- Falls back to the other language's home when this page has no twin. -->
+        <a
+          href={translationHref ?? localePath(other, '/')}
+          hreflang={other}
+          lang={other}
+          class="border-l pl-5 hover:text-accent"
+        >
+          {ui.otherLang}
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="mt-20 border-t pt-4 text-[12px] text-dim">
+      <p>{SITE.author} — {ui.role}</p>
+    </footer>
+  </body>
+</html>

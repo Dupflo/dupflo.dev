@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import VideoCard from '../../components/VideoCard.astro';
+import { t } from '../../i18n/ui';
+import { DESCRIPTION } from '../../consts';
+
+const lang = 'fr' as const;
+const ui = t(lang);
+
+const videos = (await getCollection('videos')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+
+<Base lang={lang} title={ui.nav.videos} description={DESCRIPTION[lang]} translationHref="/videos">
+  <PageHeader title={ui.nav.videos} intro={ui.pages.videos} count={videos.length} />
+  <div class="grid grid-cols-3 gap-3 pt-6 sm:grid-cols-4 md:grid-cols-6">
+    {videos.map((video) => <VideoCard video={video} />)}
+  </div>
+</Base>

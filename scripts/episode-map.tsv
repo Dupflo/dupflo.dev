@@ -1,0 +1,65 @@
+# Fill the `episode` column. Leave it empty when a reel had no script.
+# Then: npm run import:scripts
+slug	date	caption	episode	confidence
+2026-08-10-chatgpt-aussi-a-des-competences-et-c-est-pour-tout-le-monde	2026-08-10	ChatGPT aussi a des compétences. Et c’est pour tout le monde		? 007-la-memoire (0.41)
+2026-08-08-ajouter-une-competence-a-claude-sans-coder-une-ligne	2026-08-08	Ajouter une compétence à Claude, sans coder une ligne.		? 030-cest-quoi-un-skill (0.39)
+2026-08-06-ta-carte-de-code-peut-vivre-dans-ton-second-cerveau	2026-08-06	Ta carte de code peut vivre dans ton second cerveau.	038-arrete-de-choisir-obsidian-graphify	1.00
+2026-08-04-la-memoire-de-ton-ia-ne-lui-appartient-pas	2026-08-04	La mémoire de ton IA ne lui appartient pas.	037-obsidian	0.64
+2026-08-01-j-ai-lance-graphify-sur-mon-vrai-projet-verdict	2026-08-01	J’ai lancé Graphify sur mon vrai projet. Verdict.		? 013-fable5-demo (0.40)
+2026-07-31-ton-ia-rate-3-infos-sur-10-sur-un-gros-projet	2026-07-31	Ton IA rate 3 infos sur 10 sur un gros projet.		? 038-arrete-de-choisir-obsidian-graphify (0.45)
+2026-07-28-tu-ecoutes-ma-voix-depuis-le-debut-de-cette-video-sauf-que-j	2026-07-28	Tu écoutes ma voix depuis le début de cette vidéo. Sauf que 	035-voicebox	0.77
+2026-07-25-tu-passes-de-claude-code-a-codex-pas-besoin-de-tout-reconfig	2026-07-25	Tu passes de Claude Code à Codex ? Pas besoin de tout reconf		? 010-cross-model (0.54)
+2026-07-24-concours-claude-code	2026-07-24	🎁 CONCOURS CLAUDE CODE		? 009-workflow-pro (0.35)
+2026-07-23-partie-2-dans-la-partie-1-claude-code-branche-sur-deepseek-s	2026-07-23	Partie 2. Dans la partie 1, Claude Code branché sur DeepSeek		? 031-system-prompts-leak (0.42)
+2026-07-22-faire-tourner-le-vrai-claude-code-celui-d-anthropic-sur-un-m	2026-07-22	Faire tourner le vrai Claude Code — celui d’Anthropic — sur 		? 031-system-prompts-leak (0.47)
+2026-07-21-un-repo-github-compile-les-system-prompts-leakes-de-claude-c	2026-07-21	Un repo GitHub compile les system prompts leakés de Claude, 	031-system-prompts-leak	0.76
+2026-07-20-ou-on-met-les-skills-la-vraie-reponse	2026-07-20	« Où on met les skills ? » — la vraie réponse 👇	030-cest-quoi-un-skill	0.80
+2026-07-13-une-extension-te-paie-pendant-que-ton-ia-code	2026-07-13	Une extension te paie pendant que ton IA code 🤨		? 016-automatisation-sans-vps (0.34)
+2026-07-11-j-ai-passe-un-vrai-projet-client-dans-l-ia-de-yc	2026-07-11	J’ai passé un vrai projet client dans l’IA de YC 👀		? 009-workflow-pro (0.30)
+2026-07-10-le-president-de-yc-a-mis-une-equipe-d-ingenieurs-dans-claude	2026-07-10	Le président de YC a mis une équipe d’ingénieurs dans Claude	029-gstack-p1-presentation	0.72
+2026-07-08-arrete-d-envoyer-tes-fichiers-word-dans-claude	2026-07-08	Arrête d’envoyer tes fichiers Word dans Claude 😳	028-markitdown	0.66
+2026-07-07-tu-paies-des-tokens-sans-rien-taper	2026-07-07	😱 Tu paies des tokens sans rien taper.		? 028-markitdown (0.42)
+2026-07-05-j-ai-monte-ma-video-avec-une-ia-elle-a-foire-un-truc-et-cart	2026-07-05	🎬 J’ai monté ma vidéo avec une IA. Elle a foiré un truc… et	027-skill-hyperframe	1.00
+2026-07-04-j-ai-peut-etre-trouve-comment-garder-ton-abonnement-ia-gratu	2026-07-04	🦴 J’ai peut-être trouvé comment garder ton abonnement IA gr	026-skill-caveman	1.00
+2026-07-02-j-ai-ajoute-ce-qui-manquait-de-vrais-assets-3d-et-la-ca-chan	2026-07-02	🪐 J’ai ajouté ce qui manquait : de vrais assets 3D. Et là, 	023-skill-higgsfield-mars	0.55
+2026-07-01-anthropic-vient-de-faire-un-double-move-que-je-trouve-fascin	2026-07-01	Anthropic vient de faire un double move que je trouve fascin	025-fable5-retour-sonnet5	0.68
+2026-06-30-partie-2-j-ai-couple-un-skill-ia-un-mcp-pour-coder-un-site-s	2026-06-30	⚠️ Partie 2 : J’ai couplé un skill IA + un MCP pour coder un		? 023-skill-higgsfield-mars (0.40)
+2026-06-29-j-installe-un-mcp-qui-pose-de-vrais-composants-pros-directem	2026-06-29	⚙️ J’installe un MCP qui pose de vrais composants pros direc	022-skill-mcp-21st-dev	0.60
+2026-06-28-partie-3-les-tests	2026-06-28	🎬 Partie 3 — Les tests	019-skill-ui-ux-pro-max	0.69
+2026-06-27-partie-2-installation	2026-06-27	🎬 Partie 2 — Installation	013-fable5-demo	0.58
+2026-06-26-partie-1-presentation	2026-06-26	🎬 Partie 1 — Présentation	019-skill-ui-ux-pro-max	0.65
+2026-06-25-leur-pub-disait-40-leur-propre-code-disait-0	2026-06-25	Leur pub disait 40 %. Leur propre code disait 0.	020-cardmatik-danger-technique	1.00
+2026-06-24-nouveau-concept-un-jour-un-skill	2026-06-24	🚨 Nouveau concept : « Un jour, un skill. »	026-skill-caveman	0.55
+2026-06-23-la-verite-sur-claude-design-qu-on-te-vend-pas	2026-06-23	🎨 La vérité sur Claude Design qu’on te vend pas.		? 015-followers-cinematique (0.39)
+2026-06-22-tu-n-as-pas-besoin-d-un-serveur-ni-de-50-mac-mini-pour-autom	2026-06-22	🚫 Tu n’as pas besoin d’un serveur (ni de 50 Mac Mini) pour 	016-automatisation-sans-vps	0.70
+2026-06-20-higgsfield-fable-et-opus-partie-2	2026-06-20	🔌 Higgsfield, Fable et Opus, partie 2 	013-fable5-demo	0.58
+2026-06-19-c-est-quoi-un-mcp-je-te-montre-en-vrai	2026-06-19	🔌 C’est quoi un MCP ? Je te montre en vrai.	015-followers-cinematique	1.00
+2026-06-18-fable-5-vs-opus-cette-fois-on-regarde-le-code	2026-06-18	🔬 Fable 5 vs Opus : cette fois, on regarde le code.	013-fable5-demo	1.00
+2026-06-17-fable-5-vs-opus-on-voit-vraiment-la-difference	2026-06-17	🆚 Fable 5 vs Opus : on voit vraiment la différence ?	013-fable5-demo	1.00
+2026-06-16-fable-5-tient-il-vraiment-ses-promesses	2026-06-16	🤖 Fable 5 tient-il vraiment ses promesses ?	013-fable5-demo	1.00
+2026-06-15-le-modele-d-ia-le-plus-puissant-de-claude-retire-par-l-etat	2026-06-15	😳 Le modèle d’IA le plus puissant de Claude, retiré par l’É		? 025-fable5-retour-sonnet5 (0.41)
+2026-06-13-le-modele-le-plus-puissant-d-anthropic-vient-d-etre-suspendu	2026-06-13	😳 Le modèle le plus puissant d’Anthropic vient d’être suspe		? 014-fable5-annonce (0.51)
+2026-06-13-et-si-tu-avais-une-equipe-d-ia-pas-une-seule	2026-06-13	🤯 Et si tu avais une équipe d’IA, pas une seule ?	012-avance	1.00
+2026-06-12-le-createur-de-claude-code-repete-ce-conseil-depuis-5-mois	2026-06-12	🧠 Le créateur de Claude Code répète ce conseil depuis 5 moi	011-tips-boris	1.00
+2026-06-11-arrete-de-faire-relire-ton-code-par-l-ia-qui-l-a-ecrit	2026-06-11	🤝 Arrête de faire relire ton code par l’IA qui l’a écrit.	010-cross-model	1.00
+2026-06-10-arrete-de-coder-au-feeling-avec-l-ia	2026-06-10	⚙️ Arrête de coder au feeling avec l’IA.	009-workflow-pro	1.00
+2026-06-09-et-si-claude-t-appelait-a-voix-haute-quand-il-a-fini	2026-06-09	🔔 Et si Claude t’appelait à voix haute quand il a fini ?	008-hooks-settings	1.00
+2026-06-08-par-defaut-claude-oublie-tout-entre-deux-sessions	2026-06-08	🧠 Par défaut, Claude oublie tout entre deux sessions.	007-la-memoire	1.00
+2026-06-04-diriger-une-ia-ca-tient-en-3-briques	2026-06-04	🧱 Diriger une IA, ça tient en 3 briques.	006-trois-briques	1.00
+2026-06-03-l-ia-ne-mettra-jamais-tous-les-devs-au-chomage	2026-06-03	🧠 L’IA ne mettra jamais tous les devs au chômage.	005-ia-pas-un-script	1.00
+2026-05-29-le-skill-parfait-pour-des-sites-uniques	2026-05-29	Le skill parfait pour des sites uniques !	027-skill-hyperframe	0.75
+2026-05-27-le-vibecoding-democratise-le-code-et-c-est-une-bonne-chose-m	2026-05-27	Le vibecoding démocratise le code, et c’est une bonne chose.		? 020-cardmatik-danger-technique (0.36)
+2026-05-26-le-pape-qui-s-attaque-a-l-intelligence-artificielle-on-ne-s-	2026-05-26	Le pape qui s’attaque à l’intelligence artificielle… on ne s		? 005-ia-pas-un-script (0.18)
+2026-05-12-partie-3-je-developpe-l-agentic-os-de-mikecodeur	2026-05-12	PARTIE 3 : Je développe l’Agentic OS de @MikeCodeur 🤖		? 031-system-prompts-leak (0.49)
+2026-05-11-je-developpe-l-agentic-os-de-mikecodeur	2026-05-11	Je développe l’Agentic OS de @mikecodeur 🤖		? 031-system-prompts-leak (0.48)
+2026-05-11-je-developpe-l-agentic-os-de-mikecodeur-172569	2026-05-11	Je développe l’Agentic OS de @MikeCodeur 🤖		? 031-system-prompts-leak (0.48)
+2026-05-08-partie-3-coder-un-site-depuis-ses-toilettes-juste-avec-un-te	2026-05-08	PARTIE 3️⃣ : Coder un site depuis ses toilettes juste avec u	015-followers-cinematique	0.60
+2026-05-07-partie-2-coder-un-site-depuis-ses-toilettes-juste-avec-un-te	2026-05-07	PARTIE 2️⃣ : Coder un site depuis ses toilettes juste avec u		? 028-markitdown (0.52)
+2026-05-07-coder-un-site-depuis-ses-toilettes-juste-avec-un-telephone	2026-05-07	Coder un site depuis ses toilettes juste avec un téléphone �	028-markitdown	0.55
+2026-05-06-comment-installer-openclaw-sans-aucune-connaissance-techniqu	2026-05-06	🚀 Comment installer OpenClaw sans aucune connaissance techn		? 016-automatisation-sans-vps (0.33)
+2025-02-20-tu-veux-apprendre-a-coder-avec-next-js-react-js	2025-02-20	🖥️ Tu veux apprendre à coder avec Next.js (React.js) ? 🚀		? 013-fable5-demo (0.28)
+2025-02-20-tu-veux-apprendre-a-coder-avec-next-js-react-js-748348	2025-02-20	🖥️ Tu veux apprendre à coder avec Next.js (React.js) ? 🚀		? 013-fable5-demo (0.28)
+2025-02-20-tu-veux-apprendre-a-coder-avec-next-js-react-js-559337	2025-02-20	🖥️ Tu veux apprendre à coder avec Next.js (React.js) ? 🚀		? 013-fable5-demo (0.28)
+2025-02-20-tu-veux-apprendre-a-coder-avec-next-js-react-js-633999	2025-02-20	🖥️ Tu veux apprendre à coder avec Next.js (React.js) ? 🚀		? 013-fable5-demo (0.28)
+2025-02-20-tu-veux-apprendre-a-coder-avec-next-js-react-js-330569	2025-02-20	🖥️ Tu veux apprendre à coder avec Next.js (React.js) ? 🚀		? 013-fable5-demo (0.28)
+2025-02-20-code-dispo-sur-github	2025-02-20	📌 Code dispo sur GitHub 💻 		? 005-ia-pas-un-script (0.26)

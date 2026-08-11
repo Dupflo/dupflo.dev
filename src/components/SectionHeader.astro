@@ -1,0 +1,34 @@
+---
+/**
+ * The recurring device of the site: a label, a rule that eats the empty space,
+ * a count, and a way out to the full list.
+ */
+interface Props {
+  label: string;
+  count?: number;
+  href?: string;
+  linkLabel?: string;
+}
+
+const { label, count, href, linkLabel = 'All' } = Astro.props;
+---
+
+<div class="flex items-center gap-3 pt-9 pb-2">
+  <h2 class="text-[11px] uppercase tracking-[0.18em] text-dim">{label}</h2>
+  <span class="h-px flex-1 bg-rule"></span>
+  {
+    count !== undefined && (
+      <span class="text-[11px] tabular-nums text-dim">{count}</span>
+    )
+  }
+  {
+    href && (
+      <a
+        href={href}
+        class="text-[11px] uppercase tracking-[0.1em] text-dim hover:text-accent"
+      >
+        {linkLabel} <span aria-hidden="true">→</span>
+      </a>
+    )
+  }
+</div>

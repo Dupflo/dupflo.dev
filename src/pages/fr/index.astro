@@ -1,0 +1,19 @@
+---
+import Base from '../../layouts/Base.astro';
+import Home from '../../components/Home.astro';
+import { DESCRIPTION } from '../../consts';
+---
+
+<Base lang="fr" description={DESCRIPTION.fr} translationHref="/">
+  <Fragment slot="head">
+    <!-- The masthead is the LCP element and the only serif above the fold. -->
+    <link
+      rel="preload"
+      href="/fonts/instrument-serif-latin-400-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </Fragment>
+  <Home lang="fr" />
+</Base>

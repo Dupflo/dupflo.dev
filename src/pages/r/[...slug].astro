@@ -1,0 +1,127 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { iso } from '../../lib/entry';
+import { t, localePath, stripLang } from '../../i18n/ui';
+
+/**
+ * Lead magnets live at /r/<slug>, deliberately unprefixed by language: this is
+ * the URL said out loud in a video or pasted in a bio. The page speaks the
+ * resource's own language, not the visitor's.
+ */
+export async function getStaticPaths() {
+  const resources = await getCollection(
+    'resources',
+    ({ data }) => data.published,
+  );
+  return resources.map((resource) => ({
+    params: { slug: stripLang(resource.id) },
+    props: { resource },
+  }));
+}
+
+const { resource } = Astro.props;
+const { title, tagline, lang, file, format, gated, relatedVideos, relatedPosts } =
+  resource.data;
+const ui = t(lang);
+const { Content } = await render(resource);
+
+/**
+ * A reference can dangle when an entry is deleted — the video sync rewrites
+ * that collection wholesale. Drop the link and say so in the build log rather
+ * than failing the whole build over a missing cross-reference.
+ */
+async function resolve<T>(refs: { id: string }[], label: string) {
+  const entries = await Promise.all(refs.map((ref) => getEntry(ref as never)));
+  return entries.filter((entry, i) => {
+    if (!entry) console.warn(`[${resource.id}] unknown ${label}: ${refs[i]!.id}`);
+    return Boolean(entry);
+  }) as T[];
+}
+
+const videos = await resolve<Awaited<ReturnType<typeof getEntry>> & { data: any }>(relatedVideos, 'video');
+const posts = await resolve<Awaited<ReturnType<typeof getEntry>> & { data: any }>(relatedPosts, 'post');
+---
+
+<Base lang={lang} title={title} description={tagline}>
+  <article class="py-10">
+    <p class="text-[12px] uppercase tracking-[0.18em] text-accent">{format}</p>
+
+    <h1 class="font-display mt-2 max-w-[18ch] text-6xl leading-[1.02] tracking-tight">
+      {title}
+    </h1>
+
+    <p class="font-text mt-4 max-w-[58ch] text-[19px] leading-[1.5]">
+      {tagline}
+    </p>
+
+    {
+      /* `gated` is honoured here and nowhere else: while false the button is
+         a plain download, and the email step slots in without touching the
+         rest of the page. */
+      gated ? (
+        <p class="mt-8 border px-4 py-3 text-[13px] text-dim">
+          Email step not wired yet — set `gated: false` to serve the file.
+        </p>
+      ) : (
+        <a
+          href={file}
+          download
+          class="mt-8 flex max-w-md items-center justify-center border py-4 text-[13px] uppercase tracking-[0.1em] hover:border-accent hover:text-accent"
+        >
+          {ui.download} <span aria-hidden="true" class="ml-2">↓</span>
+        </a>
+      )
+    }
+
+    {
+      /* The body is optional: most lead magnets are a title and a button. */
+      resource.body?.trim() && (
+        <div class="prose mt-10">
+          <Content />
+        </div>
+      )
+    }
+
+    {
+      videos.length > 0 && (
+        <section class="mt-14">
+          <h2 class="border-b pb-2 text-[11px] uppercase tracking-[0.18em] text-dim">
+            {ui.sections.video}
+          </h2>
+          {videos.map((video) => (
+            <a
+              href={video.data.url}
+              target="_blank"
+              rel="noopener"
+              class="group flex gap-4 border-b py-row text-[13px] hover:text-accent"
+            >
+              <time class="tabular-nums text-dim">{iso(video.data.date)}</time>
+              <span class="flex-1 truncate">{video.data.title}</span>
+              <span class="text-dim">{video.data.platform} ↗</span>
+            </a>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      posts.length > 0 && (
+        <section class="mt-10">
+          <h2 class="border-b pb-2 text-[11px] uppercase tracking-[0.18em] text-dim">
+            {ui.sections.writing}
+          </h2>
+          {posts.map((post) => (
+            <a
+              href={localePath(post.data.lang, `/blog/${stripLang(post.id)}`)}
+              class="flex gap-4 border-b py-row text-[13px] hover:text-accent"
+            >
+              <time class="tabular-nums text-dim">{iso(post.data.date)}</time>
+              <span class="flex-1 truncate">{post.data.title}</span>
+            </a>
+          ))}
+        </section>
+      )
+    }
+  </article>
+</Base>

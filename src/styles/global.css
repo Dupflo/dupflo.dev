@@ -1,0 +1,248 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Fonts — self-hosted, latin subset, copied once into /public/fonts.
+   No @fontsource dependency: these five files are the whole type system.
+
+   IBM Plex Mono     interface, metadata, tags, tables, code
+   Instrument Serif  article titles only (display, one weight)
+   Source Serif 4    article body prose only (variable weight axis)
+
+   To swap the mono for Commit Mono: drop its woff2 in /public/fonts, change
+   the two @font-face src lines and --font-mono below. Nothing else moves.
+--------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/ibm-plex-mono-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/ibm-plex-mono-latin-600-normal.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('/fonts/instrument-serif-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Serif 4';
+  src: url('/fonts/source-serif-4-latin-wght-normal.woff2') format('woff2');
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Serif 4';
+  src: url('/fonts/source-serif-4-latin-wght-italic.woff2') format('woff2');
+  font-weight: 200 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ---------------------------------------------------------------------------
+   Tokens. Dark is the canonical theme: these are the real values, and the
+   light block below is the derived override.
+--------------------------------------------------------------------------- */
+
+@theme {
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: 'Instrument Serif', ui-serif, Georgia, serif;
+  --font-text: 'Source Serif 4', ui-serif, Georgia, serif;
+
+  --color-bg: #0b0b0c;
+  --color-raised: #101012;
+  --color-ink: #e8e4dc;
+  --color-dim: #85817a;
+  --color-rule: #26262a;
+  --color-accent: #f5a623;
+
+  /* Rows are 1px-ruled and dense; this is the shared vertical rhythm. */
+  --spacing-row: 0.5rem;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-bg: #f5f3ee;
+    --color-raised: #eeebe4;
+    --color-ink: #16151a;
+    --color-dim: #6b675f;
+    --color-rule: #dcd8ce;
+    /* Amber fails AA on paper — the light accent is the same hue, burnt. */
+    --color-accent: #8a5200;
+  }
+}
+
+@layer base {
+  /* Filets are the primary structural device, so borders default to the rule
+     colour rather than currentColor. */
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-rule);
+  }
+
+  html {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-mono);
+    font-size: 15px;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    scrollbar-gutter: stable;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Article prose. Written out rather than pulled from the typography plugin:
+   the measure, the rules and the two type roles are design decisions here, and
+   overriding a plugin's defaults costs more than stating them.
+--------------------------------------------------------------------------- */
+
+@layer components {
+  .prose {
+    font-family: var(--font-text);
+    font-size: 19px;
+    line-height: 1.62;
+    max-width: 68ch;
+  }
+
+  .prose > * + * {
+    margin-top: 1.1em;
+  }
+
+  /* Section headings stay in the interface voice — mono, small, ruled. */
+  .prose h2 {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-dim);
+    border-top: 1px solid var(--color-rule);
+    padding-top: 1.2rem;
+    margin-top: 2.8em;
+  }
+
+  .prose h3 {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 2em;
+  }
+
+  .prose a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+
+  .prose strong {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-left: 1.3em;
+  }
+
+  .prose ul {
+    list-style: none;
+  }
+
+  /* Square markers, to match the rules rather than fight them. */
+  .prose ul > li::before {
+    content: '';
+    display: inline-block;
+    width: 0.32em;
+    height: 0.32em;
+    margin-right: 0.7em;
+    margin-left: -1.02em;
+    vertical-align: 0.32em;
+    background-color: var(--color-accent);
+  }
+
+  .prose ol {
+    list-style: decimal;
+  }
+
+  .prose li + li {
+    margin-top: 0.4em;
+  }
+
+  .prose blockquote {
+    border-left: 2px solid var(--color-accent);
+    padding-left: 1.1em;
+    color: var(--color-dim);
+    font-style: italic;
+  }
+
+  /* Images break the measure — they are the widest thing in an article. */
+  .prose img {
+    max-width: min(100%, 46rem);
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--color-rule);
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+
+  .prose code {
+    font-family: var(--font-mono);
+    font-size: 0.82em;
+    background-color: var(--color-raised);
+    border: 1px solid var(--color-rule);
+    padding: 0.1em 0.35em;
+  }
+
+  .prose pre {
+    font-size: 13px;
+    line-height: 1.55;
+    border: 1px solid var(--color-rule);
+    padding: 1rem 1.1rem;
+    overflow-x: auto;
+    max-width: min(100%, 46rem);
+  }
+
+  .prose pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+  }
+
+  .prose hr {
+    border: 0;
+    border-top: 1px solid var(--color-rule);
+    margin: 2.6em 0;
+  }
+}

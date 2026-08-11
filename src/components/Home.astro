@@ -1,0 +1,116 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import SectionHeader from './SectionHeader.astro';
+import PostRow from './PostRow.astro';
+import ProjectRow from './ProjectRow.astro';
+import VideoCard from './VideoCard.astro';
+import portrait from '../assets/florian-dupuis.jpg';
+import { SITE, LINKS } from '../consts';
+import { ROW_GROUP } from '../lib/entry';
+import { t, localePath, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const ui = t(lang);
+
+const posts = (
+  await getCollection('posts', ({ data }) => !data.draft && data.lang === lang)
+).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const allProjects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const products = allProjects.filter(({ data }) => data.kind === 'product');
+const oss = allProjects.filter(({ data }) => data.kind === 'oss');
+
+const allVideos = (await getCollection('videos')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+/** A single row on the home; the button carries you to the rest. */
+const videos = allVideos.slice(0, 6);
+
+const [latest, ...rest] = posts;
+---
+
+<section class="grid gap-6 border-b py-8 md:grid-cols-[10rem_1fr]">
+  <!-- The portrait sits in the same gutter the dates use, so the grid holds. -->
+  <Image
+    src={portrait}
+    alt={SITE.author}
+    width={128}
+    height={128}
+    loading="eager"
+    class="h-28 w-28 rounded-full border"
+  />
+
+  <div>
+    <h1 class="font-display text-5xl leading-none tracking-tight">
+      {SITE.author}
+    </h1>
+    <p class="mt-2 text-[12px] uppercase tracking-[0.18em] text-accent">
+      {ui.role}
+    </p>
+
+    <div class="font-text mt-4 max-w-[80ch] text-[17px] leading-[1.5]">
+      {ui.bio.map((line) => <p>{line}</p>)}
+    </div>
+
+    <nav
+      class="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-[12px] uppercase tracking-[0.1em] text-dim"
+    >
+      {
+        LINKS.map(({ href, label }) => (
+          <a
+            href={href}
+            rel={href.startsWith('http') ? 'me noopener' : undefined}
+            target={href.startsWith('http') ? '_blank' : undefined}
+            class="hover:text-accent"
+          >
+            {label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</section>
+
+<SectionHeader
+  label={ui.sections.writing}
+  count={posts.length}
+  href={localePath(lang, '/blog')}
+  linkLabel={ui.all}
+/>
+<div class={ROW_GROUP}>
+  {latest && <PostRow post={latest} lang={lang} featured />}
+  {rest.map((post) => <PostRow post={post} lang={lang} />)}
+</div>
+
+<SectionHeader
+  label={ui.sections.projects}
+  count={products.length}
+  href={localePath(lang, '/projects')}
+  linkLabel={ui.all}
+/>
+<div class={ROW_GROUP}>
+  {products.map((project) => <ProjectRow project={project} lang={lang} />)}
+</div>
+
+<SectionHeader label={ui.sections.oss} count={oss.length} />
+<div class={ROW_GROUP}>
+  {oss.map((project) => <ProjectRow project={project} lang={lang} />)}
+</div>
+
+<SectionHeader label={ui.sections.video} count={allVideos.length} />
+<div class="grid grid-cols-3 gap-3 pt-4 sm:grid-cols-4 md:grid-cols-6">
+  {videos.map((video) => <VideoCard video={video} />)}
+</div>
+<a
+  href={localePath(lang, '/videos')}
+  class="mt-4 flex items-center justify-center border py-3 text-[12px] uppercase tracking-[0.1em] text-dim hover:border-accent hover:text-accent"
+>
+  {ui.seeAllVideos(allVideos.length)} <span aria-hidden="true" class="ml-2">→</span>
+</a>
