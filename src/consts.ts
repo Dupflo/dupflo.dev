@@ -14,6 +14,20 @@ export const DESCRIPTION = {
   fr: 'Notes sur le développement agentique, Claude Code et les MCP, par Florian Dupuis — Senior Product Engineer.',
 } as const;
 
+/** Same shape wherever an author is declared: JSON-LD, RSS, meta. */
+export const AUTHOR = {
+  '@type': 'Person',
+  name: SITE.author,
+  url: SITE.url,
+  sameAs: [
+    'https://github.com/Dupflo',
+    'https://linkedin.com/in/florian-dupuis-701310b1',
+    'https://www.tiktok.com/@dupflodev',
+    'https://www.instagram.com/dupflodev',
+    'https://www.youtube.com/@flo_dev',
+  ],
+} as const;
+
 export const LINKS = [
   { href: 'https://github.com/Dupflo', label: 'GitHub' },
   { href: 'https://linkedin.com/in/florian-dupuis-701310b1', label: 'LinkedIn' },

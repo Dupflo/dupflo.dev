@@ -1,0 +1,17 @@
+---
+/**
+ * Structured data. Invisible on the page, and the only place the authorship
+ * is stated plainly now that the name has left the home page heading.
+ */
+interface Props {
+  schema: Record<string, unknown>;
+}
+
+const { schema } = Astro.props;
+---
+
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify({ '@context': 'https://schema.org', ...schema })}
+/>

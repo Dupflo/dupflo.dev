@@ -1,7 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import Home from '../components/Home.astro';
-import { DESCRIPTION } from '../consts';
+import { DESCRIPTION, SITE, AUTHOR } from '../consts';
+import JsonLd from '../components/JsonLd.astro';
 ---
 
 <Base lang="en" description={DESCRIPTION.en} translationHref="/fr/">
@@ -13,6 +14,14 @@ import { DESCRIPTION } from '../consts';
       as="font"
       type="font/woff2"
       crossorigin
+    />
+    <JsonLd
+      schema={{
+        ...AUTHOR,
+        jobTitle: 'Senior Product Engineer',
+        description: DESCRIPTION.en,
+        mainEntityOfPage: SITE.url,
+      }}
     />
   </Fragment>
   <Home lang="en" />

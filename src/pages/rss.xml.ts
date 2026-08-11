@@ -22,6 +22,7 @@ export async function GET(context: APIContext) {
       pubDate: post.data.date,
       link: localePath(lang, `/blog/${stripLang(post.id)}`),
       categories: [...post.data.tags],
+      author: SITE.author,
     })),
     customData: `<language>${lang}</language>`,
   });

@@ -4,7 +4,8 @@ import { render } from 'astro:content';
 import Base from './Base.astro';
 import { iso, readingMinutes } from '../lib/entry';
 import { t, localePath, stripLang } from '../i18n/ui';
-import { SITE } from '../consts';
+import { SITE, AUTHOR } from '../consts';
+import JsonLd from '../components/JsonLd.astro';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -34,6 +35,21 @@ const canonical = canonicalUrl ?? new URL(Astro.url.pathname, SITE.url).href;
 >
   <Fragment slot="head">
     <link rel="canonical" href={canonical} />
+    <JsonLd
+      schema={{
+        '@type': 'BlogPosting',
+        headline: title,
+        description,
+        datePublished: iso(date),
+        inLanguage: lang,
+        keywords: tags,
+        author: AUTHOR,
+        publisher: AUTHOR,
+        mainEntityOfPage: canonical,
+        image: new URL(`/og/blog/${lang}/${stripLang(post.id)}.png`, SITE.url)
+          .href,
+      }}
+    />
     <!-- Both serifs are above the fold on an article, unlike anywhere else. -->
     <link
       rel="preload"
@@ -54,6 +70,7 @@ const canonical = canonicalUrl ?? new URL(Astro.url.pathname, SITE.url).href;
   <article>
     <header class="border-b py-8">
       <div class="flex flex-wrap items-baseline gap-x-3 text-[13px] text-dim">
+        <span class="text-ink">{SITE.author}</span>
         <time datetime={iso(date)} class="tabular-nums">{iso(date)}</time>
         <span class="text-accent">[{lang.toUpperCase()}]</span>
         <span class="tabular-nums">{minutes} {ui.minutes}</span>
