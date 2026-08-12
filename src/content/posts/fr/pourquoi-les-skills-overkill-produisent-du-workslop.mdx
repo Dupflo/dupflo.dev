@@ -1,6 +1,6 @@
 ---
 title: Pourquoi les skills overkill produisent du workslop, pas du deep work
-description: J'ai lancé RPI et ses vingt-trois skills d'agent sur un changement de six fichiers. Il a produit 3 418 lignes de planification et estimé sept à dix jours-homme. Je l'ai livré en trente minutes.
+description: J'ai lancé RPI et ses vingt-trois skills d'agent sur un changement de six fichiers. Il a produit 3 418 lignes de planification et estimé sept à dix jours-homme. Je l'ai livré en trente minutes, avec un prompt, en relisant les fichiers et en corrigeant à la main.
 date: 2026-08-11
 lang: fr
 translationKey: overkill-skills
@@ -30,7 +30,7 @@ Les deux sont vraies, jusqu'à un certain point. Je les ai vécues.
 
 J'ai lancé Getzatjob, mon premier SaaS IA, pour répondre à un besoin précis : identifier mes forces et mes faiblesses pour une candidature, et trouver le positionnement de CV qui passe les ATS. Avec le recul, le projet était mon bac à sable. Il est rapidement devenu un tas de fonctionnalités codées par l'IA que je n'ai jamais eu envie de lire, et au début je me répétais « tant pis ». Ça, c'est du vrai vibe coding, et honnêtement, c'est douloureux. Et l'UI, arggg, pas terrible.
 
-Développer en balançant une pile de prompts sans jamais rien vérifier, avec « ça marche » comme seul argument — jusqu'à la première vague de bugs qui m'a fait comprendre que le produit était un chantier, et qu'il fallait le refactorer depuis la toute première ligne de code.
+Développer en balançant une pile de prompts sans jamais rien vérifier, avec « ça marche » comme seul argument, jusqu'à la première vague de bugs qui m'a fait comprendre que le produit était un chantier, et qu'il fallait le refactorer depuis la toute première ligne de code.
 
 Alors quand j'ai décidé de construire Getzatjob V2, devenu [Applyzi](https://applyzi.com/), je me suis mis à [gstack](https://github.com/garrytan/gstack) et je lui ai donné beaucoup plus d'informations sur ma façon de coder. Ma devise était la suivante : *je veux un produit dont je comprends le code, codé comme je l'aurais codé, et assez soigné pour qu'un recruteur d'une boîte IA le regarde et se dise : ce type sort un produit avec la qualité qu'on voudrait de notre propre équipe.*
 Comme ça, j'avais plaisir à y travailler.
@@ -41,7 +41,7 @@ Avec Applyzi, il a fallu trois à quatre semaines à planifier et contrôler cha
 
 ## Quand le workslop entre en scène
 
-J'avais une fonctionnalité à développer sur un projet que je suis depuis 2021 pour une entreprise — avant l'IA, donc. Ajouter des données à un écran existant, et ajouter un écran de plus. Cinq, peut-être six fichiers impactés. Mon workflow actuel quand c'est de la simple intégration d'interface : je prends une capture Figma — pas de Figma premium ici, donc pas de MCP — et je la donne à Claude.
+J'avais une fonctionnalité à développer sur un projet que je suis depuis 2021 pour une entreprise, donc avant l'IA. Ajouter des données à un écran existant, et ajouter un écran de plus. Cinq, peut-être six fichiers impactés. Mon workflow actuel quand c'est de la simple intégration d'interface : je prends une capture Figma, pas de Figma premium ici donc pas de MCP, et je la donne à Claude.
 
 Ensuite je vais dans mon historique git sous VS Code, je regarde les fichiers modifiés, je les lis, j'ajoute mes corrections à la main, et c'est fini. Trente minutes : dix d'IA, vingt de finition. Contre une heure si je l'avais fait à la main.
 
@@ -60,11 +60,11 @@ Je l'ai livré en trente minutes, sur six fichiers.
 
 ![Bande dessinée : un développeur enseveli sous une sortie d'imprimante intitulée IMPLEMENTATION PLAN, qui pense « J'aurais pu le taper moi-même depuis le temps. » Son écran affiche 6 fichiers.](../../../assets/posts/overkill-skills/implementation-plan-scroll.png)
 
-Regardez ce que la phase de recherche lance vraiment : un requirement parser, un product manager, un UX designer, un CTO advisor technique, un senior software engineer, un rédacteur de documentation. Six rôles. Pour ajouter des données à un écran.
+Regarde ce que la phase de recherche lance vraiment : un requirement parser, un product manager, un UX designer, un CTO advisor technique, un senior software engineer, un rédacteur de documentation. Six rôles. Pour ajouter des données à un écran.
 
-J'ai pris du recul et je me suis dit : c'est la réunion à dix pour la couleur d'un bouton. Pas la même salle — le même mode d'échec. Plus de rôles et plus d'artefacts que la décision n'en demandait.
+J'ai pris du recul et je me suis dit : c'est la réunion à dix pour la couleur d'un bouton. Pas la même salle, le même mode d'échec. Plus de rôles et plus d'artefacts que la décision n'en demandait.
 
-La définition de HBR couvre le travail refilé à un collègue. Le mien, je me l'étais refilé à moi-même, et c'est pour ça que je veux l'élargir d'un cran : les outils de cadrage comme RPI ou gstack produisent la même chose quand ils rencontrent un problème trop petit pour eux. De l'analyse dont personne n'avait besoin, de la planification que personne ne lira, et un coût de nettoyage payé par la seule personne dans la pièce. Le site sur lequel tu lis ça a été construit avec Claude et aucune skill — pas de RPI, pas de gstack, rien. Il n'en avait pas besoin, et les ajouter aurait produit exactement ça.
+La définition de HBR couvre le travail refilé à un collègue. Le mien, je me l'étais refilé à moi-même, et c'est pour ça que je veux l'élargir d'un cran : les outils de cadrage comme RPI ou gstack produisent la même chose quand ils rencontrent un problème trop petit pour eux. De l'analyse dont personne n'avait besoin, de la planification que personne ne lira, et un coût de nettoyage payé par la seule personne dans la pièce. Le site sur lequel tu lis ça a été construit avec Claude et aucune skill, pas de RPI, pas de gstack, rien. Il n'en avait pas besoin, et les ajouter aurait produit exactement ça.
 
 Lire le rapport de l'IA était plus pénible qu'écrire le code moi-même.
 
@@ -74,9 +74,9 @@ Et pour être clair, je ne dis pas que l'outillage est mauvais. Le workflow RPI 
 
 Boris Cherny, le créateur de Claude Code, [dit qu'il fait désormais globalement confiance au modèle](https://github.com/shanraisshan/claude-code-best-practice/blob/main/tips/claude-boris-6-tips-16-apr-26.md) pour lancer les bonnes commandes et faire les bonnes modifications, et qu'il regarde simplement le résultat final. Faire confiance à l'IA.
 
-Mais lisez les mêmes fils jusqu'au bout, et le conseil le plus important est toujours le même : assurez-vous que Claude a un moyen de vérifier son travail. La confiance n'exclut donc pas le contrôle. Elle veut juste dire que le contrôle, c'est la vérification, pas un plan de cinquante pages écrit avant la moindre ligne de code.
+Mais lis les mêmes fils jusqu'au bout, et le conseil le plus important est toujours le même : assurez-vous que Claude a un moyen de vérifier son travail. La confiance n'exclut donc pas le contrôle. Elle veut juste dire que le contrôle, c'est la vérification, pas un plan de cinquante pages écrit avant la moindre ligne de code.
 
-Les process IA sont non déterministes, comme l'IA elle-même. Il n'y a pas une seule façon de travailler qui convienne à tous les projets — ça vient de l'équipe Claude Code aussi, et Boris décrit [son propre setup](https://github.com/shanraisshan/claude-code-best-practice/blob/main/tips/claude-boris-13-tips-03-jan-26.md) comme « étonnamment vanilla ». La personne qui a construit l'outil le personnalise à peine. Pendant ce temps, j'empilais RPI sur des skills sur des plugins pour un changement de six fichiers.
+Les process IA sont non déterministes, comme l'IA elle-même. Il n'y a pas une seule façon de travailler qui convienne à tous les projets, et ça vient de l'équipe Claude Code aussi, et Boris décrit [son propre setup](https://github.com/shanraisshan/claude-code-best-practice/blob/main/tips/claude-boris-13-tips-03-jan-26.md) comme « étonnamment vanilla ». La personne qui a construit l'outil le personnalise à peine. Pendant ce temps, j'empilais RPI sur des skills sur des plugins pour un changement de six fichiers.
 
 Mon projet de 2021, construit à la main sans IA, n'a pas besoin de grand-chose comme workflow IA. Il a besoin d'un prompt, d'une capture d'écran, et d'un contrôle humain avant le commit.
 
@@ -84,18 +84,18 @@ Mon projet de 2021, construit à la main sans IA, n'a pas besoin de grand-chose 
 
 Le livre de Cal Newport frappe plus fort maintenant qu'à sa parution. Les gens font plus que ce qu'ils étaient censés faire, et plus que ce qu'ils sont réellement capables de faire.
 
-Le meilleur exemple, c'est LinkedIn. Ouvrez votre fil, regardez les cinq derniers posts, et dites-moi combien ont été écrits à la main et portent une vraie information venant de quelqu'un qui maîtrise son sujet. L'IA donne aux gens l'illusion de la productivité : des posts IA, du « partage d'expertise ».
+Le meilleur exemple, c'est LinkedIn. Ouvre ton fil, regarde les cinq derniers posts, et dis-moi combien ont été écrits à la main et portent une vraie information venant de quelqu'un qui maîtrise son sujet. L'IA donne aux gens l'illusion de la productivité : des posts IA, du « partage d'expertise ».
 
 Comme je le disais plus haut, les dix personnes dans la salle pour la couleur d'un bouton n'ont pas eu besoin de l'IA pour en arriver là. Mais l'IA élargit le terrain de jeu de ce genre de travail.
 
 Rien de tout ça ne veut dire que l'IA n'ajoute que du bruit. Elle me permet aussi de construire des choses que je n'aurais jamais lancées avant, parce qu'elles coûtaient trop de temps. Un motion design pour expliquer une fonctionnalité de mon SaaS, par exemple, grâce à [hyperframes](https://github.com/heygen-com/hyperframes). Je ne me serais jamais lancé dans le format court si l'IA ne pouvait pas m'aider à écrire le script et générer le motion design. Cette partie-là est réelle, et ce n'est pas du workslop.
 
-La bonne question à se poser est celle-ci : la tâche que je fais avec l'IA sera-t-elle encore là dans trente jours ? Est-ce que je fais quelque chose que j'aurais fait sans l'IA ? Prenez du recul sur la façon dont vous construisez le projet, et demandez-vous en même temps pourquoi vous le construisez.
+La bonne question à te poser est celle-ci : la tâche que je fais avec l'IA sera-t-elle encore là dans trente jours ? Est-ce que je fais quelque chose que j'aurais fait sans l'IA ? Prends du recul sur la façon dont tu construis le projet, et demande-toi en même temps pourquoi tu le construis.
 
 ## Sources
 
-- Kate Niederhoffer, Gabriella Rosen Kellerman, Angela Lee, Alex Liebscher, Kristina Rapuano et Jeffrey T. Hancock, [AI-Generated "Workslop" Is Destroying Productivity](https://hbr.org/2025/09/ai-generated-workslop-is-destroying-productivity), *Harvard Business Review*, 22 septembre 2025 — l'étude menée par BetterUp Labs avec le Social Media Lab de Stanford.
-- Shan Raisshan, [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) — le workflow RPI, et les compilations de conseils de Boris Cherny citées plus haut.
+- Kate Niederhoffer, Gabriella Rosen Kellerman, Angela Lee, Alex Liebscher, Kristina Rapuano et Jeffrey T. Hancock, [AI-Generated "Workslop" Is Destroying Productivity](https://hbr.org/2025/09/ai-generated-workslop-is-destroying-productivity), *Harvard Business Review*, 22 septembre 2025. L'étude a été menée par BetterUp Labs avec le Social Media Lab de Stanford.
+- Shan Raisshan, [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice). Le workflow RPI, et les compilations de conseils de Boris Cherny citées plus haut.
 - Garry Tan, [gstack](https://github.com/garrytan/gstack).
 - Cal Newport, *Deep Work*, Grand Central Publishing, 2016.
 - HeyGen, [hyperframes](https://github.com/heygen-com/hyperframes).

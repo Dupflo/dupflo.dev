@@ -1,6 +1,6 @@
 ---
 title: Why Overkill Skills Lead to AI Workslop Instead of Deep Work
-description: I ran RPI and its twenty-three agent skills on a six-file change. It produced 3,418 lines of planning and estimated seven to ten person-days. I shipped it in thirty minutes.
+description: I ran RPI and its twenty-three agent skills on a six-file change. It produced 3,418 lines of planning and estimated seven to ten person-days. I shipped it in thirty minutes with one prompt, reading the files and correcting them by hand.
 date: 2026-08-11
 lang: en
 translationKey: overkill-skills
@@ -8,7 +8,7 @@ tags: [claude-code, agents, workflow, deep-work]
 cover: ../../../assets/posts/overkill-skills/button-color-meeting.png
 draft: false
 ---
-I am always looking to optimize my process. And to be honest, that behavior is exactly what leads me to AI workslop today.
+I am always looking to optimize my process. And to be honest, that behaviour is exactly what leads me to produce AI workslop today.
 
 The word is not mine. Researchers at BetterUp Labs and Stanford's Social Media Lab coined it in [Harvard Business Review](https://hbr.org/2025/09/ai-generated-workslop-is-destroying-productivity) in September 2025, for AI-generated work that looks polished but carries nothing that moves the task forward. Their survey found 40% of US desk workers had been handed some, and that each instance cost about two hours to repair.
 
@@ -16,7 +16,7 @@ I test a lot of plugins and skills. [RPI](https://github.com/shanraisshan/claude
 
 Rewind a couple of years, before AI showed up. I was one of those developers working for big companies. And one of those developers who never understood why we needed ten people in a meeting to decide the color of a UI button.
 
-![Comic strip: ten people crowded around a conference table arguing over the colour of a single UI button on the projector screen, while one exhausted developer thinks "It's a button."](../../../assets/posts/overkill-skills/button-color-meeting.png)
+![Comic strip: ten people crowded around a conference table arguing over the color of a single UI button on the projector screen, while one exhausted developer thinks "It's a button."](../../../assets/posts/overkill-skills/button-color-meeting.png)
 
 Today I catch myself acting like those people. For two reasons:
 
@@ -27,20 +27,20 @@ Both of those are true, up to a point. I have experienced them.
 
 ## The pain of launching a SaaS with AI when you are a developer
 
-I launched Getzatjob, my first AI SaaS, to solve a specific need: identify my strengths and weaknesses for a job application and find the resume positioning that passes ATS. Looking back, the project was my sandbox. It rapidly became a pile of AI-coded features I never wanted to read, and at first I kept telling myself “never mind”. This is real vibe coding, and honestly, it is painful. And the UI, arggg, not that good.
+I launched Getzatjob, my first AI SaaS, to solve a specific need: identify my strengths and weaknesses for a job application and find the resume positioning that passes ATS screening. Looking back, the project was my sandbox. It rapidly became a pile of AI-coded features I never wanted to read, and at first I kept telling myself “never mind”. That was real vibe coding, and honestly, it is painful. And the UI, arggg, not that good.
 
-Developing by firing off a pile of prompts without ever verifying anything, with “it works fine” as the only argument I had — until the first wave of bugs made me understand that the product was a mess, and that it needed refactoring from the very first line of code.
+I developed it by firing off a pile of prompts without ever verifying anything, with “it works fine” as the only argument I had, until the first wave of bugs made me realise the product was a mess, and that it needed refactoring from the very first line of code.
 
-So when I decided to build the Getzatjob V2, now called [Applyzi](https://applyzi.com/), I started using [gstack](https://github.com/garrytan/gstack) and I gave it a lot more information about the way I code. My motto was: *I want a product whose code I understand, coded the way I would code it, and good-looking enough that a recruiter at an AI company would look at it and think: this guy ships a product with the quality we would want from our own team.*
+So when I decided to build Getzatjob V2, now called [Applyzi](https://applyzi.com/), I started using [gstack](https://github.com/garrytan/gstack) and I gave it a lot more information about the way I code. My motto was: *I want a product whose code I understand, coded the way I would code it, and good-looking enough that a recruiter at an AI company would look at it and think: this guy ships a product with the quality we would want from our own team.*
 That way, I was happy to work on it.
 
-The other big difference was the pace of delivery. With Getzatjob, I had 80% of the project on the surface, in less than 24 hours. That is the promise you see on social media. Great. After that it took me weeks of stacking features and duplicating garbage code on top of lazy prompting.
+The other big difference was the pace of delivery. With Getzatjob, I had 80% of the project standing in less than 24 hours. That is the promise you see on social media. Great. After that it took me weeks of stacking features and duplicating garbage code on top of lazy prompting.
 
-With Applyzi, it took three to four weeks of planning and controlling every feature, spending more credits to make React components reusable. Exactly like I used to do before. It cost me more time up front, but three months on the project is maintainable and scalable, and I am not scared of recoding parts of it myself.
+With Applyzi, it took three to four weeks of planning and controlling every feature, spending more credits to make React components reusable. Exactly like I used to do before. It cost me more time up front, but three months in, the project is maintainable and scalable, and I am not scared of recoding parts of it myself.
 
 ## When workslop enters the scene
 
-I had a feature to develop on a client project I have been working on since 2021, long before the AI wow. Add some data to an existing screen, and add one more screen. Five, maybe six files impacted. My usual workflow when it is just UI integration: I take a Figma screenshot, no Figma premium here so no MCP, and I give it to Claude.
+I had a feature to develop on a client project I have been working on since 2021, long before the AI hype. Add some data to an existing screen, and add one more screen. Five, maybe six files impacted. My usual workflow when it is just UI integration: I take a Figma screenshot, no Figma premium here so no MCP, and I give it to Claude.
 
 Then I go to my git history in VS Code, look at the modified files, read them, add manual corrections, and I am done. Thirty minutes: ten of AI, twenty of polishing. Instead of an hour if I had done it by hand.
 
@@ -61,9 +61,9 @@ I shipped it in thirty minutes, touching six files.
 
 Look at what the research phase actually runs: a requirement parser, a product manager, a UX designer, a technical CTO advisor, a senior software engineer, a documentation writer. Six roles. To add data to one screen.
 
-I took a step back and said to myself: this is the ten-people-meeting for a button color. Not the same room — the same failure mode. More roles and more artifacts than the decision required.
+I took a step back and said to myself: this is the ten-people-meeting for a button color. Not the same room, the same failure mode. More roles and more artifacts than the decision required.
 
-The HBR definition covers work handed to a colleague. Mine was handed to me, by me, which is why I want to widen it by one notch: framing tools like RPI or gstack produce the same thing when they meet a problem too small for them. Analysis nobody needed, planning nobody will read, and a cleanup cost paid by the only person in the room. The site you are reading this on was built with Claude and no skills at all — no RPI, no gstack, nothing. It did not need them, and adding them would have produced exactly this.
+The HBR definition covers work handed to a colleague. Mine was handed to me, by me, which is why I want to widen it by one notch: framing tools like RPI or gstack produce the same thing when they meet a problem too small for them. Analysis nobody needed, planning nobody will read, and a cleanup cost paid by the only person in the room. The site you are reading this on was built with Claude and no skills at all, no RPI, no gstack, nothing. It did not need them, and adding them would have produced exactly this.
 
 Reading the AI report was more painful than writing the code myself.
 
@@ -73,9 +73,9 @@ And to be clear, I am not saying the tooling is bad. RPI and gstack are virtual 
 
 Boris Cherny, the creator of Claude Code, [says he now generally trusts the model](https://github.com/shanraisshan/claude-code-best-practice/blob/main/tips/claude-boris-6-tips-16-apr-26.md) to run the right commands and make the right edits, and that he just looks at the final result. Trust the AI.
 
-But read the same threads to the end and the most important tip is always the same one: make sure Claude has a way to verify its work. So trust does not exclude control. It just means the control is verification, not a fifty-page plan written before a single line of code.
+But read the same threads to the end and the most important tip is the same one: make sure Claude has a way to verify its work. So trust does not exclude control. It just means the control is verification, not a fifty-page plan written before a single line of code.
 
-AI processes are non-deterministic, like AI itself. There is no single way to work that fits every project, that comes from the Claude Code team too, and Boris describes [his own setup](https://github.com/shanraisshan/claude-code-best-practice/blob/main/tips/claude-boris-13-tips-03-jan-26.md) as "surprisingly vanilla." The person who built the tool barely customizes it. Meanwhile I was stacking RPI on top of skills on top of plugins for a six-file change.
+AI processes are non-deterministic, like AI itself. There is no single way to work that fits every project, and that comes from the Claude Code team too, and Boris describes [his own setup](https://github.com/shanraisshan/claude-code-best-practice/blob/main/tips/claude-boris-13-tips-03-jan-26.md) as "surprisingly vanilla." The person who built the tool barely customizes it. Meanwhile I was stacking RPI on top of skills on top of plugins for a six-file change.
 
 My 2021 project, built by hand without AI, does not need much of an AI workflow. It needs a prompt, a screenshot, and human control before the commit.
 
@@ -83,18 +83,18 @@ My 2021 project, built by hand without AI, does not need much of an AI workflow.
 
 Cal Newport's book lands harder now than when it was published. People are doing more than they were supposed to do, and more than they are actually able to do.
 
-The best example is LinkedIn. Open your feed, look at the last five posts, and tell me how many were written by hand and carry real information from someone who mastered a skill. AI gives people the illusion of productivity: AI posts, "sharing expertise."
+The best example is LinkedIn. Open your feed, look at the last five posts, and tell me how many were written by hand and carry real information from someone who has mastered a skill. AI gives people the illusion of productivity: AI-written posts, filed under "sharing expertise."
 
 As I said before, the ten people in the room for a button color did not need AI to get there. But AI extends the canvas for that kind of work.
 
-None of this means AI only adds noise. It also lets me build things I would never have started before, because they cost too much time. A motion design piece to explain a feature of my SaaS, for example, thanks to [hyperframes](https://github.com/heygen-com/hyperframes). I would never have gone into short-form content if AI could not help me write the script and generate the motion design. That part is real, and it is not workslop.
+None of this means AI only adds noise. It also lets me build things I would never have started before, because they would have cost too much time. A motion design piece to explain a feature of my SaaS, for example, thanks to [hyperframes](https://github.com/heygen-com/hyperframes). I would never have gone into short-form content if AI could not help me write the script and generate the motion design. That part is real, and it is not workslop.
 
-The right question to ask yourself is this: will the task I am doing with AI still be there in thirty days? Am I doing something I would have done without AI? Take a step back on how you are building the project, and at the same time ask yourself why you are building it.
+The right question to ask yourself is this: will the task I am doing with AI still be there in thirty days? Am I doing something I would have done without AI? Step back and look at how you are building the project, and at the same time ask yourself why you are building it.
 
 ## Sources
 
-- Kate Niederhoffer, Gabriella Rosen Kellerman, Angela Lee, Alex Liebscher, Kristina Rapuano and Jeffrey T. Hancock, [AI-Generated "Workslop" Is Destroying Productivity](https://hbr.org/2025/09/ai-generated-workslop-is-destroying-productivity), *Harvard Business Review*, 22 September 2025 — the study run by BetterUp Labs with Stanford's Social Media Lab.
-- Shan Raisshan, [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) — the RPI workflow, and the compilations of Boris Cherny's tips quoted above.
+- Kate Niederhoffer, Gabriella Rosen Kellerman, Angela Lee, Alex Liebscher, Kristina Rapuano and Jeffrey T. Hancock, [AI-Generated "Workslop" Is Destroying Productivity](https://hbr.org/2025/09/ai-generated-workslop-is-destroying-productivity), *Harvard Business Review*, 22 September 2025. The study was run by BetterUp Labs with Stanford's Social Media Lab.
+- Shan Raisshan, [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice). The RPI workflow, and the compilations of Boris Cherny's tips quoted above.
 - Garry Tan, [gstack](https://github.com/garrytan/gstack).
 - Cal Newport, *Deep Work*, Grand Central Publishing, 2016.
 - HeyGen, [hyperframes](https://github.com/heygen-com/hyperframes).
