@@ -304,3 +304,66 @@
     margin-right: 0.6em;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Reading progress. No JavaScript: the ring is driven by a scroll-linked CSS
+   animation, so it costs nothing at runtime and cannot delay the page.
+
+   Guarded by @supports, because a ring frozen at zero would be worse than no
+   ring at all in a browser that cannot drive it.
+--------------------------------------------------------------------------- */
+
+@property --reading {
+  syntax: '<percentage>';
+  initial-value: 0%;
+  inherits: false;
+}
+
+@keyframes reading-progress {
+  to {
+    --reading: 100%;
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .reading-progress {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 10;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    border: 1px solid var(--color-rule);
+    /* Frosted disc so the ring stays legible over prose and over images. */
+    background: color-mix(in srgb, var(--color-bg) 55%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* The ring itself. It lives on a pseudo-element because the mask that turns
+     it from a pie into a ring would otherwise cut the frosted disc too. */
+  .reading-progress::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    background: conic-gradient(
+      var(--color-accent) var(--reading),
+      color-mix(in srgb, var(--color-rule) 70%, transparent) 0
+    );
+    mask: radial-gradient(
+      farthest-side,
+      transparent calc(100% - 3px),
+      #000 calc(100% - 3px)
+    );
+    animation: reading-progress linear;
+    animation-timeline: scroll(root block);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reading-progress {
+      display: none;
+    }
+  }
+}
