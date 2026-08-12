@@ -1,6 +1,6 @@
 ---
 title: Pourquoi les skills overkill produisent du workslop, pas du deep work
-description: J'ai empilé RPI, gstack et vingt-trois skills d'agent sur un changement de six fichiers. Le plan est revenu cinquante fois plus gros que le code. Sur le moment où la cérémonie cesse de se rembourser.
+description: J'ai lancé RPI et ses vingt-trois skills d'agent sur un changement de six fichiers. Il a produit 3 418 lignes de planification et estimé sept à dix jours-homme. Je l'ai livré en trente minutes.
 date: 2026-08-11
 lang: fr
 translationKey: overkill-skills
@@ -45,13 +45,28 @@ J'avais une fonctionnalité à développer sur un projet que je suis depuis 2021
 
 Ensuite je vais dans mon historique git sous VS Code, je regarde les fichiers modifiés, je les lis, j'ajoute mes corrections à la main, et c'est fini. Trente minutes : dix d'IA, vingt de finition. Contre une heure si je l'avais fait à la main.
 
-Pour l'expérience, j'ai lancé la méthode RPI à la place. Research → Plan → Implement, avec une porte de validation à chaque phase. Sur le papier, c'est un bon workflow. En pratique, sur mes six fichiers, c'était l'overkill parfait. Elle a passé des minutes à identifier des « points de douleur » dans le projet, lu le codebase en entier, contredit ses propres conclusions en chemin, et fini par me tendre un plan cinquante fois plus gros que les quelques lignes que je devais ajouter.
+Par curiosité, j'ai lancé la méthode RPI à la place. Research → Plan → Implement, avec une porte de validation à chaque phase. RPI n'est pas un prompt : elle déclenche vingt-trois skills d'agent réparties sur ses phases. Sur le papier, c'est un bon workflow. En pratique, sur mes six fichiers, c'était de l'overkill pur. Elle a passé des minutes à identifier des « points de douleur » dans le projet, lu le codebase en entier, contredit ses propres conclusions en chemin, et fini par me tendre ceci :
+
+| Fichier | Lignes | Contenu |
+| --- | --- | --- |
+| `pm.md` | 730 | 12 user stories, 19 critères d'acceptation, 8 questions PO arbitrées |
+| `ux.md` | 813 | 3 parcours, 14 états, 40 clés i18n fr/en |
+| `eng.md` | 1385 | Contrat d'API, types, code réel, 12 risques |
+| `PLAN.md` | 490 | 5 phases, 44 tâches |
+
+Trois mille quatre cent dix-huit lignes de planification. Son propre verdict : complexité moyenne, 13 fichiers nouveaux, 9 modifiés, sept à dix jours-homme.
+
+Je l'ai livré en trente minutes, sur six fichiers.
 
 ![Bande dessinée : un développeur enseveli sous une sortie d'imprimante intitulée IMPLEMENTATION PLAN, qui pense « J'aurais pu le taper moi-même depuis le temps. » Son écran affiche 6 fichiers.](../../../assets/posts/overkill-skills/implementation-plan-scroll.png)
 
 Regardez ce que la phase de recherche lance vraiment : un requirement parser, un product manager, un UX designer, un CTO advisor technique, un senior software engineer, un rédacteur de documentation. Six rôles. Pour ajouter des données à un écran.
 
-J'ai pris du recul et je me suis dit : c'est la réunion à dix pour la couleur d'un bouton. Pas comme métaphore. Littéralement la même salle, avec des agents à la place des collègues. C'est du workslop, et cette fois je le voyais se produire. Lire le rapport de l'IA était plus pénible qu'écrire le code moi-même.
+J'ai pris du recul et je me suis dit : c'est la réunion à dix pour la couleur d'un bouton. Pas la même salle — le même mode d'échec. Plus de rôles et plus d'artefacts que la décision n'en demandait.
+
+La définition de HBR couvre le travail refilé à un collègue. Le mien, je me l'étais refilé à moi-même, et c'est pour ça que je veux l'élargir d'un cran : les outils de cadrage comme RPI ou gstack produisent la même chose quand ils rencontrent un problème trop petit pour eux. De l'analyse dont personne n'avait besoin, de la planification que personne ne lira, et un coût de nettoyage payé par la seule personne dans la pièce. Le site sur lequel tu lis ça a été construit avec Claude et aucune skill — pas de RPI, pas de gstack, rien. Il n'en avait pas besoin, et les ajouter aurait produit exactement ça.
+
+Lire le rapport de l'IA était plus pénible qu'écrire le code moi-même.
 
 Et pour être clair, je ne dis pas que l'outillage est mauvais. Le workflow RPI ou gstack sont des équipes d'ingénierie virtuelles, et une équipe d'ingénierie virtuelle, c'est exactement ce qu'il faut à une refonte complète de produit. C'est ce qui a fait marcher Applyzi. Six fichiers ne sont pas une refonte de produit. Même cérémonie, mauvaise taille de problème.
 

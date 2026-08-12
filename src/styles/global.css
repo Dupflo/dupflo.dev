@@ -241,6 +241,48 @@
     font-size: inherit;
   }
 
+  /* Tables are data, so they take the interface voice, not the prose one. */
+  .prose table {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    width: 100%;
+    max-width: min(100%, 46rem);
+    border-collapse: collapse;
+    margin-top: 1.8em;
+    margin-bottom: 1.8em;
+  }
+
+  .prose th {
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 11px;
+    color: var(--color-dim);
+    border-bottom: 1px solid var(--color-rule);
+    padding: 0 0.8em 0.5em 0;
+  }
+
+  .prose td {
+    border-top: 1px solid var(--color-rule);
+    padding: 0.5em 0.8em 0.5em 0;
+    vertical-align: baseline;
+  }
+
+  /* The line counts are the point of that table: right-aligned, tabular. */
+  .prose td:nth-child(2) {
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    padding-right: 1.4em;
+  }
+
+  .prose table code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--color-accent);
+  }
+
   .prose hr {
     border: 0;
     border-top: 1px solid var(--color-rule);

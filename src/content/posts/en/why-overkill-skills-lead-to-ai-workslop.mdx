@@ -1,6 +1,6 @@
 ---
 title: Why Overkill Skills Lead to AI Workslop Instead of Deep Work
-description: I stacked RPI, gstack and twenty-three agent skills onto a six-file change. The plan came back fifty times bigger than the code. On knowing when the ceremony stops paying for itself.
+description: I ran RPI and its twenty-three agent skills on a six-file change. It produced 3,418 lines of planning and estimated seven to ten person-days. I shipped it in thirty minutes.
 date: 2026-08-11
 lang: en
 translationKey: overkill-skills
@@ -44,13 +44,28 @@ I had a feature to develop on a client project I have been working on since 2021
 
 Then I go to my git history in VS Code, look at the modified files, read them, add manual corrections, and I am done. Thirty minutes: ten of AI, twenty of polishing. Instead of an hour if I had done it by hand.
 
-For the experience, I ran the RPI method instead. Research → Plan → Implement, with a validation gate at each phase. On paper it is a good workflow. In practice, on my six files, it was the perfect overkill. It spent minutes identifying "pain points" in the project, read the entire codebase, contradicted its own findings along the way, and finished by handing me a plan fifty times bigger than the few lines of code I was supposed to add.
+As an experiment, I ran the RPI method instead. Research → Plan → Implement, with a validation gate at each phase. RPI is not one prompt: it dispatches twenty-three agent skills across its phases. On paper it is a good workflow. In practice, on my six files, it was pure overkill. It spent minutes identifying "pain points" in the project, read the entire codebase, contradicted its own findings along the way, and finished by handing me this:
+
+| File | Lines | Content |
+| --- | --- | --- |
+| `pm.md` | 730 | 12 user stories, 19 acceptance criteria, 8 arbitrated PO questions |
+| `ux.md` | 813 | 3 flows, 14 states, 40 i18n keys |
+| `eng.md` | 1385 | API contract, types, real code, 12 risks |
+| `PLAN.md` | 490 | 5 phases, 44 tasks |
+
+Three thousand four hundred and eighteen lines of planning. Its own verdict: medium complexity, 13 new files, 9 modified, seven to ten person-days.
+
+I shipped it in thirty minutes, touching six files.
 
 ![Comic strip: a developer buried in an enormous printed "Implementation Plan" scroll while his monitor shows a tiny six-file code diff.](../../../assets/posts/overkill-skills/implementation-plan-scroll.png)
 
 Look at what the research phase actually runs: a requirement parser, a product manager, a UX designer, a technical CTO advisor, a senior software engineer, a documentation writer. Six roles. To add data to one screen.
 
-I took a step back and said to myself: this is the ten-people-meeting for a button color. Not as a metaphor. Literally the same room, with agents instead of colleagues. This is workslop, and this time I could see it happening. Reading the AI report was more painful than writing the code myself.
+I took a step back and said to myself: this is the ten-people-meeting for a button color. Not the same room — the same failure mode. More roles and more artifacts than the decision required.
+
+The HBR definition covers work handed to a colleague. Mine was handed to me, by me, which is why I want to widen it by one notch: framing tools like RPI or gstack produce the same thing when they meet a problem too small for them. Analysis nobody needed, planning nobody will read, and a cleanup cost paid by the only person in the room. The site you are reading this on was built with Claude and no skills at all — no RPI, no gstack, nothing. It did not need them, and adding them would have produced exactly this.
+
+Reading the AI report was more painful than writing the code myself.
 
 And to be clear, I am not saying the tooling is bad. RPI and gstack are virtual engineering teams, and a virtual engineering team is exactly what a full product rebuild needs. It is what made Applyzi work. Six files are not a product rebuild. Same ceremony, wrong size of problem.
 
