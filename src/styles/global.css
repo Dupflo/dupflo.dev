@@ -335,10 +335,12 @@
     height: 2.75rem;
     border-radius: 50%;
     border: 1px solid var(--color-rule);
-    /* Frosted disc so the ring stays legible over prose and over images. */
-    background: color-mix(in srgb, var(--color-bg) 55%, transparent);
+    /* Frosted disc so the ring stays legible over prose and over images. It
+       needs real opacity: at 55% it vanished against the light theme. */
+    background: color-mix(in srgb, var(--color-bg) 88%, transparent);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 1px 12px color-mix(in srgb, var(--color-ink) 12%, transparent);
   }
 
   /* The ring itself. It lives on a pseudo-element because the mask that turns
@@ -348,14 +350,16 @@
     position: absolute;
     inset: 5px;
     border-radius: 50%;
+    /* The unread track is fully opaque: a 70%-transparent rule was invisible
+       on paper, so the ring read as empty at every scroll position. */
     background: conic-gradient(
       var(--color-accent) var(--reading),
-      color-mix(in srgb, var(--color-rule) 70%, transparent) 0
+      var(--color-rule) 0
     );
     mask: radial-gradient(
       farthest-side,
-      transparent calc(100% - 3px),
-      #000 calc(100% - 3px)
+      transparent calc(100% - 4px),
+      #000 calc(100% - 4px)
     );
     animation: reading-progress linear;
     animation-timeline: scroll(root block);

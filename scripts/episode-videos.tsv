@@ -1,0 +1,81 @@
+# Une seule colonne à remplir : slug_video, la dernière.
+# Copie un slug depuis la liste commentée en bas. Laisse vide si tu ne sais pas.
+# Puis : npm run import:episodes
+episode	tool	pitch	toolUrl	slug_video
+01	ui-ux-pro-max	Le skill UI/UX le plus populaire de GitHub	https://github.com/nextlevelbuilder/ui-ux-pro-max-skill	
+02	21st.dev · Magic MCP	Le MCP qui pose de vrais composants pros	https://21st.dev/magic	
+03	Higgsfield · Mission Mars	Générer une planète 3D + du motion (assets IA)	/higgsfield-mission-mars.zip	
+04	Caveman	Fais parler ton IA comme un homme des cavernes	https://github.com/JuliusBrussee/caveman	
+05	Hyperframe · HeyGen	Monter une vidéo en code, avec une IA	https://github.com/heygen-com/hyperframes	
+06	MarkItDown · Microsoft	Arrête de cramer tes tokens avec tes fichiers Word	/markitdown-pack.zip	
+07	gstack · Garry Tan (YC)	Une équipe d'ingénieurs dans Claude Code	https://github.com/garrytan/gstack	
+08	System prompts leakés	Le repo qui « remplace » ton abonnement IA	https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools	
+09	Free Claude Code	Faire tourner Claude Code sur un modèle gratuit	https://github.com/alishahryar1/free-claude-code	
+10	Voicebox	Je n'ai pas dit un mot de cette vidéo	https://voicebox.sh	
+11	Graphify	Ton IA rate 3 infos sur 10 sur un gros projet	https://github.com/Graphify-Labs/graphify	
+12	Obsidian	Le second cerveau que ton IA peut lire	https://obsidian.md	
+13	Graphify + Obsidian	Arrête de choisir entre Obsidian et Graphify	https://github.com/Graphify-Labs/graphify	
+
+# --- tes vidéos, de la plus récente à la plus ancienne ---
+# 2026-08-10-chatgpt-aussi-a-des-competences-et-c-est-pour-tout-le-monde   « ChatGPT aussi a des compétences. Et c’est pour tout le mon »
+# 2026-08-08-ajouter-une-competence-a-claude-sans-coder-une-ligne   « Ajouter une compétence à Claude, sans coder une ligne. »
+# 2026-08-06-ta-carte-de-code-peut-vivre-dans-ton-second-cerveau   « Ta carte de code peut vivre dans ton second cerveau. »
+# 2026-08-04-la-memoire-de-ton-ia-ne-lui-appartient-pas   « La mémoire de ton IA ne lui appartient pas. »
+# 2026-08-01-j-ai-lance-graphify-sur-mon-vrai-projet-verdict   « J’ai lancé Graphify sur mon vrai projet. Verdict. »
+# 2026-07-31-ton-ia-rate-3-infos-sur-10-sur-un-gros-projet   « Ton IA rate 3 infos sur 10 sur un gros projet. »
+# 2026-07-28-tu-ecoutes-ma-voix-depuis-le-debut-de-cette-video-sauf-que-j   « Tu écoutes ma voix depuis le début de cette vidéo. Sauf qu »
+# 2026-07-25-tu-passes-de-claude-code-a-codex-pas-besoin-de-tout-reconfig   « Tu passes de Claude Code à Codex ? Pas besoin de tout reco »
+# 2026-07-24-concours-claude-code   « 🎁 CONCOURS CLAUDE CODE »
+# 2026-07-23-partie-2-dans-la-partie-1-claude-code-branche-sur-deepseek-s   « Partie 2. Dans la partie 1, Claude Code branché sur DeepSe »
+# 2026-07-22-faire-tourner-le-vrai-claude-code-celui-d-anthropic-sur-un-m   « Faire tourner le vrai Claude Code — celui d’Anthropic — su »
+# 2026-07-21-un-repo-github-compile-les-system-prompts-leakes-de-claude-c   « Un repo GitHub compile les system prompts leakés de Claude »
+# 2026-07-20-ou-on-met-les-skills-la-vraie-reponse   « « Où on met les skills ? » — la vraie réponse 👇 »
+# 2026-07-13-une-extension-te-paie-pendant-que-ton-ia-code   « Une extension te paie pendant que ton IA code 🤨 »
+# 2026-07-11-j-ai-passe-un-vrai-projet-client-dans-l-ia-de-yc   « J’ai passé un vrai projet client dans l’IA de YC 👀 »
+# 2026-07-10-le-president-de-yc-a-mis-une-equipe-d-ingenieurs-dans-claude   « Le président de YC a mis une équipe d’ingénieurs dans Clau »
+# 2026-07-08-arrete-d-envoyer-tes-fichiers-word-dans-claude   « Arrête d’envoyer tes fichiers Word dans Claude 😳 »
+# 2026-07-07-tu-paies-des-tokens-sans-rien-taper   « 😱 Tu paies des tokens sans rien taper. »
+# 2026-07-05-j-ai-monte-ma-video-avec-une-ia-elle-a-foire-un-truc-et-cart   « 🎬 J’ai monté ma vidéo avec une IA. Elle a foiré un truc…  »
+# 2026-07-04-j-ai-peut-etre-trouve-comment-garder-ton-abonnement-ia-gratu   « 🦴 J’ai peut-être trouvé comment garder ton abonnement IA  »
+# 2026-07-02-j-ai-ajoute-ce-qui-manquait-de-vrais-assets-3d-et-la-ca-chan   « 🪐 J’ai ajouté ce qui manquait : de vrais assets 3D. Et là »
+# 2026-07-01-anthropic-vient-de-faire-un-double-move-que-je-trouve-fascin   « Anthropic vient de faire un double move que je trouve fasc »
+# 2026-06-30-partie-2-j-ai-couple-un-skill-ia-un-mcp-pour-coder-un-site-s   « ⚠️ Partie 2 : J’ai couplé un skill IA + un MCP pour coder  »
+# 2026-06-29-j-installe-un-mcp-qui-pose-de-vrais-composants-pros-directem   « ⚙️ J’installe un MCP qui pose de vrais composants pros dir »
+# 2026-06-28-partie-3-les-tests   « 🎬 Partie 3 — Les tests »
+# 2026-06-27-partie-2-installation   « 🎬 Partie 2 — Installation »
+# 2026-06-26-partie-1-presentation   « 🎬 Partie 1 — Présentation »
+# 2026-06-25-leur-pub-disait-40-leur-propre-code-disait-0   « Leur pub disait 40 %. Leur propre code disait 0. »
+# 2026-06-24-nouveau-concept-un-jour-un-skill   « 🚨 Nouveau concept : « Un jour, un skill. » »
+# 2026-06-23-la-verite-sur-claude-design-qu-on-te-vend-pas   « 🎨 La vérité sur Claude Design qu’on te vend pas. »
+# 2026-06-22-tu-n-as-pas-besoin-d-un-serveur-ni-de-50-mac-mini-pour-autom   « 🚫 Tu n’as pas besoin d’un serveur (ni de 50 Mac Mini) pou »
+# 2026-06-20-higgsfield-fable-et-opus-partie-2   « 🔌 Higgsfield, Fable et Opus, partie 2 »
+# 2026-06-19-c-est-quoi-un-mcp-je-te-montre-en-vrai   « 🔌 C’est quoi un MCP ? Je te montre en vrai. »
+# 2026-06-18-fable-5-vs-opus-cette-fois-on-regarde-le-code   « 🔬 Fable 5 vs Opus : cette fois, on regarde le code. »
+# 2026-06-17-fable-5-vs-opus-on-voit-vraiment-la-difference   « 🆚 Fable 5 vs Opus : on voit vraiment la différence ? »
+# 2026-06-16-fable-5-tient-il-vraiment-ses-promesses   « 🤖 Fable 5 tient-il vraiment ses promesses ? »
+# 2026-06-15-le-modele-d-ia-le-plus-puissant-de-claude-retire-par-l-etat   « 😳 Le modèle d’IA le plus puissant de Claude, retiré par l »
+# 2026-06-13-et-si-tu-avais-une-equipe-d-ia-pas-une-seule   « 🤯 Et si tu avais une équipe d’IA, pas une seule ? »
+# 2026-06-13-le-modele-le-plus-puissant-d-anthropic-vient-d-etre-suspendu   « 😳 Le modèle le plus puissant d’Anthropic vient d’être sus »
+# 2026-06-12-le-createur-de-claude-code-repete-ce-conseil-depuis-5-mois   « 🧠 Le créateur de Claude Code répète ce conseil depuis 5 m »
+# 2026-06-11-arrete-de-faire-relire-ton-code-par-l-ia-qui-l-a-ecrit   « 🤝 Arrête de faire relire ton code par l’IA qui l’a écrit. »
+# 2026-06-10-arrete-de-coder-au-feeling-avec-l-ia   « ⚙️ Arrête de coder au feeling avec l’IA. »
+# 2026-06-09-et-si-claude-t-appelait-a-voix-haute-quand-il-a-fini   « 🔔 Et si Claude t’appelait à voix haute quand il a fini ? »
+# 2026-06-08-par-defaut-claude-oublie-tout-entre-deux-sessions   « 🧠 Par défaut, Claude oublie tout entre deux sessions. »
+# 2026-06-04-diriger-une-ia-ca-tient-en-3-briques   « 🧱 Diriger une IA, ça tient en 3 briques. »
+# 2026-06-03-l-ia-ne-mettra-jamais-tous-les-devs-au-chomage   « 🧠 L’IA ne mettra jamais tous les devs au chômage. »
+# 2026-05-29-le-skill-parfait-pour-des-sites-uniques   « Le skill parfait pour des sites uniques ! »
+# 2026-05-27-le-vibecoding-democratise-le-code-et-c-est-une-bonne-chose-m   « Le vibecoding démocratise le code, et c’est une bonne chos »
+# 2026-05-26-le-pape-qui-s-attaque-a-l-intelligence-artificielle-on-ne-s-   « Le pape qui s’attaque à l’intelligence artificielle… on ne »
+# 2026-05-12-partie-3-je-developpe-l-agentic-os-de-mikecodeur   « PARTIE 3 : Je développe l’Agentic OS de @MikeCodeur 🤖 »
+# 2026-05-11-je-developpe-l-agentic-os-de-mikecodeur-172569   « Je développe l’Agentic OS de @MikeCodeur 🤖 »
+# 2026-05-11-je-developpe-l-agentic-os-de-mikecodeur   « Je développe l’Agentic OS de @mikecodeur 🤖 »
+# 2026-05-08-partie-3-coder-un-site-depuis-ses-toilettes-juste-avec-un-te   « PARTIE 3️⃣ : Coder un site depuis ses toilettes juste avec »
+# 2026-05-07-coder-un-site-depuis-ses-toilettes-juste-avec-un-telephone   « Coder un site depuis ses toilettes juste avec un téléphone »
+# 2026-05-07-partie-2-coder-un-site-depuis-ses-toilettes-juste-avec-un-te   « PARTIE 2️⃣ : Coder un site depuis ses toilettes juste avec »
+# 2026-05-06-comment-installer-openclaw-sans-aucune-connaissance-techniqu   « 🚀 Comment installer OpenClaw sans aucune connaissance tec »
+# 2025-02-20-code-dispo-sur-github   « 📌 Code dispo sur GitHub 💻 »
+# 2025-02-20-tu-veux-apprendre-a-coder-avec-next-js-react-js-330569   « 🖥️ Tu veux apprendre à coder avec Next.js (React.js) ? 🚀 »
+# 2025-02-20-tu-veux-apprendre-a-coder-avec-next-js-react-js-559337   « 🖥️ Tu veux apprendre à coder avec Next.js (React.js) ? 🚀 »
+# 2025-02-20-tu-veux-apprendre-a-coder-avec-next-js-react-js-633999   « 🖥️ Tu veux apprendre à coder avec Next.js (React.js) ? 🚀 »
+# 2025-02-20-tu-veux-apprendre-a-coder-avec-next-js-react-js-748348   « 🖥️ Tu veux apprendre à coder avec Next.js (React.js) ? 🚀 »
+# 2025-02-20-tu-veux-apprendre-a-coder-avec-next-js-react-js   « 🖥️ Tu veux apprendre à coder avec Next.js (React.js) ? 🚀 »

@@ -82,6 +82,16 @@ const videos = defineCollection({
       series: z.string().optional(),
       /** Same video posted on TikTok, when it is a crosspost. */
       tiktokUrl: z.url().optional(),
+      /**
+       * Series metadata, filled by hand. Instagram captions are hooks, so they
+       * never name the tool an episode is about — this is the only place that
+       * knowledge lives.
+       */
+      episode: z.number().optional(),
+      tool: z.string().optional(),
+      toolUrl: z.string().optional(),
+      /** One-line promise of the tool, shown on the series page. */
+      pitch: z.string().optional(),
       /** Instagram media id. Set by `npm run sync:videos`, its dedup key. */
       sourceId: z.string().optional(),
       /** Refreshed on every sync — these move after publication. */

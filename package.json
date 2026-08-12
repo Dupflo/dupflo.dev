@@ -8,7 +8,8 @@
     "check": "astro check",
     "sync:videos": "node --env-file-if-exists=.env --env-file-if-exists=.env.local scripts/sync-videos.mjs",
     "token:refresh": "node --env-file-if-exists=.env --env-file-if-exists=.env.local scripts/refresh-token.mjs",
-    "syndicate": "node scripts/syndicate.mjs"
+    "syndicate": "node scripts/syndicate.mjs",
+    "import:episodes": "node scripts/import-episodes.mjs"
   },
   "type": "module",
   "dependencies": {
