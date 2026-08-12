@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DbnZ7IFIlgv/
 date: 2026-08-04
 thumbnail: ../../assets/videos/2026-08-04-la-memoire-de-ton-ia-ne-lui-appartient-pas.jpg
-views: 5125
-likes: 66
+views: 5152
+likes: 67
 sourceId: "17989825140001967"
 ---
