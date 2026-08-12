@@ -9,6 +9,9 @@ export const SITE = {
   author: 'Florian Dupuis',
 } as const;
 
+/** Google Analytics 4. Loaded in production only, so local work stays out. */
+export const GA_ID = 'G-K2T9YNTSVK';
+
 export const DESCRIPTION = {
   en: 'Notes on agentic development, Claude Code and MCP, by Florian Dupuis — Senior Product Engineer.',
   fr: 'Notes sur le développement agentique, Claude Code et les MCP, par Florian Dupuis — Senior Product Engineer.',

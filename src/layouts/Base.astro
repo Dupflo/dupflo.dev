@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { SITE, DESCRIPTION } from '../consts';
+import { SITE, DESCRIPTION, GA_ID } from '../consts';
 import { t, localePath, otherLang, type Lang } from '../i18n/ui';
 
 interface Props {
@@ -98,6 +98,28 @@ const nav = [
       crossorigin
     />
     <slot name="head" />
+
+    {
+      /* The only third-party script on the site. Production only: a dev server
+         reload should not land in the reports. */
+      import.meta.env.PROD && (
+        <>
+          <script
+            is:inline
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          />
+          <script is:inline define:vars={{ GA_ID }}>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', GA_ID);
+          </script>
+        </>
+      )
+    }
   </head>
 
   <body class="mx-auto max-w-5xl px-5 pb-24">
