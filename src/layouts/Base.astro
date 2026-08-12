@@ -1,7 +1,8 @@
 ---
 import '../styles/global.css';
-import { SITE, DESCRIPTION, GA_ID } from '../consts';
+import { SITE, DESCRIPTION } from '../consts';
 import { t, localePath, otherLang, type Lang } from '../i18n/ui';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   lang: Lang;
@@ -100,25 +101,9 @@ const nav = [
     <slot name="head" />
 
     {
-      /* The only third-party script on the site. Production only: a dev server
-         reload should not land in the reports. */
-      import.meta.env.PROD && (
-        <>
-          <script
-            is:inline
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-          />
-          <script is:inline define:vars={{ GA_ID }}>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-              dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-            gtag('config', GA_ID);
-          </script>
-        </>
-      )
+      /* Cookieless, so there is nothing to consent to and no banner to build.
+         Production only: dev-server reloads stay out of the numbers. */
+      import.meta.env.PROD && <Analytics />
     }
   </head>
 
