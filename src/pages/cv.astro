@@ -63,9 +63,9 @@ const span = (start: string, end?: string) => `${start} — ${end ?? ui.ongoing}
           <div class="flex min-w-0 flex-wrap items-baseline gap-x-3 text-[13px]">
             <span class="font-semibold">{study.degree[lang]}</span>
             <span class="text-dim">{study.school} · {study.location}</span>
-            {!study.obtained && (
-              <span class="text-dim">({ui.notCompleted})</span>
-            )}
+            {/* The award is marked, not its absence: flagging two of four
+                entries as "not completed" read as a tally of failures. */}
+            {study.obtained && <span class="text-dim">{ui.graduated}</span>}
           </div>
         </div>
       ))
