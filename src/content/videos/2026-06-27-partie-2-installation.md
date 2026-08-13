@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DaF4fgXtVI0/
 date: 2026-06-27
 thumbnail: ../../assets/videos/2026-06-27-partie-2-installation.jpg
-views: 7460
+views: 7484
 likes: 88
 sourceId: "18108955126969758"
 ---
