@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DaS1yAJoIPO/
 date: 2026-07-02
 thumbnail: ../../assets/videos/2026-07-02-j-ai-ajoute-ce-qui-manquait-de-vrais-assets-3d-et-la-ca-chan.jpg
-views: 12329
+views: 12344
 likes: 265
 sourceId: "18104418248112550"
 ---
