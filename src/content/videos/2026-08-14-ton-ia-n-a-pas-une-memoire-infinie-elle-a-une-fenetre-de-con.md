@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DcBs3SwhYvv/
 date: 2026-08-14
 thumbnail: ../../assets/videos/2026-08-14-ton-ia-n-a-pas-une-memoire-infinie-elle-a-une-fenetre-de-con.jpg
-views: 1327
-likes: 13
+views: 1881
+likes: 16
 sourceId: "18058653998786258"
 ---

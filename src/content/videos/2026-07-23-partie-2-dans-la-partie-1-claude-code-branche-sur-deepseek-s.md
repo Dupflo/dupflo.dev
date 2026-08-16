@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DbIL9iQIepd/
 date: 2026-07-23
 thumbnail: ../../assets/videos/2026-07-23-partie-2-dans-la-partie-1-claude-code-branche-sur-deepseek-s.jpg
-views: 6430
-likes: 80
+views: 6441
+likes: 81
 sourceId: "18107565367832869"
 ---
