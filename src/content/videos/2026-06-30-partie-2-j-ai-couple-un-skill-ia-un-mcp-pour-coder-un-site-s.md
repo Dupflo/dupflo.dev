@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DaNmzDXNQYr/
 date: 2026-06-30
 thumbnail: ../../assets/videos/2026-06-30-partie-2-j-ai-couple-un-skill-ia-un-mcp-pour-coder-un-site-s.jpg
-views: 25449
+views: 25479
 likes: 425
 sourceId: "18378784321166742"
 ---
