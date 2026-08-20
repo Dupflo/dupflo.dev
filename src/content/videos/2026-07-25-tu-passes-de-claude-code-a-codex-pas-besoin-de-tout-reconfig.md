@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DbNqIr1tS-U/
 date: 2026-07-25
 thumbnail: ../../assets/videos/2026-07-25-tu-passes-de-claude-code-a-codex-pas-besoin-de-tout-reconfig.jpg
-views: 6214
+views: 6224
 likes: 67
 sourceId: "17947793679232337"
 ---
