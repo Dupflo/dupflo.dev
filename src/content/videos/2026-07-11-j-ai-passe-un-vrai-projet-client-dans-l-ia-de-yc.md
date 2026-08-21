@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DapZTzKNP1v/
 date: 2026-07-11
 thumbnail: ../../assets/videos/2026-07-11-j-ai-passe-un-vrai-projet-client-dans-l-ia-de-yc.jpg
-views: 7525
-likes: 135
+views: 7548
+likes: 137
 sourceId: "18179794837406674"
 ---
