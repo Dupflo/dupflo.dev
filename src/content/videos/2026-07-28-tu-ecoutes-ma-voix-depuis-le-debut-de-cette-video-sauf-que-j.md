@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DbVa_cBIkP-/
 date: 2026-07-28
 thumbnail: ../../assets/videos/2026-07-28-tu-ecoutes-ma-voix-depuis-le-debut-de-cette-video-sauf-que-j.jpg
-views: 63450
-likes: 1073
+views: 64180
+likes: 1098
 sourceId: "17877863661511529"
 ---
