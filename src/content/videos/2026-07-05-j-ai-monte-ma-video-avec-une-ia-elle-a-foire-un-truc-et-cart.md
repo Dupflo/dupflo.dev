@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DaZutyrIG--/
 date: 2026-07-05
 thumbnail: ../../assets/videos/2026-07-05-j-ai-monte-ma-video-avec-une-ia-elle-a-foire-un-truc-et-cart.jpg
-views: 12665
-likes: 184
+views: 12670
+likes: 185
 sourceId: "18049127219789016"
 ---
