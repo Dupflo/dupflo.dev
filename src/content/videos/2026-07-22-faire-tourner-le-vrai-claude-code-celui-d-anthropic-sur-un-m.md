@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DbF4rvbIBZr/
 date: 2026-07-22
 thumbnail: ../../assets/videos/2026-07-22-faire-tourner-le-vrai-claude-code-celui-d-anthropic-sur-un-m.jpg
-views: 52483
-likes: 1000
+views: 52829
+likes: 1005
 sourceId: "18101011072913138"
 ---
