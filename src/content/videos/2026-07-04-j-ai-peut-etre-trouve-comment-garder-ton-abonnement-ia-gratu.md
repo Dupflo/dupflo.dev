@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DaXXspco4HT/
 date: 2026-07-04
 thumbnail: ../../assets/videos/2026-07-04-j-ai-peut-etre-trouve-comment-garder-ton-abonnement-ia-gratu.jpg
-views: 24027
-likes: 414
+views: 24074
+likes: 416
 sourceId: "17966987615935817"
 ---
