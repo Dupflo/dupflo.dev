@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DciWl-mo0wZ/
 date: 2026-08-27
 thumbnail: ../../assets/videos/2026-08-27-ton-ia-peut-piloter-tes-propres-outils-demo-en-2-min.jpg
-views: 1446
-likes: 15
+views: 1532
+likes: 16
 sourceId: "18014365577929158"
 ---
