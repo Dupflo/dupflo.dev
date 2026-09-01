@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DaKujxlo2vT/
 date: 2026-06-29
 thumbnail: ../../assets/videos/2026-06-29-j-installe-un-mcp-qui-pose-de-vrais-composants-pros-directem.jpg
-views: 29219
+views: 29228
 likes: 455
 sourceId: "17955992810985198"
 ---
