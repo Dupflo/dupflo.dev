@@ -199,11 +199,35 @@
     margin-top: 0.4em;
   }
 
-  .prose blockquote {
+  /* Direct children only: a blockquote nested in a component (a quoted post,
+     say) carries its own styling and must not inherit the pull-quote rule. */
+  .prose > blockquote {
     border-left: 2px solid var(--color-accent);
     padding-left: 1.1em;
     color: var(--color-dim);
     font-style: italic;
+  }
+
+  /* Where an image comes from, stated under it. Kept in the interface voice
+     so it never reads as part of the prose it illustrates. */
+  .prose .img-credit {
+    margin-top: 0.65em;
+    max-width: min(100%, 46rem);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1.45;
+    color: var(--color-dim);
+  }
+
+  /* The image inside a captioned figure gives up its own bottom margin, or the
+     credit floats 2em below the thing it credits. The figure carries the outer
+     spacing instead. */
+  .prose figure {
+    margin-bottom: 2em;
+  }
+
+  .prose figure > img {
+    margin-bottom: 0;
   }
 
   /* Images break the measure — they are the widest thing in an article. But
@@ -341,6 +365,12 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 1px 12px color-mix(in srgb, var(--color-ink) 12%, transparent);
+    /* iOS Safari drops the backdrop layer of a fixed + backdrop-filter element
+       during momentum scroll — the disc flashes and vanishes mid-scroll. Pin it
+       to its own GPU layer so the frosted backdrop survives every scroll frame. */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
   }
 
   /* The ring itself. It lives on a pseudo-element because the mask that turns

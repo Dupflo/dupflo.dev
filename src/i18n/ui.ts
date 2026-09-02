@@ -38,6 +38,8 @@ export const UI = {
     ongoing: 'now',
     graduated: 'graduated',
     noPosts: 'Nothing here yet in English.',
+    /** Label above my own answer inside a quoted comment. */
+    commentReply: 'My reply',
     minutes: 'min',
     otherLang: 'Français',
     /** Shown on a list when the entry is not available in the current language. */
@@ -78,6 +80,7 @@ export const UI = {
     ongoing: 'auj.',
     graduated: 'diplômé',
     noPosts: 'Rien ici pour l’instant en français.',
+    commentReply: 'Ma réponse',
     minutes: 'min',
     otherLang: 'English',
     onlyInOtherLang: 'en anglais',

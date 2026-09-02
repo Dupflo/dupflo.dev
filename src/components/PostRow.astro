@@ -16,9 +16,14 @@ const minutes = readingMinutes(post.body);
 // The URL follows the article's own language, not the page it is listed on.
 const href = localePath(post.data.lang, `/blog/${stripLang(post.id)}`);
 
-const meta = [tags.join(', '), `${minutes} ${t(lang).minutes}`]
-  .filter(Boolean)
-  .join(' · ');
+const time = `${minutes} ${t(lang).minutes}`;
+// The featured row puts its metadata on a line of its own, so it can carry
+// every tag. A compact row shares one line with the title, which comes first:
+// the leading tag stays as a topical hint and the rest collapse into a count
+// that names them on hover. A native `title` rather than a scripted popover —
+// this list ships no JavaScript, and the full set is on the article anyway.
+const meta = [tags.join(', '), time].filter(Boolean).join(' · ');
+const [leadTag, ...restTags] = tags;
 ---
 
 <a
@@ -53,7 +58,16 @@ const meta = [tags.join(', '), `${minutes} ${t(lang).minutes}`]
         <div class="min-w-0">
           <h3 class="truncate text-[13px] group-hover:text-accent">{title}</h3>
         </div>
-        <div class="text-[13px] text-dim md:justify-self-end">{meta}</div>
+        <div class="truncate text-[13px] text-dim md:text-right">
+          {leadTag}
+          {restTags.length > 0 && (
+            <span class="cursor-help" title={restTags.join(', ')}>
+              {' '}+{restTags.length}
+            </span>
+          )}
+          {leadTag && ' · '}
+          {time}
+        </div>
       </>
     )
   }

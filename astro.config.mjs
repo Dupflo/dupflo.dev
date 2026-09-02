@@ -7,6 +7,7 @@ import vercel from '@astrojs/vercel';
 
 import { SITE } from './src/consts.ts';
 import { postAlternates } from './src/lib/alternates.ts';
+import { rehypeFigure } from './src/lib/rehype-figure.mjs';
 
 // Built once at config load; the sitemap serializer reads from it per URL.
 const ALTERNATES = postAlternates(SITE.url);
@@ -41,6 +42,8 @@ export default defineConfig({
     server: { allowedHosts: ['.ngrok-free.app', '.ngrok.app', '.trycloudflare.com'] },
   },
   markdown: {
+    // A markdown image title becomes a caption crediting the image's origin.
+    rehypePlugins: [rehypeFigure],
     shikiConfig: {
       // Single theme: the site is dark-canonical, and a second theme would
       // double the inlined highlight CSS for no gain.
