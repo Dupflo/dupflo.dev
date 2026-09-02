@@ -32,7 +32,16 @@ const posts = defineCollection({
       lang: z.enum(['fr', 'en']),
       /** Shared across translations of the same article. */
       translationKey: z.string(),
+      /** The site's own vocabulary, shown on the page. Hyphenated, mine. */
       tags: z.array(z.string()).default([]),
+      /**
+       * Syndication taxonomies are closed and do not map from the above:
+       * dev.to rejects hyphens and only distributes tags that already exist,
+       * Medium serves a fixed topic list. Declared per platform, or the post
+       * lands on tags nobody follows.
+       */
+      devto: z.array(z.string()).max(4).default([]),
+      medium: z.array(z.string()).max(5).default([]),
       canonicalUrl: z.url().optional(),
       cover: image().optional(),
       draft: z.boolean().default(false),

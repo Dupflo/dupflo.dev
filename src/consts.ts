@@ -10,8 +10,8 @@ export const SITE = {
 } as const;
 
 export const DESCRIPTION = {
-  en: 'Notes on agentic development, Claude Code and MCP, by Florian Dupuis — Senior Product Engineer.',
-  fr: 'Notes sur le développement agentique, Claude Code et les MCP, par Florian Dupuis — Senior Product Engineer.',
+  en: 'Senior Product Engineer, nine years shipping products. Long-form on agentic development and MCP in English, short-form in French as @dupflodev.',
+  fr: 'Senior Product Engineer, neuf ans à lancer des produits. Articles de fond en anglais sur le développement agentique et les MCP, format court en français.',
 } as const;
 
 /** Same shape wherever an author is declared: JSON-LD, RSS, meta. */

@@ -9,3 +9,12 @@ dist/
 .env*
 /syndication/
 .context/
+
+# Written by the dev annotation overlay; a scratchpad, not content.
+annotations.md
+
+# Obsidian vault: thoughts and article drafts. Local only, this repo is public.
+/articles/
+
+# Screenshots written by the annotation overlay, alongside annotations.md.
+/annotations/

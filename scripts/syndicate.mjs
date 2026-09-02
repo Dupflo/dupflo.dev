@@ -55,11 +55,24 @@ const field = (name) =>
 
 const title = field('title');
 const description = field('description');
-const tags = (field('tags').match(/\[(.*)\]/)?.[1] ?? '')
-  .split(',')
-  .map((t) => t.trim().replace(/-/g, ''))
-  .filter(Boolean)
-  .slice(0, 4); // dev.to caps at four, and rejects hyphens.
+const list = (name) =>
+  (field(name).match(/\[(.*)\]/)?.[1] ?? '')
+    .split(',')
+    .map((t) => t.trim())
+    .filter(Boolean);
+
+// dev.to only distributes tags that already exist on the platform, so these are
+// declared per post rather than derived from the site's own vocabulary — a
+// hyphen-stripped `learning-in-public` becomes a tag nobody follows.
+const tags = list('devto').slice(0, 4);
+const topics = list('medium').slice(0, 5);
+
+if (tags.length === 0) {
+  console.warn(
+    `No \`devto:\` field in ${found.path}. dev.to will publish this untagged,\n` +
+      'which means it appears in no feed. Add four existing dev.to tags.',
+  );
+}
 
 const canonical = `${SITE}${
   found.lang === 'en' ? '' : '/fr'
@@ -113,7 +126,9 @@ await writeFile(target, devto);
 
 console.log(`${target}`);
 console.log(`  canonical : ${canonical}`);
-console.log(`  tags      : ${tags.join(', ')}`);
+console.log(`  dev.to    : ${tags.join(', ') || '(none)'}`);
+console.log(`  Medium    : ${topics.join(', ') || '(none)'}`);
 console.log(`  images    : ${copied.length} copied to ${imageDir}`);
 console.log(`\nCommit public/${OUT}/ so the images resolve, then paste the file.`);
-console.log('For Medium, do not paste — use medium.com/p/import on the canonical URL.');
+console.log('For Medium, do not paste — use medium.com/p/import on the canonical');
+console.log('URL, then set the topics above by hand in their editor.');

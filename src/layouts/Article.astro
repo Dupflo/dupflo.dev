@@ -70,7 +70,7 @@ const canonical = canonicalUrl ?? new URL(Astro.url.pathname, SITE.url).href;
   <div class="reading-progress" aria-hidden="true"></div>
 
   <article>
-    <header class="border-b py-8">
+    <header class="max-w-[62ch] border-b py-8">
       <div class="flex flex-wrap items-baseline gap-x-3 text-[13px] text-dim">
         <span class="text-ink">{SITE.author}</span>
         <time datetime={iso(date)} class="tabular-nums">{iso(date)}</time>
