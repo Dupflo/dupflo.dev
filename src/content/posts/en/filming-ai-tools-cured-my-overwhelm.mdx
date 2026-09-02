@@ -1,0 +1,109 @@
+---
+title: Filming AI Tools Cured My Overwhelm
+description: Testing influencer promises in public, sixty times in a row. The overwhelm did not go away because I caught up. It went away because I was no longer intimidated by something I had tested and taken apart on camera.
+date: 2026-08-20
+lang: en
+translationKey: videos-cured-overwhelm
+tags: [ai-tools, learning-in-public, content]
+devto: [ai, productivity, career, discuss]
+medium: [Artificial Intelligence, Productivity, Software Development, Content Creation]
+cover: ../../../assets/posts/videos-cured-overwhelm/too-many-tools.png
+draft: false
+---
+
+import Tweet from '../../../components/Tweet.astro';
+import Comment from '../../../components/Comment.astro';
+
+Since May, in the wake of my thirtieth birthday, I picked influencer videos that caught my interest and told myself: let's try it, on camera. A skill you absolutely have to install. A website built in thirty minutes with animations that would have taken me days. A way to stop paying for a frontier model and get Claude Code for free. I reproduced the setup, filmed the attempt, and published the verdict either way.
+
+Sixty times in a row.
+
+I did not start doing this to debunk anything. I started because I felt like I was drowning in a world where AI news was arriving far too fast. It ended up triggering serious doubt about my own professional ability.
+
+## AI is moving too fast, there are too many tools
+
+I did not really bring AI into my coding process until late 2024, early 2025. Before that I was only using it to write emails, fix my grammar, or write small functions. The code it generated back then was not up to the quality standard I needed for my main client, and I was wasting time reading overcomplicated code. It was also a matter of policy: my main client, who takes up thirty-five hours of my week, limited external tools. AI stayed secondary for me back then. I did not think AI was good enough to build a full app. Developer pride, mostly: my ability to write good-quality code and get paid for it was the thing that made sense to me about this job.
+
+Then came social media, LinkedIn first, before the "This looks like AI slop" button existed. I watched a wave of "AI experts" selling the benefits of a newly released skill that we absolutely had to install, or else we were not using AI at its full power. I read that same story over and over, each time about a different plugin, skill, tool, or AI SaaS product.
+
+Anthropic and OpenAI were shipping new models every month, and agent harnesses like OpenClaw and Hermes were appearing. I started to lose track of what was going on. Every tool, plugin or skill was better than the one presented the day before. Web development was already moving fast between 2016 and 2021 with JavaScript libraries and frameworks. This was faster.
+
+My first move was to look at YouTube creators and short-form content on Instagram and TikTok. But I ran into one problem with those platforms: engagement wins over quality content.
+
+- "Look at what Claude did in one prompt."
+- "I built a website in 30 minutes, with animations that would have taken me several days."
+- "Developers will be replaced."
+- Videos of vibe coders showing how to make a million in seven days by launching a SaaS. That one deserves its own article.
+
+With my novice eyes, it was terrifying.
+
+![Comic strip: a developer slumped at his desk, head in hands, buried under a storm of notification cards reading NEW TOOL, NEW SKILL, MUST INSTALL, v2.0, BETA. He thinks "I'm already behind."](../../../assets/posts/videos-cured-overwhelm/too-many-tools.png "Illustration generated with AI using Higgsfield.")
+
+## Leaving the cave
+
+I wanted to learn. At the same time, I wanted to get out of my cave. For the past six years I had been focused on my career and not much on sharing things. Today I contribute more to open source, and my writing is part of that same move, marking my progress with each article.
+
+So I decided to make videos while I was discovering AI technologies, in real time. Most of the promoted short videos I saw were pure showcases, ending with "comment 'Claude' and I'll send you the link," and never showing the thing being tested. I know social media runs on the wow effect. I regret that it has reached web development too, and I have an article in progress on the subject.
+
+Short-form also takes less time than long-form, and regularity is what I am after right now. It suits me for another reason: it let me cover a lot of different subjects, and catch up on my knowledge debt about AI.
+
+Through my videos I ended up finding genuinely useful things. I discovered a free plugin for creating motion graphics with HTML. I generated PowerPoint videos from my own scripts. I found a solid plugin to research, plan and implement a feature. I tested Fable 5 on an Instagram trend.
+
+And I never once managed to reproduce the promised ten-minute journey from prompt to website with scroll animations.
+
+## The clearest case: you cannot copy a reasoning process
+
+One video claimed you no longer need to pay for a frontier model. There is a public GitHub repository containing tens of thousands of lines of system prompts from Claude, ChatGPT, Cursor, and v0. The pitch: copy the prompt, paste it into the cheapest model you can find, done.
+
+So I checked instead of reacting. The Claude Fable 5 file alone is around seventeen thousand words. I ran it through a DeepSeek tokenizer: roughly twenty-seven thousand tokens. On a pay-per-use model, that costs about four cents. The pitch was right about the price, and the price was never the point.
+
+A system prompt is a score. The model is the musician. You can photocopy a score perfectly and hand it to someone who has never touched a piano, and you still do not get the concert. Here, it is worse than that: system prompts constantly reference tools the harness provides. Give those instructions to a model that does not have those tools, which is exactly the situation anyone arriving at that repository is in, and the instructions point at nothing.
+
+![Comic strip: a nervous figure at a grand piano in a packed concert hall, sheet music open in front of it, thinking "I have everything I need." The audience checks their watches.](../../../assets/posts/videos-cured-overwhelm/score-not-orchestra.png "Illustration generated with AI using Higgsfield.")
+
+What you actually copied is the score, not the orchestra: the agent loop, the tools, the context management.
+
+None of which makes the repository useless. It is one of the best prompt engineering schools available for free, a real look at how teams with serious resources structure instructions and frame their tools. Read it for that. Just not while telling yourself you got Claude for four cents.
+
+I took that one apart on camera. [The video is in French](https://www.instagram.com/reel/DbDCXyvNA5m/?igsh=dGZ5Mnd6czltNTBy), if that works for you.
+
+The comments were worth something, and not as praise. This one in particular.
+
+<Comment author="rayane16e" platform="Instagram" likes={3}>
+  Finally someone saying things that make sense. For two weeks I have been
+  watching inaccurate videos, and the proof is that I still have Fable 5.
+</Comment>
+
+He did not need to be told the repository was useless. He needed someone to check, on his behalf, what he had been sold for two weeks. And he still pays for his frontier model, which is the only answer that matters to the video's promise.
+
+## What sixty tests actually taught me
+
+Not that the tools are bad. Several of them earned a place in how I work, and I said so on camera each time.
+
+What changed is the ratio I expected. Most of what gets promoted turned out to be something Claude Code or ChatGPT already does natively, out of the box, with no plugin at all — repackaged, renamed, and presented as a discovery. A smaller share added a genuinely new capability. And the promises that could not be reproduced at all were, without exception, the ones with the biggest numbers attached.
+
+The person who built Claude Code said it himself, in January 2026, in a thread that has passed eight million views.
+
+<Tweet
+  url="https://x.com/bcherny/status/2007179832300581177"
+  author="Boris Cherny"
+  handle="bcherny"
+  date="2 January 2026"
+>
+  My setup might be surprisingly vanilla! Claude Code works great out of the
+  box, so I personally don't customize it much.
+</Tweet>
+
+The person who built the tool barely tools it. That is the best counterpoint I know to the video telling you that a skill is what you are missing.
+
+I was also afraid, at the start, of making technical videos explaining how a skill actually works instead of showing an incredible result I could not have produced or explained myself. I did not know whether an audience existed for that. I am glad to find that it does. A few people sent me comments and messages thanking me for setting the record straight.
+
+I started publishing in May 2026, at the lowest level, the beginner one. I have been moving up towards intermediate and then advanced ever since. Starting at the very bottom is what let me learn in public without pretending to know.
+
+## What actually changed
+
+The overwhelm did not go away because I found the right tool, or because I finally caught up. It went away because you cannot stay intimidated by something you have taken apart on camera.
+
+Testing in public forces a verdict. Either the thing works and you show it working, or it does not and you say so. Either way the fear is gone by the end of the recording. Sixty times in a row, and the landscape stops looking infinite.
+
+![Comic strip: a developer calmly unscrewing a box labelled AI TOOL on his desk while a phone records him, saying "Just making sure I know how it actually works." A poster of a monster is crossed out on the wall.](../../../assets/posts/videos-cured-overwhelm/under-the-hood.png "Illustration generated with AI using Higgsfield.")
