@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/Dc5YFUdtxcE/
 date: 2026-09-05
 thumbnail: ../../assets/videos/2026-09-05-quatre-personnes-m-ont-contredit-elles-avaient-toutes-raison.jpg
-views: 3045
+views: 3084
 likes: 41
 sourceId: "18125476279832345"
 ---

@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/Dc_Yly7tUEg/
 date: 2026-09-07
 thumbnail: ../../assets/videos/2026-09-07-ton-ia-ne-te-ment-pas-elle-devine.jpg
-views: 981
-likes: 10
+views: 1165
+likes: 13
 sourceId: "18142180303572743"
 ---
