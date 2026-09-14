@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DdInDmqtO4A/
 date: 2026-09-11
 thumbnail: ../../assets/videos/2026-09-11-il-n-a-pas-genere-l-image-il-l-a-peinte.jpg
-views: 20180
-likes: 151
+views: 37869
+likes: 313
 sourceId: "18215281525350366"
 ---
