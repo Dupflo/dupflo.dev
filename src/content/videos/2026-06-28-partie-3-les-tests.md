@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DaH8Ty1oZ2t/
 date: 2026-06-28
 thumbnail: ../../assets/videos/2026-06-28-partie-3-les-tests.jpg
-views: 12844
-likes: 216
+views: 12846
+likes: 217
 sourceId: "18396485098090658"
 ---
