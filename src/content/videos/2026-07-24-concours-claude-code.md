@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DbLHEH8IH5p/
 date: 2026-07-24
 thumbnail: ../../assets/videos/2026-07-24-concours-claude-code.jpg
-views: 3294
+views: 3301
 likes: 44
 sourceId: "18007670384954492"
 ---

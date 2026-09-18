@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DaAcGX9IO14/
 date: 2026-06-25
 thumbnail: ../../assets/videos/2026-06-25-leur-pub-disait-40-leur-propre-code-disait-0.jpg
-views: 44580
+views: 44581
 likes: 1386
 sourceId: "17916944697401516"
 ---
