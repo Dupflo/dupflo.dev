@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DcwE2GxgzKn/
 date: 2026-09-01
 thumbnail: ../../assets/videos/2026-09-01-le-vibe-coding-c-est-fini-voila-ce-qui-vient-apres.jpg
-views: 7763
+views: 7783
 likes: 185
 sourceId: "18140272942586073"
 ---

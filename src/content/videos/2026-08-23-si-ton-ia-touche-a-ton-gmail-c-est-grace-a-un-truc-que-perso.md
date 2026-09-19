@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DcY2XHyIux6/
 date: 2026-08-23
 thumbnail: ../../assets/videos/2026-08-23-si-ton-ia-touche-a-ton-gmail-c-est-grace-a-un-truc-que-perso.jpg
-views: 2596
+views: 2604
 likes: 43
 sourceId: "18113756167989423"
 ---

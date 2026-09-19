@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DZpPGKnNsqz/
 date: 2026-06-16
 thumbnail: ../../assets/videos/2026-06-16-fable-5-tient-il-vraiment-ses-promesses.jpg
-views: 70205
+views: 70211
 likes: 782
 sourceId: "18036506918808092"
 ---
