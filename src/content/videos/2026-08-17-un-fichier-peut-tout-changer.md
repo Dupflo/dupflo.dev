@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DcJUoa_qHwT/
 date: 2026-08-17
 thumbnail: ../../assets/videos/2026-08-17-un-fichier-peut-tout-changer.jpg
-views: 2925
-likes: 37
+views: 2934
+likes: 38
 sourceId: "18109825301023018"
 ---
