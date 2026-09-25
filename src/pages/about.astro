@@ -1,8 +1,6 @@
 ---
 /**
- * About, in English. The legal pages are French because the obligation is
- * French; this page exists so a non-French-speaking reviewer — a platform
- * verifying who owns dupflo.dev, say — can read the same facts in English.
+ * About, in English. Its French twin is /fr/a-propos.
  */
 import Base from '../layouts/Base.astro';
 import PageHeader from '../components/PageHeader.astro';
@@ -11,8 +9,11 @@ import EntityCard from '../components/EntityCard.astro';
 import JsonLd from '../components/JsonLd.astro';
 import { business, addressLine } from '../config/business';
 import { SITE, AUTHOR } from '../consts';
+import { identityPath, identityTwin } from '../i18n/pages';
 
 const lang = 'en' as const;
+/** The same page in the other language, for hreflang and the language switch. */
+const twin = identityTwin('about', lang);
 
 const title = 'About';
 const description = `Florian Dupuis, a France-based software developer running a registered micro-enterprise (entrepreneur individuel), SIRET ${business.siret}. What I build, and the entity that owns dupflo.dev.`;
@@ -20,7 +21,7 @@ const description = `Florian Dupuis, a France-based software developer running a
 const registeredYear = business.registeredSince.slice(0, 4);
 ---
 
-<Base lang={lang} title={title} description={description}>
+<Base lang={lang} title={title} description={description} translationHref={twin}>
   <Fragment slot="head">
     <JsonLd
       schema={{
@@ -124,9 +125,9 @@ const registeredYear = business.registeredSince.slice(0, 4);
       Email <a href={`mailto:${business.email}`}>{business.email}</a> — replies
       within two working days. Postal mail reaches me at {addressLine()}, and the
       phone number is listed in the
-      {' '}<a href="/mentions-legales">legal notice</a> (in French, as French law
-      requires). Data-protection requests are covered by the
-      {' '}<a href="/confidentialite">privacy policy</a>.
+      {' '}<a href={identityPath('legal', lang)}>legal notice</a>.
+      Data-protection requests are covered by the
+      {' '}<a href={identityPath('privacy', lang)}>privacy policy</a>.
     </p>
   </div>
 </Base>

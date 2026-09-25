@@ -7,21 +7,24 @@
  * obligation is French and so is the wording an administration looks for. It
  * has no English twin, so no hreflang pair is declared.
  */
-import Base from '../layouts/Base.astro';
-import PageHeader from '../components/PageHeader.astro';
-import SectionHeader from '../components/SectionHeader.astro';
-import EntityCard from '../components/EntityCard.astro';
-import JsonLd from '../components/JsonLd.astro';
-import { business, addressLine, formatDate } from '../config/business';
-import { SITE } from '../consts';
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import EntityCard from '../../components/EntityCard.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { business, addressLine, formatDate } from '../../config/business';
+import { SITE } from '../../consts';
+import { identityPath, identityTwin } from '../../i18n/pages';
 
 const lang = 'fr' as const;
+/** The same page in the other language, for hreflang and the language switch. */
+const twin = identityTwin('legal', lang);
 
 const title = 'Mentions légales';
 const description = `Éditeur du site ${SITE.title} : ${business.legalName}, ${business.legalForm.fr}, SIRET ${business.siret}. Hébergeur, propriété intellectuelle et responsabilité.`;
 ---
 
-<Base lang={lang} title={title} description={description}>
+<Base lang={lang} title={title} description={description} translationHref={twin}>
   <Fragment slot="head">
     <!-- The identity, machine-readable. Same values as the page body. -->
     <JsonLd
@@ -146,7 +149,7 @@ const description = `Éditeur du site ${SITE.title} : ${business.legalName}, ${b
     <h2>Données personnelles et cookies</h2>
     <p>
       Le traitement des données personnelles est détaillé dans la
-      {' '}<a href="/confidentialite">politique de confidentialité</a>. Le site
+      {' '}<a href={identityPath('privacy', lang)}>politique de confidentialité</a>. Le site
       ne dépose aucun cookie publicitaire ni traceur marketing, et n’affiche
       donc pas de bandeau de consentement.
     </p>
@@ -156,7 +159,7 @@ const description = `Éditeur du site ${SITE.title} : ${business.legalName}, ${b
       Pour toute question, demande de retrait ou signalement :
       {' '}<a href={`mailto:${business.email}`}>{business.email}</a>, ou par
       courrier à {addressLine()}. Voir aussi la page
-      {' '}<a href="/contact">contact</a>.
+      {' '}<a href={identityPath('contact', lang)}>contact</a>.
     </p>
   </div>
 

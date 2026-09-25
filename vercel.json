@@ -1,5 +1,17 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/mentions-legales{/}?",
+      "destination": "/fr/mentions-legales",
+      "permanent": true
+    },
+    {
+      "source": "/confidentialite{/}?",
+      "destination": "/fr/confidentialite",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

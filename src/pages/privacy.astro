@@ -1,0 +1,218 @@
+---
+/**
+ * Privacy policy, English. Translation of /fr/confidentialite, which remains
+ * the governing version.
+ *
+ * Every factual claim here has to stay true of the deployed site. The two
+ * things that touch personal data are Vercel's server logs and the mailbox
+ * behind hello@dupflo.dev; analytics is cookieless and aggregate.
+ */
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { business, addressLine, formatDate } from '../config/business';
+import { identityTwin } from '../i18n/pages';
+
+const lang = 'en' as const;
+const twin = identityTwin('privacy', lang);
+
+const title = 'Privacy policy';
+const description =
+  'What personal data this site handles, why, for how long, and how to exercise your rights. No advertising cookie, no marketing tracker.';
+---
+
+<Base lang={lang} title={title} description={description} translationHref={twin}>
+  <PageHeader
+    title={title}
+    intro="What this site knows about you, why, and how to have it erased."
+  />
+
+  <div class="prose mt-8">
+    <p>
+      This is an editorial site: it is read without an account and without a
+      form. There is almost nothing for it to process. What follows states
+      exactly what there is, and on what basis.
+    </p>
+
+    <h2>Data controller</h2>
+    <p>
+      <strong>{business.legalName}</strong>, {business.legalForm.en},
+      SIRET {business.siret}, {addressLine()}.
+      <br />
+      For anything concerning personal data:
+      {' '}<a href={`mailto:${business.email}`}>{business.email}</a>.
+    </p>
+    <p>
+      Given the nature and volume of the processing, appointing a data protection
+      officer is not required. Requests are handled directly by the controller.
+    </p>
+
+    <h2>Data processed</h2>
+    <ul>
+      <li>
+        <strong>Host server logs.</strong> Every request to the site is logged by
+        Vercel: IP address, timestamp, requested URL, response code, user agent,
+        referrer. These logs are generated automatically by the infrastructure.
+      </li>
+      <li>
+        <strong>Contact messages.</strong> If you write to {business.email}, I
+        process your email address, your name where the message carries one, and
+        the content of the message.
+      </li>
+      <li>
+        <strong>Aggregate analytics.</strong> Vercel Analytics counts page views
+        without a cookie, without a persistent identifier and without browser
+        fingerprinting. The data is aggregate: I see volumes per page, not
+        visitors.
+      </li>
+      <li>
+        <strong>Article reactions.</strong> The button at the end of an article
+        increments a counter. It records no identity, no IP address, and nothing
+        that ties that click to you.
+      </li>
+    </ul>
+    <p>
+      <strong>No advertising cookie, no marketing tracker, no social pixel, no
+      data sold.</strong> The site sets no non-essential cookie, so there is no
+      consent to collect and no banner to display.
+    </p>
+    <p>
+      No special category of data within the meaning of Article 9 GDPR is
+      collected, and the site is not directed at children under fifteen.
+    </p>
+
+    <h2>Purposes and legal bases</h2>
+    <ul>
+      <li>
+        <strong>Serving the pages and keeping the site secure</strong> (server
+        logs): legitimate interest, Article 6(1)(f) GDPR. The interest pursued is
+        keeping the site available and detecting abuse, such as an attack or a
+        spike of automated traffic.
+      </li>
+      <li>
+        <strong>Answering a message</strong> (contact email): performance of a
+        request you initiate, Article 6(1)(b) where it concerns an engagement,
+        legitimate interest, Article 6(1)(f), otherwise.
+      </li>
+      <li>
+        <strong>Understanding which pages are read</strong> (cookieless aggregate
+        analytics): legitimate interest, Article 6(1)(f), exempt from consent
+        since nothing is stored on your device.
+      </li>
+    </ul>
+    <p>
+      No automated decision-making and no profiling is carried out on this data.
+    </p>
+
+    <h2>Retention</h2>
+    <ul>
+      <li>
+        <strong>Contact messages: 12 months</strong> from the last exchange, then
+        deleted. Exchanges that lead to a commercial relationship are kept under
+        accounting and tax obligations, which is ten years for supporting
+        documents.
+      </li>
+      <li>
+        <strong>Server logs: around 30 days</strong>, per the host's retention
+        policy, then purged automatically.
+      </li>
+      <li>
+        <strong>Analytics: aggregate figures only</strong>, with no individual
+        record to keep or erase.
+      </li>
+    </ul>
+
+    <h2>Recipients</h2>
+    <p>
+      Your data is not sold, rented or handed on. It is accessible to me, and to
+      the technical processors strictly needed to run the site:
+    </p>
+    <ul>
+      <li>
+        <strong>{business.host.name}</strong> ({business.host.address}):
+        hosting, page delivery, server logs, analytics.
+      </li>
+      <li>
+        <strong>My email provider</strong>: delivery and storage of the messages
+        you send me.
+      </li>
+      <li>
+        <strong>Upstash</strong>: storage of the reaction counter, which holds no
+        personal data.
+      </li>
+    </ul>
+    <p>
+      Each acts on instruction, under a processing agreement within the meaning
+      of Article 28 GDPR.
+    </p>
+
+    <h2>Transfers outside the European Union</h2>
+    <p>
+      {business.host.name} is a company incorporated in the United States. Some
+      processing, the server logs in particular, may therefore involve a transfer
+      of data outside the European Union.
+    </p>
+    <p>
+      Those transfers are covered by the European Commission's
+      <strong> standard contractual clauses</strong> (decision 2021/914),
+      together with the host's technical measures: encryption in transit and at
+      rest, and access partitioning. No data is transferred to a third country
+      outside that framework.
+    </p>
+
+    <h2>Your rights</h2>
+    <p>
+      Under Articles 15 to 22 GDPR you have the right of access, rectification,
+      erasure, restriction of processing, objection to processing based on
+      legitimate interest, and data portability.
+    </p>
+    <p>
+      To exercise any of them, write to
+      {' '}<a href={`mailto:${business.email}`}>{business.email}</a> or to
+      {' '}{addressLine()}. You will get an answer within one month, extendable
+      by two months for a complex request, in which case you will be told. Proof
+      of identity may be requested where there is reasonable doubt about who is
+      asking.
+    </p>
+    <p>
+      If the answer does not satisfy you, you may lodge a complaint with the
+      French data protection authority, the <strong>CNIL</strong>, 3 place de
+      Fontenoy, TSA 80715, 75334 Paris Cedex 07, or online:
+      {' '}<a href="https://www.cnil.fr/en/plaintes" rel="noopener" target="_blank">
+        cnil.fr/en/plaintes
+      </a>.
+    </p>
+
+    <h2>Security</h2>
+    <p>
+      The site is served over <strong>HTTPS</strong> only, with
+      <strong> HSTS</strong>: a browser that has visited it once refuses any
+      unencrypted connection afterwards. The usual security headers are in place,
+      notably against framing the site from a third-party origin and against
+      content-type sniffing.
+    </p>
+    <p>
+      Pages are pre-rendered and served as static files: there is no visitor
+      database, no user account and no session, so there are no credentials to
+      protect. Access to the administration tools — code repository and hosting —
+      is protected by two-factor authentication.
+    </p>
+
+    <h2>Changes</h2>
+    <p>
+      This policy may be updated to follow changes in the site or in the
+      regulation. The version in force is the one published on this page, dated
+      below.
+    </p>
+
+    <h2>Governing version</h2>
+    <p>
+      This is a translation. The
+      {' '}<a href={twin} hreflang="fr" lang="fr">French version</a> prevails in
+      case of any discrepancy.
+    </p>
+  </div>
+
+  <p class="mt-10 border-t pt-4 text-[12px] text-dim">
+    Last updated: {formatDate(business.updatedAt, lang)}
+  </p>
+</Base>

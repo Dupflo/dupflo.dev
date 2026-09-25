@@ -12,10 +12,15 @@ export const business = {
   /** An `entrepreneur individuel` trades under their own name — there is no company name. */
   legalName: 'Florian Dupuis',
 
-  /** Short label, used in the footer and the identity blocks. */
+  /**
+   * Short label, used in the footer and the identity blocks. The English side
+   * leads with the trade, not the tax status: `entrepreneur individuel` has no
+   * English equivalent, and "sole trader" reads smaller than the work is.
+   * "Registered" is the word a platform reviewer is looking for — it stays.
+   */
   legalForm: {
     fr: 'Entrepreneur individuel (micro-entreprise)',
-    en: 'Sole trader (micro-enterprise)',
+    en: 'Independent consultant — registered micro-enterprise',
   },
 
   /** Who answers for what is published. Required by French law. */

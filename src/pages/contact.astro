@@ -1,7 +1,7 @@
 ---
 /**
- * Contact. One real mailto link, a stated response time, and the entity behind
- * the address — which is what a platform reviewer is actually looking for.
+ * Contact, English. One real mailto link, a stated response time, and the
+ * entity behind the address — which is what a platform reviewer looks for.
  *
  * No form: a form means a backend, a spam filter and a consent notice for
  * something an email link already does.
@@ -11,17 +11,19 @@ import PageHeader from '../components/PageHeader.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import EntityCard from '../components/EntityCard.astro';
 import { business } from '../config/business';
+import { identityPath, identityTwin } from '../i18n/pages';
 
-const lang = 'fr' as const;
+const lang = 'en' as const;
+const twin = identityTwin('contact', lang);
 
 const title = 'Contact';
-const description = `Écrire à ${business.legalName} : ${business.email}. Réponse sous 48 heures ouvrées. ${business.legalForm.fr}, SIRET ${business.siret}.`;
+const description = `Write to ${business.legalName}: ${business.email}. Reply within two working days. ${business.legalForm.en}, SIRET ${business.siret}.`;
 ---
 
-<Base lang={lang} title={title} description={description}>
+<Base lang={lang} title={title} description={description} translationHref={twin}>
   <PageHeader
     title={title}
-    intro="Une adresse, une vraie personne au bout, et une réponse sous 48 heures ouvrées."
+    intro="One address, a real person at the other end, and a reply within two working days."
   />
 
   <section class="border-b py-8">
@@ -35,54 +37,55 @@ const description = `Écrire à ${business.legalName} : ${business.email}. Répo
       </a>
     </p>
     <p class="font-text mt-4 max-w-[70ch] text-[17px] leading-[1.5] text-dim">
-      C’est la seule adresse de contact du site, et elle est relevée par moi.
-      Réponse sous <strong class="text-ink">48 heures ouvrées</strong>. Passé ce
-      délai, considérez que le message est perdu et relancez, cela arrive.
+      This is the site's only contact address, and I read it myself. Reply within
+      <strong class="text-ink">two working days</strong>. Past that, assume the
+      message got lost and send it again — it happens.
     </p>
   </section>
 
   <div class="prose mt-8">
-    <h2>Ce pour quoi on m’écrit</h2>
+    <h2>What people write about</h2>
     <ul>
       <li>
-        <strong>Missions et prestations</strong> : développement d’applications,
-        outillage pour agents IA, intégrations MCP. Dites le contexte, le
-        périmètre et l’échéance, j’en ai besoin pour répondre autrement que par
-        une question.
+        <strong>Work and engagements</strong>: application development, tooling
+        for AI agents, MCP integrations. Give me the context, the scope and the
+        deadline — I need them to answer with anything other than a question.
       </li>
       <li>
-        <strong>Retours sur un article ou une vidéo</strong> : correction,
-        désaccord argumenté, angle mort. C’est le courrier que je lis en premier.
+        <strong>Feedback on an article or a video</strong>: a correction, a
+        reasoned disagreement, a blind spot. That is the mail I read first.
       </li>
       <li>
-        <strong>Projets open source</strong> : pour un bug ou une évolution,
-        préférez une issue sur le dépôt concerné, la discussion y reste
-        publique et utile aux autres.
+        <strong>Open-source projects</strong>: for a bug or a feature, prefer an
+        issue on the repository — the discussion stays public and useful to
+        everyone else.
       </li>
       <li>
-        <strong>Données personnelles</strong> : accès, rectification,
-        effacement. Voir la
-        {' '}<a href="/confidentialite">politique de confidentialité</a>.
+        <strong>Personal data</strong>: access, rectification, erasure. See the
+        {' '}<a href={identityPath('privacy', lang)}>privacy policy</a>.
       </li>
     </ul>
 
-    <h2>Courrier postal et téléphone</h2>
+    <h2>Post and phone</h2>
     <p>
-      L’adresse postale du siège et le numéro de téléphone figurent dans le bloc
-      ci-dessous, ainsi que dans les
-      {' '}<a href="/mentions-legales">mentions légales</a>. L’email reste le
-      canal le plus rapide.
+      The registered office address and the phone number are in the block below,
+      and in the
+      {' '}<a href={identityPath('legal', lang)}>legal notice</a>. Email is the
+      fastest channel.
     </p>
   </div>
 
-  <SectionHeader label="Entité" />
+  <SectionHeader label="Entity" />
   <EntityCard lang={lang} variant="compact" />
 
-  <p class="mt-4 text-[12px] text-dim">{business.vat.fr}</p>
+  <p class="mt-4 text-[12px] text-dim">{business.vat.en}</p>
   <p class="mt-2 text-[12px] text-dim">
-    Informations complètes, hébergeur et conditions :
-    {' '}<a href="/mentions-legales" class="hover:text-accent underline decoration-1 underline-offset-[3px]">
-      mentions légales
+    Full details, host and terms:
+    {' '}<a
+      href={identityPath('legal', lang)}
+      class="hover:text-accent underline decoration-1 underline-offset-[3px]"
+    >
+      legal notice
     </a>.
   </p>
 </Base>

@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { SITE, DESCRIPTION } from '../consts';
 import { business } from '../config/business';
 import { t, localePath, otherLang, type Lang } from '../i18n/ui';
+import { IDENTITY_PAGES } from '../i18n/pages';
 import Analytics from '@vercel/analytics/astro';
 
 interface Props {
@@ -44,16 +45,14 @@ const abs = (href: string) => {
 };
 
 /**
- * Publisher identity and compliance, reachable in one click from every page.
- * The three first are French because the obligation is; /about states the same
- * facts in English for a reader who needs them.
+ * Publisher identity and compliance, reachable in one click from every page —
+ * in the language the reader is already in. The slugs are translated, so the
+ * paths come from the route table rather than from `localePath`.
  */
-const legal = [
-  { href: '/mentions-legales', label: ui.footer.legal },
-  { href: '/confidentialite', label: ui.footer.privacy },
-  { href: '/contact', label: ui.footer.contact },
-  { href: '/about', label: ui.footer.about },
-];
+const legal = IDENTITY_PAGES.map(({ key, ...paths }) => ({
+  href: paths[lang],
+  label: ui.footer[key],
+}));
 
 /** Stamped at build time. The site rebuilds on every publish, so it stays current. */
 const year = new Date().getFullYear();

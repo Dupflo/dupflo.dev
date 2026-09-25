@@ -7,17 +7,20 @@
  * things that touch personal data are Vercel's server logs and the mailbox
  * behind hello@dupflo.dev; analytics is cookieless and aggregate.
  */
-import Base from '../layouts/Base.astro';
-import PageHeader from '../components/PageHeader.astro';
-import { business, addressLine, formatDate } from '../config/business';
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { business, addressLine, formatDate } from '../../config/business';
+import { identityTwin } from '../../i18n/pages';
 
 const lang = 'fr' as const;
+/** The same page in the other language, for hreflang and the language switch. */
+const twin = identityTwin('privacy', lang);
 
 const title = 'Politique de confidentialité';
 const description = `Quelles données personnelles ce site traite, pourquoi, combien de temps, et comment exercer vos droits. Aucun cookie publicitaire, aucun traceur marketing.`;
 ---
 
-<Base lang={lang} title={title} description={description}>
+<Base lang={lang} title={title} description={description} translationHref={twin}>
   <PageHeader
     title={title}
     intro="Ce que ce site sait de vous, pourquoi, et comment le faire effacer."

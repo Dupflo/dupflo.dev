@@ -1,0 +1,171 @@
+---
+/**
+ * Legal notice, English. The French version at /fr/mentions-legales is the one
+ * the law asks for and the one that prevails; this is the same content for a
+ * reader who does not read French — a platform verifying who owns the domain,
+ * typically.
+ */
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import EntityCard from '../components/EntityCard.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { business, addressLine, formatDate } from '../config/business';
+import { SITE } from '../consts';
+import { identityPath, identityTwin } from '../i18n/pages';
+
+const lang = 'en' as const;
+/** The same page in the other language, for hreflang and the language switch. */
+const twin = identityTwin('legal', lang);
+
+const title = 'Legal notice';
+const description = `Publisher of ${SITE.title}: ${business.legalName}, ${business.legalForm.en}, SIRET ${business.siret}. Host, intellectual property and liability.`;
+---
+
+<Base lang={lang} title={title} description={description} translationHref={twin}>
+  <Fragment slot="head">
+    <!-- The identity, machine-readable. Same values as the page body. -->
+    <JsonLd
+      schema={{
+        '@type': 'Organization',
+        name: business.legalName,
+        legalName: business.legalName,
+        url: SITE.url,
+        email: `mailto:${business.email}`,
+        telephone: business.phone,
+        identifier: [
+          { '@type': 'PropertyValue', name: 'SIREN', value: business.siren },
+          { '@type': 'PropertyValue', name: 'SIRET', value: business.siret },
+        ],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: business.address.street,
+          postalCode: business.address.postalCode,
+          addressLocality: business.address.city,
+          addressCountry: 'FR',
+        },
+        founder: { '@type': 'Person', name: business.legalName },
+        foundingDate: business.registeredSince,
+        sameAs: business.registryUrl,
+      }}
+    />
+  </Fragment>
+
+  <PageHeader
+    title={title}
+    intro="Who publishes this site, who hosts it, and on what terms you read it."
+  />
+
+  <SectionHeader label="Publisher" />
+  <EntityCard lang={lang} variant="full" />
+
+  <div class="prose mt-10">
+    <h2>Host</h2>
+    <p>
+      The site is hosted by <strong>{business.host.name}</strong>, {business.host.address}.
+      <br />
+      <a href={business.host.url} rel="noopener" target="_blank">{business.host.url}</a>
+    </p>
+
+    <h2>Activity</h2>
+    <p>
+      The registered activity is <strong>software development</strong> (French
+      activity code {business.ape.code}, {business.ape.label.en}): designing and
+      building custom applications, tooling for AI agents, and integrations over
+      the Model Context Protocol, for business clients.
+    </p>
+    <p>
+      Alongside it, <strong>technical content</strong>: long-form articles
+      published on this site, short-form videos in French, and open-source
+      projects released under permissive licences. That content is free, is not
+      sponsored by any third party, and is neither professional advice nor a
+      service in itself.
+    </p>
+    <p>{business.vat.en}</p>
+
+    <h2>Intellectual property</h2>
+    <p>
+      The text, articles, illustrations, videos and graphic elements on this site
+      are the exclusive property of {business.legalName} unless explicitly stated
+      otherwise, and are protected under the French Intellectual Property Code.
+    </p>
+    <p>
+      Reproducing, adapting or redistributing them, in whole or in part, requires
+      prior written permission. Short quotations remain free, provided they name
+      the author and link back to the original page.
+    </p>
+    <p>
+      Code snippets published in the articles may be reused freely. Open-source
+      projects are governed by the licence stated in their repository, which
+      overrides this paragraph.
+    </p>
+    <p>
+      Trade marks, logos and product names mentioned belong to their respective
+      owners. They are named for information only, and imply no partnership.
+    </p>
+
+    <h2>Liability</h2>
+    <p>
+      The content here is informational. It reflects the state of the tools and
+      the practice at its date of publication, in a field — AI-assisted
+      development — that moves fast. It may therefore become inaccurate without
+      the site being updated.
+    </p>
+    <p>
+      {business.legalName} cannot be held liable for direct or indirect damage
+      arising from the use of the information, code examples or tools presented
+      here. Putting them into practice is the reader's own responsibility, and
+      should be assessed against their own context.
+    </p>
+    <p>
+      The site is available continuously, save for planned or unplanned
+      interruptions for maintenance or on the host's side. No availability
+      guarantee is given.
+    </p>
+
+    <h2>External links</h2>
+    <p>
+      This site links out to third-party sites: code repositories,
+      documentation, video platforms, social networks. Those links are offered
+      for the reader's convenience.
+    </p>
+    <p>
+      {business.legalName} has no control over those resources and accepts no
+      responsibility for their content, availability, practices or privacy
+      policy. Following an outbound link places you under the terms of the
+      destination site.
+    </p>
+    <p>
+      Linking to this site is free, provided the link does not open it inside a
+      frame and does not imply an affiliation or endorsement that does not exist.
+    </p>
+
+    <h2>Personal data and cookies</h2>
+    <p>
+      How personal data is handled is set out in the
+      {' '}<a href={identityPath('privacy', lang)}>privacy policy</a>. The site
+      sets no advertising cookie and no marketing tracker, so there is no consent
+      banner.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      For any question, takedown request or report:
+      {' '}<a href={`mailto:${business.email}`}>{business.email}</a>, or by post
+      to {addressLine()}. See also the
+      {' '}<a href={identityPath('contact', lang)}>contact page</a>.
+    </p>
+
+    <h2>Governing version</h2>
+    <p>
+      This is a translation, provided so the publisher's identity is legible to
+      a non-French-speaking reader. The
+      {' '}<a href={twin} hreflang="fr" lang="fr">French version</a> is the one
+      French law requires, and it prevails in case of any discrepancy.
+    </p>
+  </div>
+
+  <p class="mt-10 border-t pt-4 text-[12px] text-dim">
+    Last updated: {formatDate(business.updatedAt, lang)}
+  </p>
+</Base>

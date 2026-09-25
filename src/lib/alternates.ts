@@ -1,6 +1,8 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { IDENTITY_PAGES } from '../i18n/pages';
+
 /**
  * Language pairs for articles, for the sitemap.
  *
@@ -53,6 +55,28 @@ export function postAlternates(site: string): Map<string, Alternate[]> {
   const byUrl = new Map<string, Alternate[]>();
   for (const alternates of byKey.values()) {
     if (alternates.length < 2) continue;
+    for (const { url } of alternates) byUrl.set(url, alternates);
+  }
+  return byUrl;
+}
+
+/**
+ * Language pairs for the publisher-identity pages.
+ *
+ * Same blind spot as the articles above, for the same reason: `/privacy` and
+ * `/fr/confidentialite` never match on path, so @astrojs/sitemap drops the
+ * pair. The routes are declared statically in src/i18n/pages.ts, so unlike the
+ * articles this needs no filesystem read.
+ */
+export function pageAlternates(site: string): Map<string, Alternate[]> {
+  const byUrl = new Map<string, Alternate[]>();
+
+  for (const { en, fr } of IDENTITY_PAGES) {
+    // Trailing slashes: the directory build serves them, and the sitemap keys on them.
+    const alternates: Alternate[] = [
+      { lang: 'en', url: new URL(`${en}/`, site).href },
+      { lang: 'fr', url: new URL(`${fr}/`, site).href },
+    ];
     for (const { url } of alternates) byUrl.set(url, alternates);
   }
   return byUrl;

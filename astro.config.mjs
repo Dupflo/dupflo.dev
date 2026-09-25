@@ -6,11 +6,16 @@ import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 
 import { SITE } from './src/consts.ts';
-import { postAlternates } from './src/lib/alternates.ts';
+import { pageAlternates, postAlternates } from './src/lib/alternates.ts';
 import { rehypeFigure } from './src/lib/rehype-figure.mjs';
 
 // Built once at config load; the sitemap serializer reads from it per URL.
-const ALTERNATES = postAlternates(SITE.url);
+// Both sources cover routes whose slug is translated — articles, read from the
+// content files, and the identity pages, declared in src/i18n/pages.ts.
+const ALTERNATES = new Map([
+  ...pageAlternates(SITE.url),
+  ...postAlternates(SITE.url),
+]);
 
 export default defineConfig({
   // `site` is required for sitemap, RSS and absolute canonical URLs.

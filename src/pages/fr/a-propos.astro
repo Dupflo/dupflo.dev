@@ -1,0 +1,133 @@
+---
+/**
+ * À propos, français. Jumelle de /about : les mêmes faits, dans la langue du
+ * reste des pages /fr/.
+ */
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import EntityCard from '../../components/EntityCard.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { business, addressLine } from '../../config/business';
+import { SITE, AUTHOR } from '../../consts';
+import { identityPath, identityTwin } from '../../i18n/pages';
+
+const lang = 'fr' as const;
+const twin = identityTwin('about', lang);
+
+const title = 'À propos';
+const description = `Florian Dupuis, développeur établi en France sous le statut d’entrepreneur individuel, SIRET ${business.siret}. Ce que je construis, et l’entité qui détient dupflo.dev.`;
+
+const registeredYear = business.registeredSince.slice(0, 4);
+---
+
+<Base lang={lang} title={title} description={description} translationHref={twin}>
+  <Fragment slot="head">
+    <JsonLd
+      schema={{
+        ...AUTHOR,
+        jobTitle: 'Senior Product Engineer',
+        description,
+        worksFor: {
+          '@type': 'Organization',
+          name: business.legalName,
+          legalName: business.legalName,
+          url: SITE.url,
+          email: `mailto:${business.email}`,
+          telephone: business.phone,
+          foundingDate: business.registeredSince,
+          identifier: [
+            { '@type': 'PropertyValue', name: 'SIREN', value: business.siren },
+            { '@type': 'PropertyValue', name: 'SIRET', value: business.siret },
+          ],
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: business.address.street,
+            postalCode: business.address.postalCode,
+            addressLocality: business.address.city,
+            addressCountry: 'FR',
+          },
+          sameAs: business.registryUrl,
+        },
+      }}
+    />
+  </Fragment>
+
+  <PageHeader
+    title={title}
+    intro="Qui tient ce domaine, ce qu’il publie, et l’entité déclarée derrière."
+  />
+
+  <div class="prose mt-8">
+    <p>
+      Je suis <strong>Florian Dupuis</strong>, développeur établi en France, en
+      activité sous le statut d’<em>entrepreneur individuel</em> au régime de la
+      micro-entreprise. Neuf ans à lancer des produits : consumer, SaaS,
+      e-commerce. Je suis cofondateur et CTO d’Anywwwhere. L’entreprise est
+      immatriculée depuis {registeredYear}, sous le SIRET {business.siret}.
+    </p>
+    <p>
+      Ce domaine, <strong>dupflo.dev</strong>, est le mien. C’est le seul site que
+      je publie sous mon nom, et tout ce qui s’y trouve, les articles, les vidéos,
+      les projets open source, est mon propre travail.
+    </p>
+
+    <h2>Ce que je fais</h2>
+    <ul>
+      <li>
+        <strong>Développement logiciel.</strong> Applications web sur mesure pour
+        des clients professionnels, de la définition du produit à la mise en
+        production : TypeScript, Astro, Node, Postgres pour l’essentiel. Code APE
+        déclaré {business.ape.code}, programmation informatique.
+      </li>
+      <li>
+        <strong>Outillage pour agents.</strong> Je construis des applications
+        qu’un agent IA peut réellement piloter, via le Model Context Protocol,
+        plutôt que des interfaces qui se contentent d’appeler un modèle de
+        langage. Concrètement : des serveurs MCP, des skills d’agent, et
+        l’outillage de développement autour.
+      </li>
+      <li>
+        <strong>Contenu technique.</strong> Articles de fond en anglais sur ce
+        site, format court en français sous <em>@dupflodev</em>, et projets open
+        source publiés sous licence permissive. Ce contenu est gratuit, éditorial,
+        et ne fait la promotion d’aucun tiers.
+      </li>
+    </ul>
+
+    <h2>Entité déclarée</h2>
+    <p>
+      L’<em>entrepreneur individuel</em> est le statut français où l’entreprise et
+      la personne ne font qu’une entité juridique : c’est la raison pour laquelle
+      la dénomination déclarée est simplement mon nom. L’immatriculation est
+      publique et vérifiable auprès du registre national des entreprises.
+    </p>
+  </div>
+
+  <EntityCard lang={lang} variant="compact" />
+
+  <p class="mt-4 text-[12px] text-dim">{business.vat.fr}</p>
+  <p class="mt-2 text-[12px] text-dim">
+    Vérifier l’entité sur le registre public :
+    {' '}<a
+      href={business.registryUrl}
+      rel="noopener"
+      target="_blank"
+      class="hover:text-accent underline decoration-1 underline-offset-[3px]"
+    >
+      annuaire-entreprises.data.gouv.fr <span aria-hidden="true">↗</span>
+    </a>
+  </p>
+
+  <SectionHeader label="Contact" />
+  <div class="prose">
+    <p>
+      Email <a href={`mailto:${business.email}`}>{business.email}</a>, réponse
+      sous 48 heures ouvrées. Le courrier postal arrive au
+      {' '}{addressLine()}, et le téléphone figure dans les
+      {' '}<a href={identityPath('legal', lang)}>mentions légales</a>. Les
+      demandes relatives aux données personnelles relèvent de la
+      {' '}<a href={identityPath('privacy', lang)}>politique de confidentialité</a>.
+    </p>
+  </div>
+</Base>
