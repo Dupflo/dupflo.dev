@@ -1,0 +1,132 @@
+---
+/**
+ * About, in English. The legal pages are French because the obligation is
+ * French; this page exists so a non-French-speaking reviewer — a platform
+ * verifying who owns dupflo.dev, say — can read the same facts in English.
+ */
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import EntityCard from '../components/EntityCard.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { business, addressLine } from '../config/business';
+import { SITE, AUTHOR } from '../consts';
+
+const lang = 'en' as const;
+
+const title = 'About';
+const description = `Florian Dupuis, a France-based software developer running a registered micro-enterprise (entrepreneur individuel), SIRET ${business.siret}. What I build, and the entity that owns dupflo.dev.`;
+
+const registeredYear = business.registeredSince.slice(0, 4);
+---
+
+<Base lang={lang} title={title} description={description}>
+  <Fragment slot="head">
+    <JsonLd
+      schema={{
+        ...AUTHOR,
+        jobTitle: 'Senior Product Engineer',
+        description,
+        worksFor: {
+          '@type': 'Organization',
+          name: business.legalName,
+          legalName: business.legalName,
+          url: SITE.url,
+          email: `mailto:${business.email}`,
+          telephone: business.phone,
+          foundingDate: business.registeredSince,
+          identifier: [
+            { '@type': 'PropertyValue', name: 'SIREN', value: business.siren },
+            { '@type': 'PropertyValue', name: 'SIRET', value: business.siret },
+          ],
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: business.address.street,
+            postalCode: business.address.postalCode,
+            addressLocality: business.address.city,
+            addressCountry: 'FR',
+          },
+          sameAs: business.registryUrl,
+        },
+      }}
+    />
+  </Fragment>
+
+  <PageHeader
+    title={title}
+    intro="Who runs this domain, what it publishes, and the registered entity behind it."
+  />
+
+  <div class="prose mt-8">
+    <p>
+      I am <strong>Florian Dupuis</strong>, a France-based software developer
+      running a registered micro-enterprise (<em>entrepreneur individuel</em>).
+      I have been building products for nine years — consumer apps, SaaS and
+      e-commerce — and I am co-founder and CTO of Anywwwhere. The business has
+      been registered with the French authorities since {registeredYear} under
+      SIRET {business.siret}.
+    </p>
+    <p>
+      This domain, <strong>dupflo.dev</strong>, is mine. It is the only website I
+      publish under my own name, and everything on it — the writing, the videos,
+      the open-source projects — is my own work.
+    </p>
+
+    <h2>What I do</h2>
+    <ul>
+      <li>
+        <strong>Software development.</strong> Custom web applications for
+        business clients, from product definition through to production: mostly
+        TypeScript, Astro, Node and Postgres. Declared activity code 62.01Z,
+        computer programming.
+      </li>
+      <li>
+        <strong>Agent tooling.</strong> I build applications an AI agent can
+        actually drive, over the Model Context Protocol, rather than interfaces
+        that merely call a language model. That means MCP servers, agent skills
+        and the surrounding developer tooling.
+      </li>
+      <li>
+        <strong>Technical content.</strong> Long-form articles in English on this
+        site, short-form videos in French as <em>@dupflodev</em>, and open-source
+        projects published under permissive licences. The content is free, and it
+        is editorial: it promotes no third party and is not sponsored.
+      </li>
+    </ul>
+
+    <h2>Registered entity</h2>
+    <p>
+      An <em>entrepreneur individuel</em> is the French sole-trader status: the
+      business and the person are the same legal entity, which is why the
+      registered name is simply my own. The registration is public and can be
+      checked against the French national business register.
+    </p>
+  </div>
+
+  <EntityCard lang={lang} variant="compact" />
+
+  <p class="mt-4 text-[12px] text-dim">{business.vat.en}</p>
+  <p class="mt-2 text-[12px] text-dim">
+    Verify the entity on the French government register:
+    {' '}<a
+      href={business.registryUrl}
+      rel="noopener"
+      target="_blank"
+      class="hover:text-accent underline decoration-1 underline-offset-[3px]"
+    >
+      annuaire-entreprises.data.gouv.fr <span aria-hidden="true">↗</span>
+    </a>
+  </p>
+
+  <SectionHeader label="Contact" />
+  <div class="prose">
+    <p>
+      Email <a href={`mailto:${business.email}`}>{business.email}</a> — replies
+      within two working days. Postal mail reaches me at {addressLine()}, and the
+      phone number is listed in the
+      {' '}<a href="/mentions-legales">legal notice</a> (in French, as French law
+      requires). Data-protection requests are covered by the
+      {' '}<a href="/confidentialite">privacy policy</a>.
+    </p>
+  </div>
+</Base>

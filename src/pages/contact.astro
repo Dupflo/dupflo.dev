@@ -1,0 +1,88 @@
+---
+/**
+ * Contact. One real mailto link, a stated response time, and the entity behind
+ * the address — which is what a platform reviewer is actually looking for.
+ *
+ * No form: a form means a backend, a spam filter and a consent notice for
+ * something an email link already does.
+ */
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import EntityCard from '../components/EntityCard.astro';
+import { business } from '../config/business';
+
+const lang = 'fr' as const;
+
+const title = 'Contact';
+const description = `Écrire à ${business.legalName} : ${business.email}. Réponse sous 48 heures ouvrées. ${business.legalForm.fr}, SIRET ${business.siret}.`;
+---
+
+<Base lang={lang} title={title} description={description}>
+  <PageHeader
+    title={title}
+    intro="Une adresse, une vraie personne au bout, et une réponse sous 48 heures ouvrées."
+  />
+
+  <section class="border-b py-8">
+    <p class="text-[11px] uppercase tracking-[0.18em] text-dim">Email</p>
+    <p class="font-display mt-2 text-4xl leading-none tracking-tight break-all">
+      <a
+        href={`mailto:${business.email}`}
+        class="text-accent underline decoration-1 underline-offset-[6px]"
+      >
+        {business.email}
+      </a>
+    </p>
+    <p class="font-text mt-4 max-w-[70ch] text-[17px] leading-[1.5] text-dim">
+      C’est la seule adresse de contact du site, et elle est relevée par moi.
+      Réponse sous <strong class="text-ink">48 heures ouvrées</strong>. Passé ce
+      délai, considérez que le message est perdu et relancez, cela arrive.
+    </p>
+  </section>
+
+  <div class="prose mt-8">
+    <h2>Ce pour quoi on m’écrit</h2>
+    <ul>
+      <li>
+        <strong>Missions et prestations</strong> : développement d’applications,
+        outillage pour agents IA, intégrations MCP. Dites le contexte, le
+        périmètre et l’échéance, j’en ai besoin pour répondre autrement que par
+        une question.
+      </li>
+      <li>
+        <strong>Retours sur un article ou une vidéo</strong> : correction,
+        désaccord argumenté, angle mort. C’est le courrier que je lis en premier.
+      </li>
+      <li>
+        <strong>Projets open source</strong> : pour un bug ou une évolution,
+        préférez une issue sur le dépôt concerné, la discussion y reste
+        publique et utile aux autres.
+      </li>
+      <li>
+        <strong>Données personnelles</strong> : accès, rectification,
+        effacement. Voir la
+        {' '}<a href="/confidentialite">politique de confidentialité</a>.
+      </li>
+    </ul>
+
+    <h2>Courrier postal et téléphone</h2>
+    <p>
+      L’adresse postale du siège et le numéro de téléphone figurent dans le bloc
+      ci-dessous, ainsi que dans les
+      {' '}<a href="/mentions-legales">mentions légales</a>. L’email reste le
+      canal le plus rapide.
+    </p>
+  </div>
+
+  <SectionHeader label="Entité" />
+  <EntityCard lang={lang} variant="compact" />
+
+  <p class="mt-4 text-[12px] text-dim">{business.vat.fr}</p>
+  <p class="mt-2 text-[12px] text-dim">
+    Informations complètes, hébergeur et conditions :
+    {' '}<a href="/mentions-legales" class="hover:text-accent underline decoration-1 underline-offset-[3px]">
+      mentions légales
+    </a>.
+  </p>
+</Base>

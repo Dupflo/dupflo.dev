@@ -1,0 +1,166 @@
+---
+/**
+ * Mentions légales. French law (LCEN, art. 6-III) requires the editor of a
+ * public website to be identifiable; this page is that identification.
+ *
+ * French-language page at the root, like /confidentialite and /contact: the
+ * obligation is French and so is the wording an administration looks for. It
+ * has no English twin, so no hreflang pair is declared.
+ */
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import EntityCard from '../components/EntityCard.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { business, addressLine, formatDate } from '../config/business';
+import { SITE } from '../consts';
+
+const lang = 'fr' as const;
+
+const title = 'Mentions légales';
+const description = `Éditeur du site ${SITE.title} : ${business.legalName}, ${business.legalForm.fr}, SIRET ${business.siret}. Hébergeur, propriété intellectuelle et responsabilité.`;
+---
+
+<Base lang={lang} title={title} description={description}>
+  <Fragment slot="head">
+    <!-- The identity, machine-readable. Same values as the page body. -->
+    <JsonLd
+      schema={{
+        '@type': 'Organization',
+        name: business.legalName,
+        legalName: business.legalName,
+        url: SITE.url,
+        email: `mailto:${business.email}`,
+        telephone: business.phone,
+        identifier: [
+          { '@type': 'PropertyValue', name: 'SIREN', value: business.siren },
+          { '@type': 'PropertyValue', name: 'SIRET', value: business.siret },
+        ],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: business.address.street,
+          postalCode: business.address.postalCode,
+          addressLocality: business.address.city,
+          addressCountry: 'FR',
+        },
+        founder: { '@type': 'Person', name: business.legalName },
+        foundingDate: business.registeredSince,
+        sameAs: business.registryUrl,
+      }}
+    />
+  </Fragment>
+
+  <PageHeader
+    title={title}
+    intro="Qui édite ce site, qui l’héberge, et à quelles conditions vous le consultez."
+  />
+
+  <SectionHeader label="Éditeur du site" />
+  <EntityCard lang={lang} variant="full" />
+
+  <div class="prose mt-10">
+    <h2>Hébergeur</h2>
+    <p>
+      Le site est hébergé par <strong>{business.host.name}</strong>, {business.host.address}.
+      <br />
+      <a href={business.host.url} rel="noopener" target="_blank">{business.host.url}</a>
+    </p>
+
+    <h2>Activité</h2>
+    <p>
+      L’activité déclarée est le <strong>développement de logiciels</strong>
+      (code APE {business.ape.code}, {business.ape.label.fr}) : conception et
+      réalisation d’applications sur mesure, d’outils destinés aux agents IA et
+      d’intégrations via le protocole MCP, pour des clients professionnels.
+    </p>
+    <p>
+      S’y ajoute la <strong>production de contenu technique</strong> : articles
+      de fond publiés sur ce site, vidéos courtes en français, et projets open
+      source publiés sous licence libre. Ce contenu est gratuit, non
+      promotionnel pour un tiers, et ne constitue ni un conseil professionnel ni
+      une prestation de service.
+    </p>
+    <p>{business.vat.fr}</p>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>
+      Les textes, articles, illustrations, vidéos et éléments graphiques
+      présents sur ce site sont la propriété exclusive de
+      {' '}{business.legalName}, sauf mention contraire explicite. Ils sont
+      protégés par le Code de la propriété intellectuelle.
+    </p>
+    <p>
+      Toute reproduction, représentation, adaptation ou diffusion, totale ou
+      partielle, est interdite sans autorisation écrite préalable. Une citation
+      courte reste libre dès lors qu’elle mentionne l’auteur et renvoie par un
+      lien vers la page d’origine.
+    </p>
+    <p>
+      Les extraits de code publiés dans les articles peuvent être réutilisés
+      librement. Les projets open source sont régis par la licence indiquée dans
+      leur dépôt, qui prime sur le présent paragraphe.
+    </p>
+    <p>
+      Les marques, logos et noms de produits cités appartiennent à leurs
+      titulaires respectifs. Leur mention est purement informative et
+      n’implique aucun partenariat.
+    </p>
+
+    <h2>Responsabilité</h2>
+    <p>
+      Les contenus publiés sont fournis à titre informatif. Ils reflètent l’état
+      des connaissances et des outils à leur date de publication, dans un
+      domaine, celui du développement assisté par IA, qui évolue vite. Ils
+      peuvent donc devenir inexacts sans que le site soit mis à jour.
+    </p>
+    <p>
+      {business.legalName} ne saurait être tenu responsable des dommages directs
+      ou indirects résultant de l’usage des informations, des exemples de code
+      ou des outils présentés ici. Leur mise en œuvre relève de la seule
+      responsabilité du lecteur, qui doit les évaluer dans son propre contexte.
+    </p>
+    <p>
+      Le site est accessible en permanence sauf interruption, planifiée ou non,
+      liée à une maintenance ou à l’hébergeur. Aucune garantie de disponibilité
+      n’est donnée.
+    </p>
+
+    <h2>Liens externes</h2>
+    <p>
+      Ce site renvoie vers des sites tiers : dépôts de code, documentations,
+      plateformes vidéo, réseaux sociaux. Ces liens sont proposés pour la
+      commodité du lecteur.
+    </p>
+    <p>
+      {business.legalName} n’exerce aucun contrôle sur ces ressources et
+      n’assume aucune responsabilité quant à leur contenu, leur disponibilité,
+      leurs pratiques ou leur politique de confidentialité. Suivre un lien
+      sortant vous place sous les conditions du site de destination.
+    </p>
+    <p>
+      La mise en place d’un lien vers ce site est libre, à condition qu’il ne
+      s’ouvre pas dans un cadre (frame) et qu’il ne laisse pas entendre un lien
+      d’affiliation ou une approbation inexistants.
+    </p>
+
+    <h2>Données personnelles et cookies</h2>
+    <p>
+      Le traitement des données personnelles est détaillé dans la
+      {' '}<a href="/confidentialite">politique de confidentialité</a>. Le site
+      ne dépose aucun cookie publicitaire ni traceur marketing, et n’affiche
+      donc pas de bandeau de consentement.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Pour toute question, demande de retrait ou signalement :
+      {' '}<a href={`mailto:${business.email}`}>{business.email}</a>, ou par
+      courrier à {addressLine()}. Voir aussi la page
+      {' '}<a href="/contact">contact</a>.
+    </p>
+  </div>
+
+  <p class="mt-10 border-t pt-4 text-[12px] text-dim">
+    Dernière mise à jour : {formatDate(business.updatedAt, lang)}
+  </p>
+</Base>

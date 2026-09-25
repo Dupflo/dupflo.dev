@@ -1,0 +1,215 @@
+---
+/**
+ * Politique de confidentialité. GDPR articles 13 and 14: what is collected, why,
+ * on what legal basis, for how long, and who it reaches.
+ *
+ * Every factual claim here has to stay true of the deployed site. The two
+ * things that touch personal data are Vercel's server logs and the mailbox
+ * behind hello@dupflo.dev; analytics is cookieless and aggregate.
+ */
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { business, addressLine, formatDate } from '../config/business';
+
+const lang = 'fr' as const;
+
+const title = 'Politique de confidentialité';
+const description = `Quelles données personnelles ce site traite, pourquoi, combien de temps, et comment exercer vos droits. Aucun cookie publicitaire, aucun traceur marketing.`;
+---
+
+<Base lang={lang} title={title} description={description}>
+  <PageHeader
+    title={title}
+    intro="Ce que ce site sait de vous, pourquoi, et comment le faire effacer."
+  />
+
+  <div class="prose mt-8">
+    <p>
+      Ce site est un site éditorial : il se consulte sans compte et sans
+      formulaire. Il n’a donc presque rien à traiter. Ce qui suit dit exactement
+      quoi, et sur quelle base.
+    </p>
+
+    <h2>Responsable de traitement</h2>
+    <p>
+      <strong>{business.legalName}</strong>, {business.legalForm.fr},
+      SIRET {business.siret}, {addressLine()}.
+      <br />
+      Contact pour toute question relative aux données personnelles :
+      {' '}<a href={`mailto:${business.email}`}>{business.email}</a>.
+    </p>
+    <p>
+      Compte tenu de la nature et du volume des traitements, la désignation d’un
+      délégué à la protection des données (DPO) n’est pas requise. Les demandes
+      sont traitées directement par le responsable de traitement.
+    </p>
+
+    <h2>Données traitées</h2>
+    <ul>
+      <li>
+        <strong>Journaux techniques de l’hébergeur.</strong> Chaque requête vers
+        le site est journalisée par Vercel : adresse IP, date et heure, URL
+        demandée, code de réponse, agent utilisateur, page de provenance. Ces
+        journaux sont générés automatiquement par l’infrastructure, sans action
+        de ma part.
+      </li>
+      <li>
+        <strong>Messages de contact.</strong> Si vous m’écrivez à
+        {' '}{business.email}, je traite votre adresse email, votre nom s’il
+        figure dans le message, et le contenu de votre message.
+      </li>
+      <li>
+        <strong>Mesure d’audience agrégée.</strong> Vercel Analytics compte les
+        pages vues sans cookie, sans identifiant persistant et sans empreinte de
+        navigateur. Les données sont agrégées : je vois des volumes par page, pas
+        des visiteurs.
+      </li>
+      <li>
+        <strong>Réactions aux articles.</strong> Le bouton en fin d’article
+        incrémente un compteur. Il n’enregistre ni votre identité, ni votre
+        adresse IP, ni quoi que ce soit qui vous relie à ce clic.
+      </li>
+    </ul>
+    <p>
+      <strong>Aucun cookie publicitaire, aucun traceur marketing, aucun pixel de
+      réseau social, aucune revente de données.</strong> Le site ne dépose aucun
+      cookie non essentiel : il n’y a donc pas de consentement à recueillir, et
+      pas de bandeau à afficher.
+    </p>
+    <p>
+      Aucune donnée sensible au sens de l’article 9 du RGPD n’est collectée, et
+      le site ne s’adresse pas aux mineurs de moins de quinze ans.
+    </p>
+
+    <h2>Finalités et bases légales</h2>
+    <ul>
+      <li>
+        <strong>Servir les pages et assurer la sécurité du site</strong>
+        (journaux techniques) : intérêt légitime, article 6.1.f du RGPD.
+        L’intérêt poursuivi est de maintenir le site disponible et de détecter
+        les abus, tels qu’une attaque ou un pic de trafic automatisé.
+      </li>
+      <li>
+        <strong>Répondre à un message</strong> (email de contact) : exécution
+        d’une demande que vous initiez, article 6.1.b du RGPD lorsqu’elle porte
+        sur une prestation, intérêt légitime, article 6.1.f, dans les autres cas.
+      </li>
+      <li>
+        <strong>Comprendre quelles pages sont lues</strong> (mesure d’audience
+        agrégée, sans cookie) : intérêt légitime, article 6.1.f, exempté de
+        consentement puisque aucun identifiant n’est stocké sur votre terminal.
+      </li>
+    </ul>
+    <p>
+      Aucune décision automatisée ni aucun profilage n’est effectué à partir de
+      ces données.
+    </p>
+
+    <h2>Durées de conservation</h2>
+    <ul>
+      <li>
+        <strong>Messages de contact : 12 mois</strong> à compter du dernier
+        échange, puis suppression. Les échanges qui donnent lieu à une relation
+        commerciale sont conservés au titre des obligations comptables et
+        fiscales, soit dix ans pour les pièces justificatives.
+      </li>
+      <li>
+        <strong>Journaux techniques : environ 30 jours</strong>, selon la
+        politique de rétention de l’hébergeur, puis purge automatique.
+      </li>
+      <li>
+        <strong>Mesure d’audience : données agrégées uniquement</strong>, sans
+        donnée individuelle à conserver ni à effacer.
+      </li>
+    </ul>
+
+    <h2>Destinataires</h2>
+    <p>
+      Vos données ne sont ni vendues, ni louées, ni cédées. Elles sont
+      accessibles à moi seul, et aux sous-traitants techniques strictement
+      nécessaires au fonctionnement du site :
+    </p>
+    <ul>
+      <li>
+        <strong>{business.host.name}</strong> ({business.host.address}) :
+        hébergement, diffusion des pages, journaux techniques, mesure d’audience.
+      </li>
+      <li>
+        <strong>Mon fournisseur de messagerie</strong> : acheminement et
+        conservation des emails que vous m’envoyez.
+      </li>
+      <li>
+        <strong>Upstash</strong> : stockage du compteur de réactions, qui ne
+        contient aucune donnée personnelle.
+      </li>
+    </ul>
+    <p>
+      Chacun agit sur instruction, dans le cadre d’un contrat de sous-traitance
+      au sens de l’article 28 du RGPD.
+    </p>
+
+    <h2>Transferts hors Union européenne</h2>
+    <p>
+      {business.host.name} est une société de droit américain. Certains
+      traitements, notamment les journaux techniques, peuvent donc impliquer un
+      transfert de données hors de l’Union européenne.
+    </p>
+    <p>
+      Ces transferts sont encadrés par les <strong>clauses contractuelles types</strong>
+      de la Commission européenne (décision 2021/914), complétées par les
+      mesures techniques de l’hébergeur : chiffrement en transit et au repos,
+      cloisonnement des accès. Aucune donnée n’est transférée vers un pays tiers
+      en dehors de ce cadre.
+    </p>
+
+    <h2>Vos droits</h2>
+    <p>
+      Conformément aux articles 15 à 22 du RGPD, vous disposez d’un droit
+      d’accès, de rectification, d’effacement, de limitation du traitement,
+      d’opposition au traitement fondé sur l’intérêt légitime, et de portabilité
+      de vos données.
+    </p>
+    <p>
+      Pour exercer l’un de ces droits, écrivez à
+      {' '}<a href={`mailto:${business.email}`}>{business.email}</a> ou à
+      {' '}{addressLine()}. Une réponse vous sera apportée dans un délai d’un
+      mois, prolongeable de deux mois si la demande est complexe, auquel cas vous
+      en serez informé. Un justificatif d’identité peut être demandé en cas de
+      doute raisonnable sur l’identité du demandeur.
+    </p>
+    <p>
+      Si la réponse ne vous satisfait pas, vous pouvez introduire une réclamation
+      auprès de la <strong>CNIL</strong>, 3 place de Fontenoy, TSA 80715, 75334
+      Paris Cedex 07, ou en ligne :
+      {' '}<a href="https://www.cnil.fr/fr/plaintes" rel="noopener" target="_blank">
+        cnil.fr/fr/plaintes
+      </a>.
+    </p>
+
+    <h2>Sécurité</h2>
+    <p>
+      Le site est servi exclusivement en <strong>HTTPS</strong>, avec
+      <strong> HSTS</strong> : un navigateur qui l’a visité une fois refuse
+      ensuite toute connexion non chiffrée. Les en-têtes de sécurité usuels sont
+      en place, notamment contre l’inclusion du site dans un cadre tiers et
+      contre l’interprétation abusive des types de contenu.
+    </p>
+    <p>
+      Les pages sont pré-générées et servies en statique : il n’y a ni base de
+      données de visiteurs, ni compte utilisateur, ni session, donc aucune donnée
+      d’authentification à protéger. Les accès aux outils d’administration, dépôt
+      de code et hébergement, sont protégés par authentification à deux facteurs.
+    </p>
+
+    <h2>Modifications</h2>
+    <p>
+      Cette politique peut être mise à jour pour suivre l’évolution du site ou de
+      la réglementation. La version en vigueur est celle publiée sur cette page,
+      dont la date de mise à jour figure ci-dessous.
+    </p>
+  </div>
+
+  <p class="mt-10 border-t pt-4 text-[12px] text-dim">
+    Dernière mise à jour : {formatDate(business.updatedAt, lang)}
+  </p>
+</Base>

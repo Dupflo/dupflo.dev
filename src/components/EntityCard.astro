@@ -1,0 +1,113 @@
+---
+/**
+ * The publisher's identity, stated as data. Every value comes from
+ * src/config/business.ts, so the SIRET on /contact can never drift from the one
+ * in the mentions légales.
+ *
+ * `full` carries everything French law asks of an editor's notice; `compact` is
+ * the reassurance version for /contact and /about.
+ */
+import { business, addressLine } from '../config/business';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  variant?: 'full' | 'compact';
+}
+
+const { lang, variant = 'full' } = Astro.props;
+
+const LABELS = {
+  en: {
+    name: 'Name',
+    form: 'Legal form',
+    siren: 'SIREN',
+    siret: 'SIRET',
+    ape: 'Activity code',
+    registry: 'Registered with',
+    office: 'Registered office',
+    email: 'Email',
+    phone: 'Phone',
+    publisher: 'Responsible for publication',
+    vat: 'VAT',
+    verify: 'Public record',
+    verifyLabel: 'annuaire-entreprises.data.gouv.fr',
+  },
+  fr: {
+    name: 'Nom',
+    form: 'Forme juridique',
+    siren: 'SIREN',
+    siret: 'SIRET',
+    ape: 'Code APE',
+    registry: 'Immatriculation',
+    office: 'Siège social',
+    email: 'Email',
+    phone: 'Téléphone',
+    publisher: 'Responsable de la publication',
+    vat: 'TVA',
+    verify: 'Registre public',
+    verifyLabel: 'annuaire-entreprises.data.gouv.fr',
+  },
+} as const;
+
+const l = LABELS[lang];
+
+/** `href` turns a value into a link; everything else is plain text. */
+type Row = { term: string; value: string; href?: string };
+
+const compact: Row[] = [
+  { term: l.name, value: business.legalName },
+  { term: l.form, value: business.legalForm[lang] },
+  { term: l.siret, value: business.siret },
+  { term: l.office, value: addressLine() },
+  { term: l.email, value: business.email, href: `mailto:${business.email}` },
+];
+
+const full: Row[] = [
+  { term: l.name, value: business.legalName },
+  { term: l.form, value: business.legalForm[lang] },
+  { term: l.siren, value: business.siren },
+  { term: l.siret, value: business.siret },
+  { term: l.ape, value: `${business.ape.code} · ${business.ape.label[lang]}` },
+  { term: l.registry, value: business.registry[lang] },
+  { term: l.office, value: addressLine() },
+  { term: l.email, value: business.email, href: `mailto:${business.email}` },
+  { term: l.phone, value: business.phone, href: `tel:${business.phone.replace(/\s/g, '')}` },
+  { term: l.publisher, value: business.publisher },
+  { term: l.vat, value: business.vat[lang] },
+  {
+    term: l.verify,
+    value: l.verifyLabel,
+    href: business.registryUrl,
+  },
+];
+
+const rows = variant === 'full' ? full : compact;
+---
+
+<!-- The site's metadata-gutter idiom, widened to 14rem: "Responsable de la
+     publication" does not fit the 10rem column the list rows use. -->
+<dl class="mt-6 border-b text-[13px]">
+  {
+    rows.map(({ term, value, href }) => (
+      <div class="grid gap-x-4 gap-y-0.5 border-t px-0 py-2 md:grid-cols-[14rem_1fr]">
+        <dt class="text-dim">{term}</dt>
+        <dd class="min-w-0 break-words">
+          {href ? (
+            <a
+              href={href}
+              rel={href.startsWith('http') ? 'noopener' : undefined}
+              target={href.startsWith('http') ? '_blank' : undefined}
+              class="text-accent underline decoration-1 underline-offset-[3px]"
+            >
+              {value}
+              {href.startsWith('http') && <span aria-hidden="true"> ↗</span>}
+            </a>
+          ) : (
+            value
+          )}
+        </dd>
+      </div>
+    ))
+  }
+</dl>

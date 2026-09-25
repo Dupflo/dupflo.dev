@@ -46,6 +46,13 @@ export const UI = {
     onlyInOtherLang: 'in French',
     download: 'Download',
     status: { live: 'live', wip: 'wip', archived: 'archived' },
+    /** Footer. The legal pages are French — the obligation is. */
+    footer: {
+      legal: 'Legal notice',
+      privacy: 'Privacy',
+      contact: 'Contact',
+      about: 'About',
+    },
   },
   fr: {
     role: 'Senior Product Engineer — produits IA agentiques & MCP',
@@ -86,6 +93,12 @@ export const UI = {
     onlyInOtherLang: 'en anglais',
     download: 'Télécharger',
     status: { live: 'en ligne', wip: 'en cours', archived: 'archivé' },
+    footer: {
+      legal: 'Mentions légales',
+      privacy: 'Confidentialité',
+      contact: 'Contact',
+      about: 'À propos',
+    },
   },
 } as const satisfies Record<Lang, unknown>;
 

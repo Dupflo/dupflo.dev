@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { SITE, DESCRIPTION } from '../consts';
+import { business } from '../config/business';
 import { t, localePath, otherLang, type Lang } from '../i18n/ui';
 import Analytics from '@vercel/analytics/astro';
 
@@ -41,6 +42,21 @@ const abs = (href: string) => {
   const path = hasExtension || href.endsWith('/') ? href : `${href}/`;
   return new URL(path, SITE.url).href;
 };
+
+/**
+ * Publisher identity and compliance, reachable in one click from every page.
+ * The three first are French because the obligation is; /about states the same
+ * facts in English for a reader who needs them.
+ */
+const legal = [
+  { href: '/mentions-legales', label: ui.footer.legal },
+  { href: '/confidentialite', label: ui.footer.privacy },
+  { href: '/contact', label: ui.footer.contact },
+  { href: '/about', label: ui.footer.about },
+];
+
+/** Stamped at build time. The site rebuilds on every publish, so it stays current. */
+const year = new Date().getFullYear();
 
 const nav = [
   { href: localePath(lang, '/blog'), label: ui.nav.blog },
@@ -155,8 +171,28 @@ const nav = [
       <slot />
     </main>
 
-    <footer class="mt-20 border-t pt-4 text-[12px] text-dim">
+    <footer class="mt-20 border-t pt-4 text-[12px] leading-[1.7] text-dim">
       <p>{SITE.author} · {ui.role}</p>
+
+      <!-- The entity behind the domain, on every page. Values come from
+           src/config/business.ts — never retyped here. -->
+      <p>
+        © {year} {business.legalName} · {business.legalForm[lang]} · SIRET{' '}
+        {business.siret}
+      </p>
+
+      <nav class="flex flex-wrap gap-x-4 gap-y-0.5">
+        <a href={`mailto:${business.email}`} class="hover:text-accent">
+          {business.email}
+        </a>
+        {
+          legal.map(({ href, label }) => (
+            <a href={href} class="hover:text-accent">
+              {label}
+            </a>
+          ))
+        }
+      </nav>
     </footer>
   </body>
 </html>
