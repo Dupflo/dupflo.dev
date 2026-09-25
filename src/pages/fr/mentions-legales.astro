@@ -12,7 +12,7 @@ import PageHeader from '../../components/PageHeader.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import EntityCard from '../../components/EntityCard.astro';
 import JsonLd from '../../components/JsonLd.astro';
-import { business, addressLine, formatDate } from '../../config/business';
+import { business, formatDate } from '../../config/business';
 import { SITE } from '../../consts';
 import { identityPath, identityTwin } from '../../i18n/pages';
 
@@ -34,17 +34,13 @@ const description = `Éditeur du site ${SITE.title} : ${business.legalName}, ${b
         legalName: business.legalName,
         url: SITE.url,
         email: `mailto:${business.email}`,
-        telephone: business.phone,
         identifier: [
           { '@type': 'PropertyValue', name: 'SIREN', value: business.siren },
           { '@type': 'PropertyValue', name: 'SIRET', value: business.siret },
         ],
         address: {
           '@type': 'PostalAddress',
-          streetAddress: business.address.street,
-          postalCode: business.address.postalCode,
-          addressLocality: business.address.city,
-          addressCountry: 'FR',
+          addressCountry: business.countryCode,
         },
         founder: { '@type': 'Person', name: business.legalName },
         foundingDate: business.registeredSince,
@@ -157,9 +153,15 @@ const description = `Éditeur du site ${SITE.title} : ${business.legalName}, ${b
     <h2>Contact</h2>
     <p>
       Pour toute question, demande de retrait ou signalement :
-      {' '}<a href={`mailto:${business.email}`}>{business.email}</a>, ou par
-      courrier à {addressLine()}. Voir aussi la page
-      {' '}<a href={identityPath('contact', lang)}>contact</a>.
+      {' '}<a href={`mailto:${business.email}`}>{business.email}</a>. Voir aussi
+      la page {' '}<a href={identityPath('contact', lang)}>contact</a>.
+    </p>
+    <p>
+      L’adresse du siège et le numéro de téléphone ne sont pas publiés sur ce
+      site : le siège est un domicile privé. Ils figurent au registre public,
+      avec l’immatriculation elle-même, et sont consultables sur
+      {' '}{' '}<a href={business.registryUrl} rel="noopener" target="_blank">annuaire-entreprises.data.gouv.fr</a>. Une adresse postale
+      est communiquée sur demande par email pour toute correspondance formelle.
     </p>
   </div>
 

@@ -10,7 +10,7 @@ import PageHeader from '../components/PageHeader.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import EntityCard from '../components/EntityCard.astro';
 import JsonLd from '../components/JsonLd.astro';
-import { business, addressLine, formatDate } from '../config/business';
+import { business, formatDate } from '../config/business';
 import { SITE } from '../consts';
 import { identityPath, identityTwin } from '../i18n/pages';
 
@@ -32,17 +32,13 @@ const description = `Publisher of ${SITE.title}: ${business.legalName}, ${busine
         legalName: business.legalName,
         url: SITE.url,
         email: `mailto:${business.email}`,
-        telephone: business.phone,
         identifier: [
           { '@type': 'PropertyValue', name: 'SIREN', value: business.siren },
           { '@type': 'PropertyValue', name: 'SIRET', value: business.siret },
         ],
         address: {
           '@type': 'PostalAddress',
-          streetAddress: business.address.street,
-          postalCode: business.address.postalCode,
-          addressLocality: business.address.city,
-          addressCountry: 'FR',
+          addressCountry: business.countryCode,
         },
         founder: { '@type': 'Person', name: business.legalName },
         foundingDate: business.registeredSince,
@@ -151,9 +147,15 @@ const description = `Publisher of ${SITE.title}: ${business.legalName}, ${busine
     <h2>Contact</h2>
     <p>
       For any question, takedown request or report:
-      {' '}<a href={`mailto:${business.email}`}>{business.email}</a>, or by post
-      to {addressLine()}. See also the
+      {' '}<a href={`mailto:${business.email}`}>{business.email}</a>. See also the
       {' '}<a href={identityPath('contact', lang)}>contact page</a>.
+    </p>
+    <p>
+      The registered office address and the phone number are not published on
+      this site: the office is a private home. They are on public record,
+      alongside the registration itself, and can be looked up at
+      {' '}{' '}<a href={business.registryUrl} rel="noopener" target="_blank">annuaire-entreprises.data.gouv.fr</a>. A postal address for
+      formal correspondence is given on request by email.
     </p>
 
     <h2>Governing version</h2>

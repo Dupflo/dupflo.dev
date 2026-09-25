@@ -71,10 +71,11 @@ const description = `Écrire à ${business.legalName} : ${business.email}. Répo
 
     <h2>Courrier postal et téléphone</h2>
     <p>
-      L’adresse postale du siège et le numéro de téléphone figurent dans le bloc
-      ci-dessous, ainsi que dans les
-      {' '}<a href={identityPath('legal', lang)}>mentions légales</a>. L’email reste le
-      canal le plus rapide.
+      Ni l’un ni l’autre ne sont publiés ici : le siège est un domicile privé.
+      Les deux figurent au registre public, consultable sur
+      {' '}{' '}<a href={business.registryUrl} rel="noopener" target="_blank">annuaire-entreprises.data.gouv.fr</a>, et je communique une
+      adresse postale par email pour toute correspondance formelle. L’email
+      reste de toute façon le canal le plus rapide.
     </p>
   </div>
 

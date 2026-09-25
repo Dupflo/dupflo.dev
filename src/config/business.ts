@@ -47,19 +47,20 @@ export const business = {
   /** Registration date, ISO. Displayed as a year. */
   registeredSince: '2019-07-10',
 
-  /** Head office, and the address that must appear in the mentions légales. */
-  address: {
-    street: '43 B rue Michel Grimault',
-    postalCode: '44110',
-    city: 'Châteaubriant',
-    country: 'France',
-  },
+  /**
+   * The registered office is a home address, and the phone number is a personal
+   * line. Neither is published on the site, by Florian's decision.
+   *
+   * They are not secret: both sit on the public register that every identity
+   * page links to through `registryUrl`, which is where an authority, a client
+   * or a platform reviewer looks them up. Jurisdiction is stated instead, since
+   * that is the part a reader actually needs.
+   */
+  country: 'France',
+  /** ISO 3166-1 alpha-2, for the JSON-LD PostalAddress. */
+  countryCode: 'FR',
 
   email: 'hello@dupflo.dev',
-
-  // TODO Florian: replace with the number you are willing to publish (a
-  // reachable line — TikTok's reviewer may dial it). International format.
-  phone: '+33 6 00 00 00 00',
 
   /** Franchise en base de TVA. Mandatory wording under the micro regime. */
   vat: {
@@ -80,10 +81,6 @@ export const business = {
   // TODO Florian: bump this whenever you change the legal or privacy text.
   updatedAt: '2026-09-25',
 } as const;
-
-/** `43 B rue Michel Grimault, 44110 Châteaubriant, France` */
-export const addressLine = (): string =>
-  `${business.address.street}, ${business.address.postalCode} ${business.address.city}, ${business.address.country}`;
 
 /** A date stored as ISO, shown the way each language writes dates. */
 export const formatDate = (iso: string, lang: 'en' | 'fr'): string =>

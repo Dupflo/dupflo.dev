@@ -9,7 +9,7 @@
  */
 import Base from '../layouts/Base.astro';
 import PageHeader from '../components/PageHeader.astro';
-import { business, addressLine, formatDate } from '../config/business';
+import { business, formatDate } from '../config/business';
 import { identityTwin } from '../i18n/pages';
 
 const lang = 'en' as const;
@@ -36,7 +36,7 @@ const description =
     <h2>Data controller</h2>
     <p>
       <strong>{business.legalName}</strong>, {business.legalForm.en},
-      SIRET {business.siret}, {addressLine()}.
+      SIRET {business.siret}, registered in {business.country}.
       <br />
       For anything concerning personal data:
       {' '}<a href={`mailto:${business.email}`}>{business.email}</a>.
@@ -167,8 +167,8 @@ const description =
     </p>
     <p>
       To exercise any of them, write to
-      {' '}<a href={`mailto:${business.email}`}>{business.email}</a> or to
-      {' '}{addressLine()}. You will get an answer within one month, extendable
+      {' '}<a href={`mailto:${business.email}`}>{business.email}</a>; a postal
+      address is given on request. You will get an answer within one month, extendable
       by two months for a complex request, in which case you will be told. Proof
       of identity may be requested where there is reasonable doubt about who is
       asking.

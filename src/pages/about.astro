@@ -7,7 +7,7 @@ import PageHeader from '../components/PageHeader.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import EntityCard from '../components/EntityCard.astro';
 import JsonLd from '../components/JsonLd.astro';
-import { business, addressLine } from '../config/business';
+import { business } from '../config/business';
 import { SITE, AUTHOR } from '../consts';
 import { identityPath, identityTwin } from '../i18n/pages';
 
@@ -34,18 +34,14 @@ const registeredYear = business.registeredSince.slice(0, 4);
           legalName: business.legalName,
           url: SITE.url,
           email: `mailto:${business.email}`,
-          telephone: business.phone,
-          foundingDate: business.registeredSince,
+            foundingDate: business.registeredSince,
           identifier: [
             { '@type': 'PropertyValue', name: 'SIREN', value: business.siren },
             { '@type': 'PropertyValue', name: 'SIRET', value: business.siret },
           ],
           address: {
             '@type': 'PostalAddress',
-            streetAddress: business.address.street,
-            postalCode: business.address.postalCode,
-            addressLocality: business.address.city,
-            addressCountry: 'FR',
+            addressCountry: business.countryCode,
           },
           sameAs: business.registryUrl,
         },
@@ -123,11 +119,13 @@ const registeredYear = business.registeredSince.slice(0, 4);
   <div class="prose">
     <p>
       Email <a href={`mailto:${business.email}`}>{business.email}</a> — replies
-      within two working days. Postal mail reaches me at {addressLine()}, and the
-      phone number is listed in the
-      {' '}<a href={identityPath('legal', lang)}>legal notice</a>.
-      Data-protection requests are covered by the
-      {' '}<a href={identityPath('privacy', lang)}>privacy policy</a>.
+      within two working days. The registered office is a private home, so its
+      address is not published here; it is on public record, and a postal address
+      for formal correspondence is given on request. See the
+      {' '}<a href={identityPath('legal', lang)}>legal notice</a> for the full
+      details, and the
+      {' '}<a href={identityPath('privacy', lang)}>privacy policy</a> for
+      data-protection requests.
     </p>
   </div>
 </Base>

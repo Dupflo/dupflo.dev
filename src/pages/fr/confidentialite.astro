@@ -9,7 +9,7 @@
  */
 import Base from '../../layouts/Base.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import { business, addressLine, formatDate } from '../../config/business';
+import { business, formatDate } from '../../config/business';
 import { identityTwin } from '../../i18n/pages';
 
 const lang = 'fr' as const;
@@ -36,7 +36,7 @@ const description = `Quelles données personnelles ce site traite, pourquoi, com
     <h2>Responsable de traitement</h2>
     <p>
       <strong>{business.legalName}</strong>, {business.legalForm.fr},
-      SIRET {business.siret}, {addressLine()}.
+      SIRET {business.siret}, immatriculé en {business.country}.
       <br />
       Contact pour toute question relative aux données personnelles :
       {' '}<a href={`mailto:${business.email}`}>{business.email}</a>.
@@ -174,8 +174,8 @@ const description = `Quelles données personnelles ce site traite, pourquoi, com
     </p>
     <p>
       Pour exercer l’un de ces droits, écrivez à
-      {' '}<a href={`mailto:${business.email}`}>{business.email}</a> ou à
-      {' '}{addressLine()}. Une réponse vous sera apportée dans un délai d’un
+      {' '}<a href={`mailto:${business.email}`}>{business.email}</a> ; une adresse
+      postale est communiquée sur demande. Une réponse vous sera apportée dans un délai d’un
       mois, prolongeable de deux mois si la demande est complexe, auquel cas vous
       en serez informé. Un justificatif d’identité peut être demandé en cas de
       doute raisonnable sur l’identité du demandeur.

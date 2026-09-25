@@ -7,7 +7,7 @@
  * `full` carries everything French law asks of an editor's notice; `compact` is
  * the reassurance version for /contact and /about.
  */
-import { business, addressLine } from '../config/business';
+import { business } from '../config/business';
 import type { Lang } from '../i18n/ui';
 
 interface Props {
@@ -25,9 +25,8 @@ const LABELS = {
     siret: 'SIRET',
     ape: 'Activity code',
     registry: 'Registered with',
-    office: 'Registered office',
+    country: 'Registered in',
     email: 'Email',
-    phone: 'Phone',
     publisher: 'Responsible for publication',
     vat: 'VAT',
     verify: 'Public record',
@@ -40,9 +39,8 @@ const LABELS = {
     siret: 'SIRET',
     ape: 'Code APE',
     registry: 'Immatriculation',
-    office: 'Siège social',
+    country: 'Pays d’immatriculation',
     email: 'Email',
-    phone: 'Téléphone',
     publisher: 'Responsable de la publication',
     vat: 'TVA',
     verify: 'Registre public',
@@ -59,7 +57,7 @@ const compact: Row[] = [
   { term: l.name, value: business.legalName },
   { term: l.form, value: business.legalForm[lang] },
   { term: l.siret, value: business.siret },
-  { term: l.office, value: addressLine() },
+  { term: l.country, value: business.country },
   { term: l.email, value: business.email, href: `mailto:${business.email}` },
 ];
 
@@ -70,9 +68,8 @@ const full: Row[] = [
   { term: l.siret, value: business.siret },
   { term: l.ape, value: `${business.ape.code} · ${business.ape.label[lang]}` },
   { term: l.registry, value: business.registry[lang] },
-  { term: l.office, value: addressLine() },
+  { term: l.country, value: business.country },
   { term: l.email, value: business.email, href: `mailto:${business.email}` },
-  { term: l.phone, value: business.phone, href: `tel:${business.phone.replace(/\s/g, '')}` },
   { term: l.publisher, value: business.publisher },
   { term: l.vat, value: business.vat[lang] },
   {
