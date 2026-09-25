@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/Dc1IIkbIqt-/
 date: 2026-09-03
 thumbnail: ../../assets/videos/2026-09-03-expliquer-un-probleme-visuel-a-une-ia-par-ecrit-c-est-l-enfe.jpg
-views: 7255
+views: 7263
 likes: 102
 sourceId: "18104085995578571"
 ---

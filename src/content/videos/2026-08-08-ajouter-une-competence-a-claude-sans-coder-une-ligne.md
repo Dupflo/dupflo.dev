@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DbxbZhRog_e/
 date: 2026-08-08
 thumbnail: ../../assets/videos/2026-08-08-ajouter-une-competence-a-claude-sans-coder-une-ligne.jpg
-views: 43554
-likes: 633
+views: 43900
+likes: 637
 sourceId: "18141529537564878"
 ---
