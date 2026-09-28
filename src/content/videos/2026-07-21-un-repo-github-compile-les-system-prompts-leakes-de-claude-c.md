@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DbDCXyvNA5m/
 date: 2026-07-21
 thumbnail: ../../assets/videos/2026-07-21-un-repo-github-compile-les-system-prompts-leakes-de-claude-c.jpg
-views: 16263
+views: 16269
 likes: 317
 sourceId: "18148610371510077"
 ---

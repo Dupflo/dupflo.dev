@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DaDdkR4K7VX/
 date: 2026-06-26
 thumbnail: ../../assets/videos/2026-06-26-partie-1-presentation.jpg
-views: 64005
-likes: 1010
+views: 64026
+likes: 1008
 sourceId: "17982551070044107"
 ---
