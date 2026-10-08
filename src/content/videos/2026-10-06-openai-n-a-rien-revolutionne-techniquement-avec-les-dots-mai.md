@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DeKA6wyIA2n/
 date: 2026-10-06
 thumbnail: ../../assets/videos/2026-10-06-openai-n-a-rien-revolutionne-techniquement-avec-les-dots-mai.jpg
-views: 2931
-likes: 37
+views: 3189
+likes: 40
 sourceId: "17901469197376108"
 ---
