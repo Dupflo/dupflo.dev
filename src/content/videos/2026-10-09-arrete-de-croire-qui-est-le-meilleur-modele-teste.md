@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DeSBewCI5e5/
 date: 2026-10-09
 thumbnail: ../../assets/videos/2026-10-09-arrete-de-croire-qui-est-le-meilleur-modele-teste.jpg
-views: 1015
-likes: 11
+views: 1029
+likes: 12
 sourceId: "17931342930166147"
 ---
