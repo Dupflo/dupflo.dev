@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DdLZpoiN4pp/
 date: 2026-09-12
 thumbnail: ../../assets/videos/2026-09-12-deuxieme-test-cette-fois-j-ai-tout-filme.jpg
-views: 6221
+views: 6227
 likes: 101
 sourceId: "18026707913688316"
 ---
