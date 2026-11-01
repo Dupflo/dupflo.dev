@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DfG9kJvosgp/
 date: 2026-10-30
 thumbnail: ../../assets/videos/2026-10-30-chatgpt-signe-maintenant-tes-textes-sans-que-tu-le-voies.jpg
-views: 4086
-likes: 32
+views: 4893
+likes: 36
 sourceId: "17975133519145849"
 ---
