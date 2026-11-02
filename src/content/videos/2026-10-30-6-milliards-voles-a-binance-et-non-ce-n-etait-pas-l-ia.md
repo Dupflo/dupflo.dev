@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DfILOJ7oHB4/
 date: 2026-10-30
 thumbnail: ../../assets/videos/2026-10-30-6-milliards-voles-a-binance-et-non-ce-n-etait-pas-l-ia.jpg
-views: 3036
+views: 3112
 likes: 31
 sourceId: "18123309605514985"
 ---
