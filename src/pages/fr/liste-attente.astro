@@ -8,7 +8,7 @@
  * L'inscription passe par /api/subscribe (Brevo), avec la source
  * `liste-attente-101`. Sans Brevo configuré, l'API répond 503 et la page le dit.
  */
-const title = 'Liste d’attente · Formation 101 — @dupflodev';
+const title = 'Liste d’attente · La formation — @dupflodev';
 const description =
   'Je prépare ma formation : construire ton site professionnel avec l’IA. Inscris-toi pour être prévenu en premier et avoir accès au meilleur prix dès le lancement.';
 ---
@@ -20,7 +20,7 @@ const description =
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta property="og:title" content="Liste d’attente · Formation 101" />
+    <meta property="og:title" content="Liste d’attente · Ton site pro, construit avec l’IA" />
     <meta property="og:description" content={description} />
     <meta property="og:url" content="https://dupflo.dev/fr/liste-attente/" />
     <link rel="canonical" href="https://dupflo.dev/fr/liste-attente/" />
@@ -58,7 +58,14 @@ const description =
       h1 { margin-top: 12px; font-size: clamp(34px, 7vw, 52px); font-weight: 800; letter-spacing: -.035em; line-height: 1.04; }
       h1 em { font-style: normal; color: var(--teal); }
       .lead { margin-top: 18px; font-size: 18px; line-height: 1.5; color: var(--sec); max-width: 52ch; }
-      .cards { display: grid; gap: 14px; margin-top: 30px; }
+      .cards { display: grid; gap: 14px; margin-top: 16px; }
+      h2 { margin-top: 38px; font-size: 24px; font-weight: 800; letter-spacing: -.02em; }
+      .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+      .pq { padding: 18px; border-radius: 20px; background: var(--teal-bg); border: 2px solid rgba(44,106,110,.18); }
+      .pq b { display: block; font-size: 16px; color: var(--teal); line-height: 1.3; }
+      .pq p { margin-top: 6px; font-size: 14px; line-height: 1.45; color: var(--sec); }
+      .plus { margin-top: 14px; font-size: 15px; font-weight: 600; color: var(--sec); }
+      @media (max-width: 620px) { .who-grid { grid-template-columns: 1fr; } }
       .card { display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; background: #fff; border-radius: 20px; box-shadow: 0 10px 28px rgba(110,80,50,.10), 0 1px 3px rgba(110,80,50,.08); }
       .card .ic { flex: none; width: 46px; height: 46px; border-radius: 14px; background: var(--teal-bg); display: flex; align-items: center; justify-content: center; }
       .card b { display: block; font-size: 17px; }
@@ -96,12 +103,21 @@ const description =
         <div><b>Florian · @dupflodev</b><span>Je teste l’IA pour de vrai, tous les jours</span></div>
       </div>
 
-      <p class="kicker">Formation 101 · liste d’attente</p>
+      <p class="kicker">Formation · liste d’attente</p>
       <h1>Ton site professionnel, construit <em>avec l’IA</em>.</h1>
       <p class="lead">
         Je prépare ma formation. Elle n’est pas encore ouverte : inscris-toi pour être prévenu en premier et avoir accès au meilleur prix dès le lancement.
       </p>
 
+      <h2>Pour qui ?</h2>
+      <div class="who-grid">
+        <div class="pq"><b>Tu débutes avec l’IA</b><p>Tu veux apprendre à travailler avec Claude ou ChatGPT sur un vrai projet, pas sur des exemples.</p></div>
+        <div class="pq"><b>Tu veux ton propre site pro</b><p>Artisan, indépendant, association : un site WordPress en ligne, que tu sais modifier toi-même.</p></div>
+        <div class="pq"><b>Tu veux vendre des sites</b><p>Freelance ou développeur : une méthode pour livrer plus vite à tes clients, avec l’IA.</p></div>
+      </div>
+      <p class="plus">Et dans tous les cas : la méthode pour mener tes autres projets avec l’IA.</p>
+
+      <h2>Pourquoi t’inscrire</h2>
       <div class="cards">
         <div class="card">
           <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2C6A6E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></div>
@@ -128,7 +144,7 @@ const description =
           <button type="submit">Je rejoins la liste</button>
         </div>
         <p class="consent">
-          En t’inscrivant, tu acceptes de recevoir les emails liés à la formation 101. Tes données restent chez Brevo (France), ne sont jamais revendues, et tu peux te désinscrire à tout moment.{" "}
+          En t’inscrivant, tu acceptes de recevoir les emails liés à la formation. Tes données restent chez Brevo (France), ne sont jamais revendues, et tu peux te désinscrire à tout moment.{" "}
           <a href="/fr/confidentialite/">Confidentialité</a>
         </p>
         <p id="wl-msg" class="msg" role="status" aria-live="polite"></p>
