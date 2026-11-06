@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DbAzWb_IEhh/
 date: 2026-07-20
 thumbnail: ../../assets/videos/2026-07-20-ou-on-met-les-skills-la-vraie-reponse.jpg
-views: 119210
-likes: 2302
+views: 120581
+likes: 2320
 sourceId: "18017466770910153"
 ---

@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DfWXXHuhH2b/
 date: 2026-11-05
 thumbnail: ../../assets/videos/2026-11-05-bezos-musk-et-buffett-ont-juge-ma-decision.jpg
-views: 719
-likes: 4
+views: 1780
+likes: 8
 sourceId: "18146889727605526"
 ---

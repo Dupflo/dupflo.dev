@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DfEUJVqh-8Y/
 date: 2026-10-29
 thumbnail: ../../assets/videos/2026-10-29-100-claude-s-affrontent-pour-te-donner-une-reponse.jpg
-views: 2575
-likes: 27
+views: 2588
+likes: 28
 sourceId: "18134230919501612"
 ---
