@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DezViJFIChp/
 date: 2026-10-22
 thumbnail: ../../assets/videos/2026-10-22-pourquoi-les-impots-ont-coupe-leur-site-mercredi.jpg
-views: 2178
+views: 2185
 likes: 17
 sourceId: "17946509565360677"
 ---
