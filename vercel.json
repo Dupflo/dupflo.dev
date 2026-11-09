@@ -20,6 +20,11 @@
       "source": "/kit{/}?",
       "destination": "/kit-survie-numerique.pdf",
       "permanent": false
+    },
+    {
+      "source": "/opencode{/}?",
+      "destination": "/guide-opencode.pdf",
+      "permanent": false
     }
   ],
   "headers": [
@@ -50,6 +55,19 @@
         {
           "key": "Content-Disposition",
           "value": "attachment; filename=\"kit-survie-numerique-dupflodev.pdf\""
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/guide-opencode.pdf",
+      "headers": [
+        {
+          "key": "Content-Disposition",
+          "value": "attachment; filename=\"guide-opencode-dupflodev.pdf\""
         },
         {
           "key": "Cache-Control",
