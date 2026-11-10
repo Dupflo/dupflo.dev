@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DfeWQLvo74J/
 date: 2026-11-08
 thumbnail: ../../assets/videos/2026-11-08-mes-mcp-pesent-600-000-tokens-claude-n-en-charge-que-6-000.jpg
-views: 3773
-likes: 33
+views: 3864
+likes: 34
 sourceId: "17967199914234039"
 ---
