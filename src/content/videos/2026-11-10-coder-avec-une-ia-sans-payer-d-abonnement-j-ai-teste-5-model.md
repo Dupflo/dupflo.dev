@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DfjNlM6Bu1f/
 date: 2026-11-10
 thumbnail: ../../assets/videos/2026-11-10-coder-avec-une-ia-sans-payer-d-abonnement-j-ai-teste-5-model.jpg
-views: 5304
-likes: 48
+views: 5516
+likes: 50
 sourceId: "17884360425536340"
 ---
