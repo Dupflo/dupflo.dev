@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/Dfo5hQZhFF0/
 date: 2026-11-12
 thumbnail: ../../assets/videos/2026-11-12-deepseek-llama-glm-pas-open-source.jpg
-views: 3879
-likes: 56
+views: 3963
+likes: 57
 sourceId: "18113187755184945"
 ---
