@@ -5,6 +5,6 @@ url: https://www.instagram.com/reel/DaffVLKo_ku/
 date: 2026-07-07
 thumbnail: ../../assets/videos/2026-07-07-tu-paies-des-tokens-sans-rien-taper.jpg
 views: 11548
-likes: 151
+likes: 150
 sourceId: "18272815276293556"
 ---
