@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DY1Sq5komJu/
 date: 2026-05-27
 thumbnail: ../../assets/videos/2026-05-27-le-vibecoding-democratise-le-code-et-c-est-une-bonne-chose-m.jpg
-views: 494
-likes: 5
+views: 495
+likes: 6
 sourceId: "17883097950570143"
 ---

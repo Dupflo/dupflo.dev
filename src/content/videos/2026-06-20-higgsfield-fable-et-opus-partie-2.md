@@ -5,6 +5,6 @@ url: https://www.instagram.com/reel/DZzVdvsI1HV/
 date: 2026-06-20
 thumbnail: ../../assets/videos/2026-06-20-higgsfield-fable-et-opus-partie-2.jpg
 views: 7775
-likes: 54
+likes: 55
 sourceId: "17880110010656937"
 ---
