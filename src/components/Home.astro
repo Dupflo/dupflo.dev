@@ -5,6 +5,8 @@ import SectionHeader from "./SectionHeader.astro"
 import PostRow from "./PostRow.astro"
 import ProjectRow from "./ProjectRow.astro"
 import VideoCard from "./VideoCard.astro"
+import ResourceRow from "./ResourceRow.astro"
+import { RESOURCES } from "../data/resources"
 import portrait from "../assets/florian-dupuis.jpg"
 import { SITE, LINKS } from "../consts"
 import { ROW_GROUP } from "../lib/entry"
@@ -75,6 +77,11 @@ const [latest, ...rest] = posts
     </nav>
   </div>
 </section>
+
+<SectionHeader label={ui.sections.resources} count={RESOURCES.length} />
+<div class={ROW_GROUP}>
+  {RESOURCES.map((resource) => <ResourceRow resource={resource} lang={lang} />)}
+</div>
 
 <SectionHeader
   label={ui.sections.writing}

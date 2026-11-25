@@ -1,0 +1,115 @@
+---
+/**
+ * Le guide lui-même, rendu depuis src/guides/second-cerveau.md (source :
+ * videos/086-les-133-heures/feuille-de-route-second-cerveau.md du dépôt
+ * « Socials medias »). Accessible après inscription, hors index et hors sitemap.
+ */
+import { Content } from '../../../guides/second-cerveau.md';
+const title = 'Ton second cerveau en 30 minutes — @dupflodev';
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style is:global>
+      @font-face { font-family: "Outfit"; src: url("/fonts/Outfit.ttf") format("truetype"); font-weight: 100 900; font-display: swap; }
+      :root {
+        --sand: #f2e6da; --ink: #141414; --sec: #3d3a36; --muted: #7a736b;
+        --teal: #2C6A6E; --teal-bg: #eaf3f2; --red: #D4452B; --orange: #F4AE5E; --line: #ebe3d9;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { min-height: 100%; background: #ecdccc; }
+      body { min-height: 100vh; }
+      body {
+        font-family: "Inter", system-ui, sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased;
+        background: radial-gradient(1200px 900px at 80% 0%, #f8efe6 0%, rgba(248,239,230,0) 60%), linear-gradient(180deg, #f3e7db 0%, #ecdccc 100%);
+        background-attachment: fixed; padding: 40px 16px 60px; overflow-x: hidden;
+      }
+      /* ombres de feuillage floues, comme dans les vidéos */
+      .leaf { position: fixed; z-index: 0; border-radius: 40% 60% 55% 45%; background: rgba(70,85,55,.16); filter: blur(70px); pointer-events: none; }
+      .leaf.a { right: -120px; top: -80px; width: 420px; height: 520px; }
+      .leaf.b { left: -160px; bottom: -120px; width: 520px; height: 420px; }
+      .page {
+        position: relative; z-index: 1; max-width: 680px; margin: 0 auto; background: #fffdfb; border: 1px solid var(--line); border-radius: 30px;
+        box-shadow: 0 30px 70px rgba(110,80,50,.16), 0 6px 18px rgba(110,80,50,.08); padding: 44px 40px 40px;
+      }
+      .who { display: flex; align-items: center; gap: 14px; margin-bottom: 34px; }
+      .who img { width: 56px; height: 56px; border-radius: 50%; border: 4px solid #fff; box-shadow: 0 6px 16px rgba(110,80,50,.22); object-fit: cover; }
+      .who b { display: block; font-size: 17px; }
+      .who span { font-size: 14px; color: var(--muted); }
+      .kicker { font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--teal); }
+      h1 { margin-top: 12px; font-size: clamp(34px, 7vw, 52px); font-weight: 800; letter-spacing: -.035em; line-height: 1.04; }
+      h1 em { font-style: normal; color: var(--teal); }
+      .lead { margin-top: 18px; font-size: 18px; line-height: 1.5; color: var(--sec); max-width: 52ch; }
+      .cards { display: grid; gap: 14px; margin-top: 16px; }
+      h2 { margin-top: 38px; font-size: 24px; font-weight: 800; letter-spacing: -.02em; }
+      .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+      .pq { padding: 18px; border-radius: 20px; background: var(--teal-bg); border: 2px solid rgba(44,106,110,.18); }
+      .pq b { display: block; font-size: 16px; color: var(--teal); line-height: 1.3; }
+      .pq p { margin-top: 6px; font-size: 14px; line-height: 1.45; color: var(--sec); }
+      .plus { margin-top: 14px; font-size: 15px; font-weight: 600; color: var(--sec); }
+      @media (max-width: 620px) { .who-grid { grid-template-columns: 1fr; } }
+      .card { display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; background: #fff; border-radius: 20px; box-shadow: 0 10px 28px rgba(110,80,50,.10), 0 1px 3px rgba(110,80,50,.08); }
+      .card .ic { flex: none; width: 46px; height: 46px; border-radius: 14px; background: var(--teal-bg); display: flex; align-items: center; justify-content: center; }
+      .card b { display: block; font-size: 17px; }
+      .card p { margin-top: 3px; font-size: 15px; color: var(--muted); line-height: 1.45; }
+      form { margin-top: 32px; }
+      label { display: block; font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+      .row { display: flex; gap: 12px; flex-wrap: wrap; }
+      input[type="email"] {
+        flex: 1 1 260px; min-width: 0; height: 60px; padding: 0 22px; border-radius: 30px; border: 2px solid var(--line); background: #f8f4ef;
+        font: 600 17px "Inter", sans-serif; color: var(--ink); outline: none;
+      }
+      input[type="email"]:focus { border-color: var(--teal); background: #fff; }
+      button {
+        flex: 0 0 auto; height: 60px; padding: 0 28px 4px; border-radius: 20px; border: 4px solid #1c1b1a; background: var(--orange); color: #1c1b1a;
+        font: 600 20px "Outfit", "Inter", sans-serif; cursor: pointer; box-shadow: 0 6px 0 #1c1b1a; transition: transform .08s, box-shadow .08s;
+      }
+      button:hover { transform: translateY(-1px); }
+      button:active { transform: translateY(5px); box-shadow: 0 1px 0 #1c1b1a; }
+      button[disabled] { opacity: .6; cursor: default; }
+      .consent { margin-top: 14px; font-size: 13px; line-height: 1.5; color: var(--muted); }
+      .consent a { color: var(--muted); }
+      .msg { display: none; margin-top: 18px; padding: 16px 18px; border-radius: 16px; font-size: 16px; font-weight: 600; line-height: 1.45; }
+      .msg.ok { display: block; background: var(--teal-bg); color: var(--teal); }
+      .msg.err { display: block; background: #fbe5df; color: var(--red); }
+      .foot { position: relative; z-index: 1; max-width: 680px; margin: 22px auto 0; text-align: center; font-size: 13px; color: var(--muted); }
+      .foot a { color: var(--muted); }
+      @media (max-width: 520px) { .page { padding: 32px 22px 28px; } button { width: 100%; } }
+    </style>
+    <style is:global>
+      .guide { line-height: 1.6; font-size: 16px; color: var(--ink); }
+      .guide h1 { font-size: clamp(28px, 5.5vw, 40px); margin-top: 0; }
+      .guide h2 { margin-top: 40px; font-size: 24px; color: var(--teal); }
+      .guide h3 { margin-top: 28px; font-size: 19px; font-weight: 800; }
+      .guide p, .guide ul, .guide ol, .guide table, .guide blockquote, .guide pre { margin-top: 14px; }
+      .guide ul, .guide ol { padding-left: 22px; }
+      .guide li { margin-top: 6px; }
+      .guide a { color: var(--teal); font-weight: 600; }
+      .guide code { font-family: "JetBrains Mono", Menlo, monospace; font-size: .92em; }
+      .guide pre, .guide pre.astro-code { background: #f4efe9 !important; color: var(--ink) !important; border-radius: 14px; padding: 18px; overflow: auto; font-size: 14px; }
+      .guide pre span { color: inherit !important; }
+      .guide table { border-collapse: collapse; width: 100%; font-size: 15px; display: block; overflow-x: auto; }
+      .guide td, .guide th { border-bottom: 1px solid var(--line); padding: 8px; text-align: left; vertical-align: top; }
+      .guide blockquote { border-left: 4px solid var(--teal); padding: 6px 18px; color: var(--sec); background: var(--teal-bg); border-radius: 0 12px 12px 0; }
+      .guide blockquote table { font-size: 14px; }
+      .guide hr { border: 0; border-top: 1px solid var(--line); margin: 36px 0; }
+      .guide svg { max-width: 100%; }
+    </style>
+  </head>
+  <body>
+    <i class="leaf a"></i><i class="leaf b"></i>
+    <main class="page guide">
+      <Content />
+    </main>
+    <p class="foot"><a href="/fr/">dupflo.dev</a> · <a href="/fr/mentions-legales/">Mentions légales</a></p>
+  </body>
+</html>

@@ -26,6 +26,8 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
+      // The guide itself is handed out after sign-up; only its landing is listed.
+      filter: (page) => !page.includes('/second-cerveau/guide'),
       i18n: { defaultLocale: 'en', locales: { en: 'en', fr: 'fr' } },
       // Translated slugs defeat the path-matching pairing; put them back.
       serialize(item) {

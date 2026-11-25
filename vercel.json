@@ -25,6 +25,11 @@
       "source": "/opencode{/}?",
       "destination": "/guide-opencode.pdf",
       "permanent": false
+    },
+    {
+      "source": "/cerveau{/}?",
+      "destination": "/fr/second-cerveau/",
+      "permanent": false
     }
   ],
   "headers": [

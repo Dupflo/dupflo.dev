@@ -1,0 +1,41 @@
+---
+import { ROW, ROW_COLS } from '../lib/entry';
+import { t, type Lang } from '../i18n/ui';
+import type { Resource } from '../data/resources';
+
+interface Props {
+  resource: Resource;
+  lang: Lang;
+}
+
+const { resource, lang } = Astro.props;
+const { title, tagline, href, kind } = resource;
+const KIND = {
+  guide: { en: 'free guide', fr: 'guide gratuit' },
+  pdf: { en: 'PDF', fr: 'PDF' },
+  list: { en: 'waiting list', fr: 'liste d’attente' },
+} as const;
+const pdf = kind === 'pdf';
+---
+
+<a
+  href={href}
+  download={pdf ? '' : undefined}
+  class:list={[ROW, ROW_COLS, 'py-row']}
+>
+  <div class="text-[13px] text-accent">
+    <span aria-hidden="true">{pdf ? '↓' : '→'}</span>
+    <span>{KIND[kind][lang]}</span>
+  </div>
+
+  <div class="flex min-w-0 items-baseline gap-3 text-[13px]">
+    <h3 class="whitespace-nowrap font-semibold group-hover:text-accent">
+      {title}
+    </h3>
+    <p class="truncate text-dim">{tagline[lang]}</p>
+  </div>
+
+  <div class="text-[13px] text-dim md:justify-self-end">
+    {lang === 'fr' ? (pdf ? t(lang).download : 'gratuit') : t(lang).onlyInOtherLang}
+  </div>
+</a>

@@ -12,6 +12,14 @@ const listId = import.meta.env.BREVO_LIST_ID;
 
 export const subscribeEnabled = Boolean(key && listId);
 
+/**
+ * Sources that feed their own Brevo list instead of the default one.
+ * List ids are not secrets: they only mean something with the API key.
+ */
+const SOURCE_LISTS: Record<string, number> = {
+  'guide-second-cerveau': 11,
+};
+
 /** Deliberately loose: rejecting valid addresses costs more than a bad row. */
 export const looksLikeEmail = (value: string) =>
   /^[^@\s]+@[^@\s.]+\.[^@\s]+$/.test(value) && value.length < 254;
@@ -30,7 +38,7 @@ export async function subscribe(
     },
     body: JSON.stringify({
       email,
-      listIds: [Number(listId)],
+      listIds: [SOURCE_LISTS[source] ?? Number(listId)],
       updateEnabled: true,
       // Which page earned the address, so the list stays readable later.
       attributes: { SOURCE: source },
