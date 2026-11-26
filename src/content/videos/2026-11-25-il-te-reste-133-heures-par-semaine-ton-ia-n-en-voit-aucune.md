@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DgK9972IKLN/
 date: 2026-11-25
 thumbnail: ../../assets/videos/2026-11-25-il-te-reste-133-heures-par-semaine-ton-ia-n-en-voit-aucune.jpg
-views: 21
-likes: 1
+views: 1484
+likes: 11
 sourceId: "18216028534365876"
 ---

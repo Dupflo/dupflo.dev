@@ -5,6 +5,6 @@ url: https://www.instagram.com/reel/DbfafLxNkje/
 date: 2026-08-01
 thumbnail: ../../assets/videos/2026-08-01-j-ai-lance-graphify-sur-mon-vrai-projet-verdict.jpg
 views: 23039
-likes: 341
+likes: 340
 sourceId: "18099746702246027"
 ---
