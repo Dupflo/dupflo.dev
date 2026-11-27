@@ -1,7 +1,7 @@
 /**
  * Free resources offered from the short-form videos. They are in French, like
  * the videos; the English home lists them too, flagged as French.
- * Short links (/cerveau, /kit, /opencode) live in vercel.json for DMs.
+ * Short links (/cerveau, /app, /kit, /opencode) live in vercel.json for DMs.
  */
 export interface Resource {
   title: string;
@@ -12,6 +12,15 @@ export interface Resource {
 }
 
 export const RESOURCES: Resource[] = [
+  {
+    title: 'Checklist app Claude',
+    tagline: {
+      en: 'Eight checks before you click “Install as app” in Claude: data, permissions, limits, a way out.',
+      fr: 'Les 8 points à vérifier avant de cliquer sur « Install as app » dans Claude : données, permissions, quotas, sortie de secours.',
+    },
+    href: '/fr/checklist-app-claude/',
+    kind: 'guide',
+  },
   {
     title: 'Second cerveau',
     tagline: {

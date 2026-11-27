@@ -30,6 +30,11 @@
       "source": "/cerveau{/}?",
       "destination": "/fr/second-cerveau/",
       "permanent": false
+    },
+    {
+      "source": "/app{/}?",
+      "destination": "/fr/checklist-app-claude/",
+      "permanent": false
     }
   ],
   "headers": [

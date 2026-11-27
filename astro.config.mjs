@@ -27,7 +27,7 @@ export default defineConfig({
     mdx(),
     sitemap({
       // The guide itself is handed out after sign-up; only its landing is listed.
-      filter: (page) => !page.includes('/second-cerveau/guide'),
+      filter: (page) => !page.includes('/second-cerveau/guide') && !page.includes('/checklist-app-claude/guide'),
       i18n: { defaultLocale: 'en', locales: { en: 'en', fr: 'fr' } },
       // Translated slugs defeat the path-matching pairing; put them back.
       serialize(item) {
