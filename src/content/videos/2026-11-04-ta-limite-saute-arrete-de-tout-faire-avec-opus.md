@@ -4,7 +4,7 @@ platform: instagram
 url: https://www.instagram.com/reel/DfUb0KSIGOq/
 date: 2026-11-04
 thumbnail: ../../assets/videos/2026-11-04-ta-limite-saute-arrete-de-tout-faire-avec-opus.jpg
-views: 43784
-likes: 353
+views: 44236
+likes: 358
 sourceId: "18119413192789250"
 ---
